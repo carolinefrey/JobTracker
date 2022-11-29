@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B904B08F29359332008BE140 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B904B08C29359309008BE140 /* Nunito-Regular.ttf */; };
+		B904B09029359335008BE140 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B904B08D29359317008BE140 /* Nunito-SemiBold.ttf */; };
+		B904B09129359337008BE140 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B904B08E29359325008BE140 /* Nunito-Light.ttf */; };
+		B904B09529359788008BE140 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904B09429359788008BE140 /* ContentView.swift */; };
+		B904B0972935999F008BE140 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904B0962935999F008BE140 /* ViewModel.swift */; };
 		B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */; };
 		B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */; };
 		B9B5CAD5292EBA7200C7EC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD4292EBA7200C7EC58 /* ViewController.swift */; };
@@ -15,6 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B904B08C29359309008BE140 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		B904B08D29359317008BE140 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		B904B08E29359325008BE140 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		B904B09429359788008BE140 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../../../../JobTracker/JobTracker/JobTracker/View/ContentView.swift; sourceTree = "<group>"; };
+		B904B0962935999F008BE140 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = ../../../../JobTracker/JobTracker/JobTracker/ViewModel/ViewModel.swift; sourceTree = "<group>"; };
 		B9B5CACD292EBA7200C7EC58 /* JobTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +45,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B904B0862935929A008BE140 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B904B087293592A5008BE140 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B904B09429359788008BE140 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B904B088293592BB008BE140 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B904B0962935999F008BE140 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B904B089293592CD008BE140 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9B5CAD4292EBA7200C7EC58 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B904B08A293592D5008BE140 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B904B08B293592FC008BE140 /* Nunito */,
+				B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */,
+				B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */,
+				B9B5CAD9292EBA7300C7EC58 /* Assets.xcassets */,
+				B9B5CADB292EBA7300C7EC58 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B904B08B293592FC008BE140 /* Nunito */ = {
+			isa = PBXGroup;
+			children = (
+				B904B08C29359309008BE140 /* Nunito-Regular.ttf */,
+				B904B08D29359317008BE140 /* Nunito-SemiBold.ttf */,
+				B904B08E29359325008BE140 /* Nunito-Light.ttf */,
+			);
+			path = Nunito;
+			sourceTree = "<group>";
+		};
 		B9B5CAC4292EBA7200C7EC58 = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +117,11 @@
 		B9B5CACF292EBA7200C7EC58 /* JobTracker */ = {
 			isa = PBXGroup;
 			children = (
-				B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */,
-				B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */,
-				B9B5CAD4292EBA7200C7EC58 /* ViewController.swift */,
-				B9B5CAD9292EBA7300C7EC58 /* Assets.xcassets */,
-				B9B5CADB292EBA7300C7EC58 /* LaunchScreen.storyboard */,
+				B904B0862935929A008BE140 /* Model */,
+				B904B087293592A5008BE140 /* View */,
+				B904B088293592BB008BE140 /* ViewModel */,
+				B904B089293592CD008BE140 /* Controller */,
+				B904B08A293592D5008BE140 /* Supporting Files */,
 				B9B5CADE292EBA7300C7EC58 /* Info.plist */,
 			);
 			path = JobTracker;
@@ -122,6 +185,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B904B09029359335008BE140 /* Nunito-SemiBold.ttf in Resources */,
+				B904B09129359337008BE140 /* Nunito-Light.ttf in Resources */,
+				B904B08F29359332008BE140 /* Nunito-Regular.ttf in Resources */,
 				B9B5CADD292EBA7300C7EC58 /* LaunchScreen.storyboard in Resources */,
 				B9B5CADA292EBA7300C7EC58 /* Assets.xcassets in Resources */,
 			);
@@ -135,8 +201,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B5CAD5292EBA7200C7EC58 /* ViewController.swift in Sources */,
+				B904B09529359788008BE140 /* ContentView.swift in Sources */,
 				B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */,
 				B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */,
+				B904B0972935999F008BE140 /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
