@@ -20,8 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
-        let viewModel = DashboardViewModel()
-        window.rootViewController = DashboardViewController(viewModel: viewModel)
+        //let viewModel = DashboardViewModel()
+        let navigationController = UINavigationController(rootViewController: DashboardViewController())
+        window.rootViewController = navigationController
         self.window = window
     }
 

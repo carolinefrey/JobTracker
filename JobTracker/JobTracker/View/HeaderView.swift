@@ -71,6 +71,7 @@ class HeaderView: UIView {
         
             title.topAnchor.constraint(equalTo: greeting.bottomAnchor),
             title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 7),
+        
         ])
     }
 }

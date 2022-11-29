@@ -19,6 +19,7 @@
 		B9B5CAD5292EBA7200C7EC58 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD4292EBA7200C7EC58 /* DashboardViewController.swift */; };
 		B9B5CADA292EBA7300C7EC58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9B5CAD9292EBA7300C7EC58 /* Assets.xcassets */; };
 		B9B5CADD292EBA7300C7EC58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B5CADB292EBA7300C7EC58 /* LaunchScreen.storyboard */; };
+		B9C03F1329367D0400ED2AD7 /* AddNewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F1229367D0400ED2AD7 /* AddNewJobViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B9B5CAD9292EBA7300C7EC58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9B5CADC292EBA7300C7EC58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9B5CADE292EBA7300C7EC58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9C03F1229367D0400ED2AD7 /* AddNewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewJobViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				B9B5CAD4292EBA7200C7EC58 /* DashboardViewController.swift */,
+				B9C03F1229367D0400ED2AD7 /* AddNewJobViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				B904B09529359788008BE140 /* ContentView.swift in Sources */,
 				B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */,
 				B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */,
+				B9C03F1329367D0400ED2AD7 /* AddNewJobViewController.swift in Sources */,
 				B904B0972935999F008BE140 /* DashboardViewModel.swift in Sources */,
 				B904B09B29362421008BE140 /* HeaderView.swift in Sources */,
 			);
