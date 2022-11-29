@@ -40,7 +40,7 @@ class HeaderView: UIView {
         return title
     }()
     
-    //MARK: - Initializers
+    // MARK: - Initializers
 
     override init(frame: CGRect) {
         super.init(frame: frame)

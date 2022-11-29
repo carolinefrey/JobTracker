@@ -13,6 +13,8 @@ class DashboardViewController: UIViewController {
     
     private var contentView: ContentView!
     
+    var statusCounts: [String: Int] = [:]
+        
     lazy var addNewJobButton: UIBarButtonItem = {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "plus", withConfiguration: config)
@@ -31,6 +33,8 @@ class DashboardViewController: UIViewController {
         view = contentView
         
         navigationItem.rightBarButtonItem = addNewJobButton
+        
+        updateJobStatusCounts()
     }
 
     // MARK: - Functions
@@ -38,6 +42,17 @@ class DashboardViewController: UIViewController {
     @objc func addNewJob() {
         let addNewJobVC = AddNewJobViewController()
         navigationController?.pushViewController(addNewJobVC, animated: true)
+    }
+    
+    func updateJobStatusCounts() {
+        for status in jobs {
+            statusCounts[status.status.rawValue, default: 0] += 1
+        }
+
+        contentView.statusBoxes.openStatusBox.countLabel.text = "\(statusCounts["open"] ?? 0)"
+        contentView.statusBoxes.appliedStatusBox.countLabel.text = "\(statusCounts["applied"] ?? 0)"
+        contentView.statusBoxes.interviewStatusBox.countLabel.text = "\(statusCounts["interview"] ?? 0)"
+        contentView.statusBoxes.closedStatusBox.countLabel.text = "\(statusCounts["closed"] ?? 0)"
     }
     
     // MARK: - UICollectionViewDelegate
