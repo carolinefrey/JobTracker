@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DashboardViewController.swift
 //  JobTracker
 //
 //  Created by Caroline Frey on 11/23/22.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DashboardViewController: UIViewController {
     
     // MARK: - Class Properties
     
-    private let viewModel: ViewModel
+    private let viewModel: DashboardViewModel
     
-    init(viewModel: ViewModel) {
+    init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel
 
         super.init(nibName: nil, bundle: nil)

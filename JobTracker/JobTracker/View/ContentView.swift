@@ -10,25 +10,11 @@ import UIKit
 class ContentView: UIView {
 
     // MARK: - UI Properties
-
-    let greeting: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Nunito-SemiBold", size: 26)
-        label.textColor = UIColor(named: "Color4")
-        label.textAlignment = .left
-        label.text = NSUserName()
-        return label
-    }()
     
-    let title: UILabel = {
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.font = UIFont(name: "Nunito-Light", size: 14)
-        title.textColor = UIColor(named: "Color4")
-        title.textAlignment = .left
-        title.text = "Future iOS Engineer"
-        return title
+    let headerView: HeaderView = {
+        let view = HeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     //MARK: - Initializers
@@ -49,15 +35,11 @@ class ContentView: UIView {
 
     private func setUpViews() {
         
-        addSubview(greeting)
-        addSubview(title)
+        addSubview(headerView)
         
         NSLayoutConstraint.activate([
-            greeting.topAnchor.constraint(equalTo: topAnchor),
-            greeting.leadingAnchor.constraint(equalTo: leadingAnchor),
-        
-            title.topAnchor.constraint(equalTo: greeting.bottomAnchor, constant: 5),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor),
+            headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
         ])
     }
 }
