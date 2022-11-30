@@ -33,7 +33,8 @@ class AddJobViewController: UIViewController {
     // MARK: - Functions
     
     @objc func saveJob() {
-        //TODO: - Implement save function here
+        // TODO: - Implement save function here
+        // NOTE: Will need to capture input values from text boxes and use them to initialize a new job
         navigationController?.popViewController(animated: true)
     }
 }

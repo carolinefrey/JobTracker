@@ -11,7 +11,7 @@ class DashboardContentView: UIView {
     
     // MARK: - UI Properties
     
-    var jobs = [Job]()
+    var jobs = [SingleJob]()
     
     let headerView: HeaderView = {
         let view = HeaderView()
