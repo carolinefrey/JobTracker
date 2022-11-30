@@ -28,11 +28,13 @@ class DashboardViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view.backgroundColor = .blue
-        
+        navigationItem.rightBarButtonItem = addNewJobButton
+
         contentView = ContentView()
         view = contentView
         
-        navigationItem.rightBarButtonItem = addNewJobButton
+        contentView.collectionView.dataSource = self
+        contentView.collectionView.delegate = self
         
         updateJobStatusCounts()
     }
@@ -54,15 +56,25 @@ class DashboardViewController: UIViewController {
         contentView.statusBoxes.interviewStatusBox.countLabel.text = "\(statusCounts["interview"] ?? 0)"
         contentView.statusBoxes.closedStatusBox.countLabel.text = "\(statusCounts["closed"] ?? 0)"
     }
+}
+
+// MARK: - UICollectionDataSource
+
+extension DashboardViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return jobs.count
+    }
     
-    // MARK: - UICollectionViewDelegate
-    
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        viewModel.handleSelection(indexPath: indexPath)
-    //    }
-    
-    // MARK: - UICollectionDataSource
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier, for: indexPath) as! DashboardCollectionViewCell
+        cell.configure(company: jobs[indexPath.row].company, location: jobs[indexPath.row].location, status: jobs[indexPath.row].status)
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension DashboardViewController: UICollectionViewDelegate {
     
 }
 

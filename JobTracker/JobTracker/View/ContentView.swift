@@ -25,6 +25,19 @@ class ContentView: UIView {
         return stack
     }()
 
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: 150, height: 150)
+        layout.sectionInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(DashboardCollectionViewCell.self, forCellWithReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier)
+        collection.layer.cornerRadius = 20
+        return collection
+    }()
+    
     //MARK: - Initializers
 
     override init(frame: CGRect) {
@@ -40,11 +53,12 @@ class ContentView: UIView {
     }
     
     // MARK: - UI Setup
-
+    
     private func setUpViews() {
         
         addSubview(headerView)
         addSubview(statusBoxes)
+        addSubview(collectionView)
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -53,6 +67,11 @@ class ContentView: UIView {
             
             statusBoxes.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),
             statusBoxes.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: statusBoxes.bottomAnchor, constant: 20),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 }

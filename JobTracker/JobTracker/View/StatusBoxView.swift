@@ -8,9 +8,7 @@
 import UIKit
 
 class StatusBoxView: UIView {
-    
-    //TODO: - Implement dynamic count
-    
+        
     // MARK: - UI Properties
     
     let status: String

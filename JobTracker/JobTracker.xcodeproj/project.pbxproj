@@ -21,6 +21,7 @@
 		B9C03F1329367D0400ED2AD7 /* AddNewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F1229367D0400ED2AD7 /* AddNewJobViewController.swift */; };
 		B9C03F152936808B00ED2AD7 /* StatusBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F142936808B00ED2AD7 /* StatusBoxView.swift */; };
 		B9C03F172936832E00ED2AD7 /* StatusBoxesStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F162936832E00ED2AD7 /* StatusBoxesStackView.swift */; };
+		B9C03F192936CB5500ED2AD7 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B9C03F1229367D0400ED2AD7 /* AddNewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewJobViewController.swift; sourceTree = "<group>"; };
 		B9C03F142936808B00ED2AD7 /* StatusBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBoxView.swift; sourceTree = "<group>"; };
 		B9C03F162936832E00ED2AD7 /* StatusBoxesStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBoxesStackView.swift; sourceTree = "<group>"; };
+		B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				B904B09A29362421008BE140 /* HeaderView.swift */,
 				B9C03F142936808B00ED2AD7 /* StatusBoxView.swift */,
 				B9C03F162936832E00ED2AD7 /* StatusBoxesStackView.swift */,
+				B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				B9B5CAC9292EBA7200C7EC58 /* Sources */,
 				B9B5CACA292EBA7200C7EC58 /* Frameworks */,
 				B9B5CACB292EBA7200C7EC58 /* Resources */,
+				B9767CDB2936CE6900008525 /* Display Warnings for TODOs and FIXMEs */,
 			);
 			buildRules = (
 			);
@@ -207,6 +211,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B9767CDB2936CE6900008525 /* Display Warnings for TODOs and FIXMEs */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Display Warnings for TODOs and FIXMEs";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nTAGS=\"TODO:|FIXME:|WARNING:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"| perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B9B5CAC9292EBA7200C7EC58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -215,6 +240,7 @@
 				B9B5CAD5292EBA7200C7EC58 /* DashboardViewController.swift in Sources */,
 				B904B0992936204C008BE140 /* Jobs.swift in Sources */,
 				B904B09529359788008BE140 /* ContentView.swift in Sources */,
+				B9C03F192936CB5500ED2AD7 /* DashboardCollectionViewCell.swift in Sources */,
 				B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */,
 				B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */,
 				B9C03F1329367D0400ED2AD7 /* AddNewJobViewController.swift in Sources */,
