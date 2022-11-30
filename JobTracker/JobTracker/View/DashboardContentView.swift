@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContentView: UIView {
+class DashboardContentView: UIView {
     
     // MARK: - UI Properties
     

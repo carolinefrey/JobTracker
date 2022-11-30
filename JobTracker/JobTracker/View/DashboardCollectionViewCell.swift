@@ -7,8 +7,6 @@
 
 import UIKit
 
-//TODO: - Implement dynamic background color (based on job status)
-
 class DashboardCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Properties

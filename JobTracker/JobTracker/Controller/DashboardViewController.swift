@@ -11,7 +11,7 @@ class DashboardViewController: UIViewController {
         
     // MARK: - UI Properties
     
-    private var contentView: ContentView!
+    private var contentView: DashboardContentView!
     
     var statusCounts: [String: Int] = [:]
         
@@ -30,7 +30,7 @@ class DashboardViewController: UIViewController {
         view.backgroundColor = .blue
         navigationItem.rightBarButtonItem = addNewJobButton
 
-        contentView = ContentView()
+        contentView = DashboardContentView()
         view = contentView
         
         contentView.collectionView.dataSource = self
@@ -42,7 +42,7 @@ class DashboardViewController: UIViewController {
     // MARK: - Functions
     
     @objc func addNewJob() {
-        let addNewJobVC = AddNewJobViewController()
+        let addNewJobVC = AddJobViewController()
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
     
