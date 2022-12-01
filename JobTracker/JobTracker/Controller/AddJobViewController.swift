@@ -42,8 +42,9 @@ class AddJobViewController: UIViewController {
     // MARK: - Functions
     
     @objc func saveJob() {
-        // TODO: - Implement save function here
-        // NOTE: Will need to capture input values from text boxes and use them to initialize a new job
+        let newJob = SingleJob(status: .open, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none")
+        jobs.append(newJob)
+        
         navigationController?.popViewController(animated: true)
     }
 }
@@ -52,4 +53,8 @@ class AddJobViewController: UIViewController {
 
 extension AddJobViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }

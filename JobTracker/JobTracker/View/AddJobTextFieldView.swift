@@ -26,6 +26,7 @@ class AddJobTextFieldView: UIView {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.backgroundColor = .white
+        field.returnKeyType = .done
         return field
     }()
     

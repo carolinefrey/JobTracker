@@ -38,6 +38,10 @@ class DashboardViewController: UIViewController {
         
         updateJobStatusCounts()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        contentView.collectionView.reloadData()
+    }
 
     // MARK: - Functions
     
