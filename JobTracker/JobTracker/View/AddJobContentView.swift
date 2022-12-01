@@ -26,6 +26,12 @@ class AddJobContentView: UIView {
         return view
     }()
     
+    let textFieldStackView: AddJobTextFieldStackView = {
+        let stack = AddJobTextFieldStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
     // MARK: - Initializers
 
     override init(frame: CGRect) {
@@ -49,15 +55,22 @@ class AddJobContentView: UIView {
         
         addSubview(title)
         addSubview(selectStatusView)
+        addSubview(textFieldStackView)
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            title.heightAnchor.constraint(equalToConstant: 30),
             
             selectStatusView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 24),
             selectStatusView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             selectStatusView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            selectStatusView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            selectStatusView.heightAnchor.constraint(equalToConstant: 55),
+            
+            textFieldStackView.topAnchor.constraint(equalTo: selectStatusView.bottomAnchor, constant: 30),
+            textFieldStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            textFieldStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            textFieldStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 }

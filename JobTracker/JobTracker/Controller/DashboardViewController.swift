@@ -58,7 +58,7 @@ class DashboardViewController: UIViewController {
     }
 }
 
-// MARK: - UICollectionDataSource
+// MARK: - UICollectionViewDataSource
 
 extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
