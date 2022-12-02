@@ -42,7 +42,10 @@ class AddJobViewController: UIViewController {
     // MARK: - Functions
     
     @objc func saveJob() {
-        let newJob = SingleJob(status: .open, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none")
+        
+        let newJobStatus = contentView.selectStatusView.status
+        
+        let newJob = SingleJob(status: newJobStatus, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none")
         jobs.append(newJob)
         
         navigationController?.popViewController(animated: true)

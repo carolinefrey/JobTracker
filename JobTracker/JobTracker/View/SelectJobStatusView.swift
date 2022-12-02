@@ -12,6 +12,7 @@ class SelectJobStatusView: UIView {
     // MARK: - UI Properties
     
     var selectedStatus: [JobStatus: Bool] = [.open: false, .applied: false, .interview: false, .closed: false]
+    var status: JobStatus = .open
     
     let statusLabel: UILabel = {
         let statusLabel = UILabel()
@@ -93,23 +94,26 @@ class SelectJobStatusView: UIView {
         switch sender.tag {
         case 0:
             selectedStatus[.open] = true
-            configureStatusBox(statuses: selectedStatus)
+            status = .open
         case 1:
             selectedStatus[.applied] = true
-            configureStatusBox(statuses: selectedStatus)
+            status = .applied
         case 2:
             selectedStatus[.interview] = true
-            configureStatusBox(statuses: selectedStatus)
+            status = .interview
         case 3:
             selectedStatus[.closed] = true
-            configureStatusBox(statuses: selectedStatus)
+            status = .closed
         default:
             selectedStatus[.open] = true
-            configureStatusBox(statuses: selectedStatus)
+            status = .open
         }
+        
+        configureStatusBox(statuses: selectedStatus)
     }
     
     private func configureStatusBox(statuses: Dictionary<JobStatus, Bool>) {
+        
         let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .medium)
         let checkmarkIcon = UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         
@@ -151,10 +155,13 @@ class SelectJobStatusView: UIView {
             
             openStatusBox.heightAnchor.constraint(equalToConstant: 48),
             openStatusBox.widthAnchor.constraint(equalToConstant: 48),
+            
             appliedStatusBox.heightAnchor.constraint(equalToConstant: 48),
             appliedStatusBox.widthAnchor.constraint(equalToConstant: 48),
+            
             interviewStatusBox.heightAnchor.constraint(equalToConstant: 48),
             interviewStatusBox.widthAnchor.constraint(equalToConstant: 48),
+            
             closedStatusBox.heightAnchor.constraint(equalToConstant: 48),
             closedStatusBox.widthAnchor.constraint(equalToConstant: 48),
             

@@ -50,7 +50,7 @@ class DashboardViewController: UIViewController {
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
     
-    func updateJobStatusCounts() {
+    private func updateJobStatusCounts() {
         for status in jobs {
             statusCounts[status.status.rawValue, default: 0] += 1
         }
