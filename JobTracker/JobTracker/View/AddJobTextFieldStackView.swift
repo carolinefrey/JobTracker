@@ -21,39 +21,39 @@ class AddJobTextFieldStackView: UIView {
     }()
     
     let companyField: AddJobTextFieldView = {
-        let company = AddJobTextFieldView(textFieldTitle: "company")
+        let company = AddJobTextFieldView(textFieldTitle: "company", textFieldHeight: 45)
         company.translatesAutoresizingMaskIntoConstraints = false
         return company
     }()
     
     let roleField: AddJobTextFieldView = {
-        let company = AddJobTextFieldView(textFieldTitle: "role")
-        company.translatesAutoresizingMaskIntoConstraints = false
-        return company
+        let role = AddJobTextFieldView(textFieldTitle: "role", textFieldHeight: 45)
+        role.translatesAutoresizingMaskIntoConstraints = false
+        return role
     }()
     
     let teamField: AddJobTextFieldView = {
-        let company = AddJobTextFieldView(textFieldTitle: "team")
-        company.translatesAutoresizingMaskIntoConstraints = false
-        return company
+        let team = AddJobTextFieldView(textFieldTitle: "team", textFieldHeight: 45)
+        team.translatesAutoresizingMaskIntoConstraints = false
+        return team
     }()
     
     let locationField: AddJobTextFieldView = {
-        let company = AddJobTextFieldView(textFieldTitle: "location")
-        company.translatesAutoresizingMaskIntoConstraints = false
-        return company
+        let location = AddJobTextFieldView(textFieldTitle: "location", textFieldHeight: 45)
+        location.translatesAutoresizingMaskIntoConstraints = false
+        return location
     }()
     
     let linkField: AddJobTextFieldView = {
-        let company = AddJobTextFieldView(textFieldTitle: "link")
-        company.translatesAutoresizingMaskIntoConstraints = false
-        return company
+        let link = AddJobTextFieldView(textFieldTitle: "link", textFieldHeight: 45)
+        link.translatesAutoresizingMaskIntoConstraints = false
+        return link
     }()
     
     let notesField: AddJobTextFieldView = {
-        let company = AddJobTextFieldView(textFieldTitle: "notes")
-        company.translatesAutoresizingMaskIntoConstraints = false
-        return company
+        let notes = AddJobTextFieldView(textFieldTitle: "notes", textFieldHeight: 75)
+        notes.translatesAutoresizingMaskIntoConstraints = false
+        return notes
     }()
     
     // MARK: - Initializers

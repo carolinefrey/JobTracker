@@ -28,6 +28,8 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         companyLabel.font = UIFont(name: "Nunito-SemiBold", size: 28)
         companyLabel.textColor = .black
         companyLabel.textAlignment = .left
+        companyLabel.lineBreakMode = .byTruncatingTail
+        companyLabel.numberOfLines = 1
         return companyLabel
     }()
     
@@ -36,6 +38,8 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         locationLabel.font = UIFont(name: "Nunito-Light", size: 12)
         locationLabel.text = ("📍 Remote")
+        locationLabel.lineBreakMode = .byTruncatingTail
+        locationLabel.numberOfLines = 1
         return locationLabel
     }()
 
@@ -67,9 +71,11 @@ class DashboardCollectionViewCell: UICollectionViewCell {
            
            companyLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 20),
            companyLabel.bottomAnchor.constraint(equalTo: backgroundCell.bottomAnchor, constant: -34),
+           companyLabel.trailingAnchor.constraint(equalTo: backgroundCell.trailingAnchor, constant: -20),
            
            jobLocationLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor),
            jobLocationLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 20),
+           jobLocationLabel.trailingAnchor.constraint(equalTo: backgroundCell.trailingAnchor, constant: -20),
         ])
     }
     

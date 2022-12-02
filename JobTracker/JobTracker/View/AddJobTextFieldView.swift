@@ -12,6 +12,7 @@ class AddJobTextFieldView: UIView {
     // MARK: - UI Properties
 
     var textFieldTitle: String
+    var textFieldHeight: Int
     
     private let titleView: UILabel = {
         let title = UILabel()
@@ -27,14 +28,19 @@ class AddJobTextFieldView: UIView {
         field.translatesAutoresizingMaskIntoConstraints = false
         field.backgroundColor = .white
         field.returnKeyType = .done
+        field.layer.cornerRadius = 10
+        field.font = UIFont(name: "Nunit-Regular", size: 14)
+        field.setLeftPadding(10)
+        field.setRightPadding(10)
         return field
     }()
     
     // MARK: - Initializers
     
-    init(textFieldTitle: String) {
+    init(textFieldTitle: String, textFieldHeight: Int) {
         self.textFieldTitle = textFieldTitle
         titleView.text = textFieldTitle
+        self.textFieldHeight = textFieldHeight
     
         super.init(frame: .zero)
 
@@ -59,7 +65,20 @@ class AddJobTextFieldView: UIView {
             textFieldView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 5),
             textFieldView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textFieldView.heightAnchor.constraint(equalToConstant: 45)
+            textFieldView.heightAnchor.constraint(equalToConstant: CGFloat(textFieldHeight)),
         ])
+    }
+}
+
+extension UITextField {
+    func setLeftPadding(_ amount: CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPadding(_ amount: CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
     }
 }
