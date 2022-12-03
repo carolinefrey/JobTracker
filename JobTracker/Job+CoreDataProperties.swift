@@ -21,7 +21,7 @@ extension Job {
     @NSManaged public var location: String?
     @NSManaged public var link: String?
     @NSManaged public var notes: String?
-    @NSManaged public var status: String?
+    @NSManaged public var status: JobStatus.RawValue?
 
 }
 

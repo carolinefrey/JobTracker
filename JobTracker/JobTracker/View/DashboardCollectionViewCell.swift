@@ -79,11 +79,13 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func configure(company: String, location: String, status: JobStatus) {
+    func configure(company: String, location: String, status: String) {
         companyLabel.text = company
         jobLocationLabel.text = "📍 \(location)"
         
-        switch status {
+        let jobStatus = JobStatus(rawValue: status)
+        
+        switch jobStatus {
         case .open:
             backgroundCell.backgroundColor = UIColor(named: "OpenStatus")
         case .applied:
@@ -92,6 +94,8 @@ class DashboardCollectionViewCell: UICollectionViewCell {
             backgroundCell.backgroundColor = UIColor(named: "InterviewStatus")
         case .closed:
             backgroundCell.backgroundColor = .lightGray
+        default:
+            backgroundCell.backgroundColor = UIColor(named: "OpenStatus")
         }
     }
 }

@@ -28,6 +28,7 @@
 		B9C03F152936808B00ED2AD7 /* StatusBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F142936808B00ED2AD7 /* StatusBoxView.swift */; };
 		B9C03F172936832E00ED2AD7 /* StatusBoxesStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F162936832E00ED2AD7 /* StatusBoxesStackView.swift */; };
 		B9C03F192936CB5500ED2AD7 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */; };
+		B9C54105293ADEB400D5C5E6 /* JobDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C54104293ADEB400D5C5E6 /* JobDetailsViewController.swift */; };
 		B9D3B6CB2937641B004CB5A4 /* AddJobContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3B6CA2937641B004CB5A4 /* AddJobContentView.swift */; };
 		B9D3B6CD29376592004CB5A4 /* SelectJobStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		B9C03F142936808B00ED2AD7 /* StatusBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBoxView.swift; sourceTree = "<group>"; };
 		B9C03F162936832E00ED2AD7 /* StatusBoxesStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBoxesStackView.swift; sourceTree = "<group>"; };
 		B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9C54104293ADEB400D5C5E6 /* JobDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsViewController.swift; sourceTree = "<group>"; };
 		B9D3B6CA2937641B004CB5A4 /* AddJobContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobContentView.swift; sourceTree = "<group>"; };
 		B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectJobStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 			children = (
 				B9B5CAD4292EBA7200C7EC58 /* DashboardViewController.swift */,
 				B9C03F1229367D0400ED2AD7 /* AddJobViewController.swift */,
+				B9C54104293ADEB400D5C5E6 /* JobDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				B97979BC2938D21B00F46578 /* AddJobTextFieldStackView.swift in Sources */,
 				B9D3B6CB2937641B004CB5A4 /* AddJobContentView.swift in Sources */,
 				B904B0992936204C008BE140 /* Jobs.swift in Sources */,
+				B9C54105293ADEB400D5C5E6 /* JobDetailsViewController.swift in Sources */,
 				B904B09529359788008BE140 /* DashboardContentView.swift in Sources */,
 				B97979BA2938CF4300F46578 /* AddJobTextFieldView.swift in Sources */,
 				B9C03F192936CB5500ED2AD7 /* DashboardCollectionViewCell.swift in Sources */,

@@ -19,13 +19,13 @@ class DataManager {
     
     // MARK: - Create
     
-    static func addJob(company: String, role: String?, location: String?, status: String?, link: String?, notes: String?) {
-        
+    static func addJob(company: String, role: String?, location: String?, status: JobStatus, link: String?, notes: String?) {
+
         let job = Job(context: managedObjectContext)
         job.company = company
         job.role = role
         job.location = location
-        job.status = status
+        job.status = status.rawValue
         job.link = link
         job.notes = notes
         do {

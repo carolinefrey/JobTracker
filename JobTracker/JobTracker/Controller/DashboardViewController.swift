@@ -14,6 +14,8 @@ class DashboardViewController: UIViewController {
     private var contentView: DashboardContentView!
     
     var statusCounts: [String: Int] = [:]
+    
+    private var savedJobs = [Job]()
         
     lazy var addNewJobButton: UIBarButtonItem = {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
@@ -37,9 +39,12 @@ class DashboardViewController: UIViewController {
         contentView.collectionView.delegate = self
         
         updateJobStatusCounts()
+        
+        fetchJobs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        fetchJobs()
         contentView.collectionView.reloadData()
     }
 
@@ -51,8 +56,8 @@ class DashboardViewController: UIViewController {
     }
     
     private func updateJobStatusCounts() {
-        for status in jobs {
-            statusCounts[status.status.rawValue, default: 0] += 1
+        for status in savedJobs {
+            statusCounts[status.status ?? "open", default: 0] += 1
         }
 
         contentView.statusBoxes.openStatusBox.countLabel.text = "\(statusCounts["open"] ?? 0)"
@@ -60,18 +65,30 @@ class DashboardViewController: UIViewController {
         contentView.statusBoxes.interviewStatusBox.countLabel.text = "\(statusCounts["interview"] ?? 0)"
         contentView.statusBoxes.closedStatusBox.countLabel.text = "\(statusCounts["closed"] ?? 0)"
     }
+    
+    private func fetchJobs() {
+        DataManager.fetchJobs { [weak self] jobs in
+            if let jobs = jobs {
+                savedJobs = jobs
+                
+                DispatchQueue.main.async { [weak self] in
+                    self?.contentView.collectionView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return jobs.count
+        return savedJobs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier, for: indexPath) as! DashboardCollectionViewCell
-        cell.configure(company: jobs[indexPath.row].company, location: jobs[indexPath.row].location, status: jobs[indexPath.row].status)
+        cell.configure(company: savedJobs[indexPath.row].company ?? "N/A", location: savedJobs[indexPath.row].location ?? "N/A", status: savedJobs[indexPath.row].status ?? "open")
         return cell
     }
 }
@@ -79,6 +96,9 @@ extension DashboardViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension DashboardViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = JobDetailsViewController() //add parameters to pass in job info
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 

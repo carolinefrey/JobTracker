@@ -11,8 +11,16 @@ class AddJobViewController: UIViewController {
     
     // MARK: - UI Properties
     
-    private var contentView: AddJobContentView!
-
+    private var contentView = AddJobContentView()
+    
+    private var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isScrollEnabled = true
+        scrollView.alwaysBounceVertical = true
+        return scrollView
+    }()
+    
     lazy var saveJobButton: UIBarButtonItem = {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "square.and.arrow.down", withConfiguration: config)
@@ -27,9 +35,11 @@ class AddJobViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = saveJobButton
+        view.backgroundColor = UIColor(named: "Background")
         
-        contentView = AddJobContentView()
-        view = contentView
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        configureScrollView()
         
         setTextViewDelegates()
         
@@ -39,12 +49,30 @@ class AddJobViewController: UIViewController {
     
     // MARK: - Functions
     
+    private func configureScrollView() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: contentView.bounds.height+900)
+    
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalTo: view.heightAnchor),
+        ])
+    }
+
     @objc func saveJob() {
+
+//        let newJob = SingleJob(status: newJobStatus, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none")
+//        jobs.append(newJob)
         
-        let newJobStatus = contentView.selectStatusView.status
-        
-        let newJob = SingleJob(status: newJobStatus, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none")
-        jobs.append(newJob)
+        DataManager.addJob(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.textFieldView.text ?? "none")
         
         navigationController?.popViewController(animated: true)
     }
