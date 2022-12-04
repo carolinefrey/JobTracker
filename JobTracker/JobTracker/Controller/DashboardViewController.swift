@@ -13,7 +13,7 @@ class DashboardViewController: UIViewController {
     
     private var contentView: DashboardContentView!
     
-    var statusCounts: [String: Int] = [:]
+    private var statusCounts: [String: Int] = [:]
     
     private var savedJobs = [Job]()
         
@@ -97,7 +97,7 @@ extension DashboardViewController: UICollectionViewDataSource {
 
 extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = JobDetailsViewController() //add parameters to pass in job info
+        let detailVC = JobDetailsViewController(job: savedJobs[indexPath.row]) //add parameters to pass in job info
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

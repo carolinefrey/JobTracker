@@ -74,5 +74,4 @@ class StatusBoxesStackView: UIView {
             statusBoxStack.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
-    
 }

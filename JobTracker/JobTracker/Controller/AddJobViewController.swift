@@ -30,7 +30,7 @@ class AddJobViewController: UIViewController {
         return button
     }()
     
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
