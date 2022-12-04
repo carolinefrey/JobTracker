@@ -11,12 +11,14 @@ class AddJobContentView: UIView {
 
     // MARK: - UI Properties
     
+    var viewTitle: String
+
     let title: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-SemiBold", size: 26)
         title.textColor = UIColor(named: "Color4")
-        title.text = "Add a new job"
+        //title.text = "Add a new job"
         return title
     }()
     
@@ -34,10 +36,13 @@ class AddJobContentView: UIView {
     
     // MARK: - Initializers
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewTitle: String) {
+        self.viewTitle = viewTitle
+        super.init(frame: .zero)
         
         backgroundColor = UIColor(named: "Background")
+        
+        title.text = viewTitle
         
         setUpViews()
     }
@@ -45,10 +50,7 @@ class AddJobContentView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - Functions
-    
-    
+
     // MARK: - UI Setup
 
     private func setUpViews() {

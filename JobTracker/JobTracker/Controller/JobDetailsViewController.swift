@@ -19,6 +19,14 @@ class JobDetailsViewController: UIViewController {
 
     private var detailsStackView: DetailsStackView
     
+    lazy var editJobButton: UIBarButtonItem = {
+        let config = UIImage.SymbolConfiguration(textStyle: .title3)
+        let icon = UIImage(systemName: "slider.horizontal.3", withConfiguration: config)
+        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(editJob))
+        button.tintColor = UIColor(named: "Color4")
+        return button
+    }()
+    
     // MARK: - Initializers
     
     init(job: Job) {
@@ -38,6 +46,7 @@ class JobDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "Background")
+        navigationItem.rightBarButtonItem = editJobButton
         
         view.addSubview(detailsStackView)
         
@@ -45,6 +54,11 @@ class JobDetailsViewController: UIViewController {
     }
     
     // MARK: - Functions
+    
+    @objc func editJob() {
+        let editJobVC = AddEditJobViewController(title: "Edit job", job: job)
+        navigationController?.pushViewController(editJobVC, animated: true)
+    }
     
     private func configureStackView () {
         detailsStackView.translatesAutoresizingMaskIntoConstraints = false

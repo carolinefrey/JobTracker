@@ -1,5 +1,5 @@
 //
-//  AddNewJobViewController.swift
+//  AddEditNewJobViewController.swift
 //  JobTracker
 //
 //  Created by Caroline Frey on 11/29/22.
@@ -7,11 +7,13 @@
 
 import UIKit
 
-class AddJobViewController: UIViewController {
+class AddEditJobViewController: UIViewController {
     
     // MARK: - UI Properties
     
-    private var contentView = AddJobContentView()
+    var vcTitle: String
+    var job: Job
+    private var contentView: AddJobContentView
     
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -29,6 +31,20 @@ class AddJobViewController: UIViewController {
         button.isEnabled = false //disable until user enters company name
         return button
     }()
+    
+    // MARK: - Initializer
+
+    init(title: String, job: Job) {
+        self.vcTitle = title
+        self.job = job
+        contentView = AddJobContentView(viewTitle: title)
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     
@@ -68,10 +84,6 @@ class AddJobViewController: UIViewController {
     }
 
     @objc func saveJob() {
-
-//        let newJob = SingleJob(status: newJobStatus, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none")
-//        jobs.append(newJob)
-        
         DataManager.addJob(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.textFieldView.text ?? "none")
         
         navigationController?.popViewController(animated: true)
@@ -101,8 +113,7 @@ class AddJobViewController: UIViewController {
 
 // MARK: - UITextFieldDelegate
 
-extension AddJobViewController: UITextFieldDelegate {
-    
+extension AddEditJobViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
