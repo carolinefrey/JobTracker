@@ -53,6 +53,17 @@ class JobDetailsViewController: UIViewController {
         configureStackView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+        view.backgroundColor = UIColor(named: "Background")
+        navigationItem.rightBarButtonItem = editJobButton
+        
+        view.addSubview(detailsStackView)
+        
+        configureStackView()
+    }
+    
     // MARK: - Functions
     
     @objc func editJob() {

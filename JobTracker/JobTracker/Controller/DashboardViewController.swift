@@ -38,6 +38,7 @@ class DashboardViewController: UIViewController {
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
         
+        fetchJobs()
         updateJobStatusCounts()
         
         fetchJobs()
@@ -51,8 +52,7 @@ class DashboardViewController: UIViewController {
     // MARK: - Functions
     
     @objc func addNewJob(_ sender: UIBarButtonItem) {
-        let emptyJob = Job()
-        let addNewJobVC = AddEditJobViewController(editView: false, title: "Add a new job", job: emptyJob)
+        let addNewJobVC = AddEditJobViewController(editView: false, title: "Add a new job", job: Job())
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
     

@@ -21,11 +21,13 @@ public struct SingleJob: Codable {
     var location: String
     var link: String?
     var notes: String?
+    
+    init(status: JobStatus = .open, company: String = "", role: String = "", location: String = "", link: String? = "", notes: String? = "") {
+        self.status = status
+        self.company = company
+        self.role = role
+        self.location = location
+        self.link = link
+        self.notes = notes
+    }
 }
-
-//var jobs: [SingleJob] = {[
-//    SingleJob(status: .open, company: "Apple", role: "Junior iOS Developer", location: "Remote"),
-//    SingleJob(status: .open, company: "Google", role: "iOS Engineer", location: "Boston, MA"),
-//    SingleJob(status: .closed, company: "Spotify", role: "iOS Apprentice", location: "Denver, CO"),
-//    SingleJob(status: .applied, company: "AirBnb", role: "iOS Engineer", location: "Remote"),
-//]}()

@@ -11,6 +11,7 @@ class AddJobContentView: UIView {
 
     // MARK: - UI Properties
     
+    var editView: Bool
     var viewTitle: String
     var job: Job
 
@@ -32,10 +33,11 @@ class AddJobContentView: UIView {
     
     // MARK: - Initializers
 
-    init(viewTitle: String, job: Job) {
+    init(editView: Bool, viewTitle: String, job: Job) {
         self.viewTitle = viewTitle
         self.job = job
-        textFieldStackView = AddJobTextFieldStackView(job: job)
+        self.editView = editView
+        textFieldStackView = AddJobTextFieldStackView(editView: editView, job: job)
         
         super.init(frame: .zero)
         

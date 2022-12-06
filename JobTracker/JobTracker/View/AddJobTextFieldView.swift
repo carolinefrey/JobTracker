@@ -38,7 +38,7 @@ class AddJobTextFieldView: UIView {
     
     // MARK: - Initializers
     
-    init(textFieldTitle: String, textFieldHeight: Int, prefill: String) {
+    init(textFieldTitle: String, textFieldHeight: Int, prefill: String = "") {
         self.textFieldTitle = textFieldTitle
         titleView.text = textFieldTitle
         self.textFieldHeight = textFieldHeight

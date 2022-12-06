@@ -11,6 +11,7 @@ class AddJobTextFieldStackView: UIView {
 
     // MARK: - UI Properties
     
+    var editView: Bool
     var job: Job
     
     private let textFieldStackView: UIStackView = {
@@ -30,14 +31,23 @@ class AddJobTextFieldStackView: UIView {
     
     // MARK: - Initializers
     
-    init(job: Job) {
+    init(editView: Bool, job: Job) {
+        self.editView = editView
         self.job = job
         
-        companyField = AddJobTextFieldView(textFieldTitle: "company", textFieldHeight: 45, prefill: job.company ?? "")
-        roleField = AddJobTextFieldView(textFieldTitle: "role", textFieldHeight: 45, prefill: job.role ?? "")
-        locationField = AddJobTextFieldView(textFieldTitle: "location", textFieldHeight: 45, prefill: job.location ?? "")
-        linkField = AddJobTextFieldView(textFieldTitle: "link", textFieldHeight: 45, prefill: job.link ?? "")
-        notesField = AddJobTextFieldView(textFieldTitle: "notes", textFieldHeight: 75, prefill: job.notes ?? "")
+        if !editView {
+            companyField = AddJobTextFieldView(textFieldTitle: "company", textFieldHeight: 45)
+            roleField = AddJobTextFieldView(textFieldTitle: "role", textFieldHeight: 45)
+            locationField = AddJobTextFieldView(textFieldTitle: "location", textFieldHeight: 45)
+            linkField = AddJobTextFieldView(textFieldTitle: "link", textFieldHeight: 45)
+            notesField = AddJobTextFieldView(textFieldTitle: "notes", textFieldHeight: 75)
+        } else {
+            companyField = AddJobTextFieldView(textFieldTitle: "company", textFieldHeight: 45, prefill: job.company ?? "")
+            roleField = AddJobTextFieldView(textFieldTitle: "role", textFieldHeight: 45, prefill: job.role ?? "")
+            locationField = AddJobTextFieldView(textFieldTitle: "location", textFieldHeight: 45, prefill: job.location ?? "")
+            linkField = AddJobTextFieldView(textFieldTitle: "link", textFieldHeight: 45, prefill: job.link ?? "")
+            notesField = AddJobTextFieldView(textFieldTitle: "notes", textFieldHeight: 75, prefill: job.notes ?? "")
+        }
         
         super.init(frame: .zero)
         

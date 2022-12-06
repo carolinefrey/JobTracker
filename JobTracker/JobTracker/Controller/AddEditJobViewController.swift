@@ -40,7 +40,7 @@ class AddEditJobViewController: UIViewController {
         self.editView = editView
         self.vcTitle = title
         self.job = job
-        contentView = AddJobContentView(viewTitle: title, job: job)
+        contentView = AddJobContentView(editView: editView, viewTitle: title, job: job)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -68,6 +68,7 @@ class AddEditJobViewController: UIViewController {
             let config = UIImage.SymbolConfiguration(textStyle: .title3)
             saveJobButton.image = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
         }
+        
         contentView.textFieldStackView.companyField.textFieldView.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
