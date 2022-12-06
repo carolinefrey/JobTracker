@@ -11,6 +11,8 @@ class AddJobTextFieldStackView: UIView {
 
     // MARK: - UI Properties
     
+    var job: Job
+    
     private let textFieldStackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -20,46 +22,24 @@ class AddJobTextFieldStackView: UIView {
         return stack
     }()
     
-    let companyField: AddJobTextFieldView = {
-        let company = AddJobTextFieldView(textFieldTitle: "company", textFieldHeight: 45)
-        company.translatesAutoresizingMaskIntoConstraints = false
-        return company
-    }()
-    
-    let roleField: AddJobTextFieldView = {
-        let role = AddJobTextFieldView(textFieldTitle: "role", textFieldHeight: 45)
-        role.translatesAutoresizingMaskIntoConstraints = false
-        return role
-    }()
-    
-    let teamField: AddJobTextFieldView = {
-        let team = AddJobTextFieldView(textFieldTitle: "team", textFieldHeight: 45)
-        team.translatesAutoresizingMaskIntoConstraints = false
-        return team
-    }()
-    
-    let locationField: AddJobTextFieldView = {
-        let location = AddJobTextFieldView(textFieldTitle: "location", textFieldHeight: 45)
-        location.translatesAutoresizingMaskIntoConstraints = false
-        return location
-    }()
-    
-    let linkField: AddJobTextFieldView = {
-        let link = AddJobTextFieldView(textFieldTitle: "link", textFieldHeight: 45)
-        link.translatesAutoresizingMaskIntoConstraints = false
-        return link
-    }()
-    
-    let notesField: AddJobTextFieldView = {
-        let notes = AddJobTextFieldView(textFieldTitle: "notes", textFieldHeight: 75)
-        notes.translatesAutoresizingMaskIntoConstraints = false
-        return notes
-    }()
+    var companyField: AddJobTextFieldView
+    var roleField: AddJobTextFieldView
+    var locationField: AddJobTextFieldView
+    var linkField: AddJobTextFieldView
+    var notesField: AddJobTextFieldView
     
     // MARK: - Initializers
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(job: Job) {
+        self.job = job
+        
+        companyField = AddJobTextFieldView(textFieldTitle: "company", textFieldHeight: 45, prefill: job.company ?? "")
+        roleField = AddJobTextFieldView(textFieldTitle: "role", textFieldHeight: 45, prefill: job.role ?? "")
+        locationField = AddJobTextFieldView(textFieldTitle: "location", textFieldHeight: 45, prefill: job.location ?? "")
+        linkField = AddJobTextFieldView(textFieldTitle: "link", textFieldHeight: 45, prefill: job.link ?? "")
+        notesField = AddJobTextFieldView(textFieldTitle: "notes", textFieldHeight: 75, prefill: job.notes ?? "")
+        
+        super.init(frame: .zero)
         
         setUpViews()
     }
@@ -72,11 +52,16 @@ class AddJobTextFieldStackView: UIView {
     
     private func setUpViews() {
         
+        companyField.translatesAutoresizingMaskIntoConstraints = false
+        roleField.translatesAutoresizingMaskIntoConstraints = false
+        locationField.translatesAutoresizingMaskIntoConstraints = false
+        linkField.translatesAutoresizingMaskIntoConstraints = false
+        notesField.translatesAutoresizingMaskIntoConstraints = false
+        
         addSubview(textFieldStackView)
         
         textFieldStackView.addArrangedSubview(companyField)
         textFieldStackView.addArrangedSubview(roleField)
-        textFieldStackView.addArrangedSubview(teamField)
         textFieldStackView.addArrangedSubview(locationField)
         textFieldStackView.addArrangedSubview(linkField)
         textFieldStackView.addArrangedSubview(notesField)

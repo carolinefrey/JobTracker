@@ -50,8 +50,9 @@ class DashboardViewController: UIViewController {
 
     // MARK: - Functions
     
-    @objc func addNewJob() {
-        let addNewJobVC = AddEditJobViewController(title: "Add a new job", job: Job())
+    @objc func addNewJob(_ sender: UIBarButtonItem) {
+        let emptyJob = Job()
+        let addNewJobVC = AddEditJobViewController(editView: false, title: "Add a new job", job: emptyJob)
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
     

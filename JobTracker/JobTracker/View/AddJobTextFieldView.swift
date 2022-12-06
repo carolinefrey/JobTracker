@@ -13,6 +13,7 @@ class AddJobTextFieldView: UIView {
 
     var textFieldTitle: String
     var textFieldHeight: Int
+    var prefill: String
     
     private let titleView: UILabel = {
         let title = UILabel()
@@ -37,10 +38,12 @@ class AddJobTextFieldView: UIView {
     
     // MARK: - Initializers
     
-    init(textFieldTitle: String, textFieldHeight: Int) {
+    init(textFieldTitle: String, textFieldHeight: Int, prefill: String) {
         self.textFieldTitle = textFieldTitle
         titleView.text = textFieldTitle
         self.textFieldHeight = textFieldHeight
+        self.prefill = prefill
+        textFieldView.text = prefill
     
         super.init(frame: .zero)
 

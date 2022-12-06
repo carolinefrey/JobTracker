@@ -56,7 +56,7 @@ class JobDetailsViewController: UIViewController {
     // MARK: - Functions
     
     @objc func editJob() {
-        let editJobVC = AddEditJobViewController(title: "Edit job", job: job)
+        let editJobVC = AddEditJobViewController(editView: true, title: "Edit job", job: job)
         navigationController?.pushViewController(editJobVC, animated: true)
     }
     

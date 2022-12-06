@@ -12,13 +12,13 @@ class AddJobContentView: UIView {
     // MARK: - UI Properties
     
     var viewTitle: String
+    var job: Job
 
     let title: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-SemiBold", size: 26)
         title.textColor = UIColor(named: "Color4")
-        //title.text = "Add a new job"
         return title
     }()
     
@@ -28,16 +28,15 @@ class AddJobContentView: UIView {
         return view
     }()
     
-    let textFieldStackView: AddJobTextFieldStackView = {
-        let stack = AddJobTextFieldStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
+    let textFieldStackView: AddJobTextFieldStackView
     
     // MARK: - Initializers
 
-    init(viewTitle: String) {
+    init(viewTitle: String, job: Job) {
         self.viewTitle = viewTitle
+        self.job = job
+        textFieldStackView = AddJobTextFieldStackView(job: job)
+        
         super.init(frame: .zero)
         
         backgroundColor = UIColor(named: "Background")
@@ -54,6 +53,7 @@ class AddJobContentView: UIView {
     // MARK: - UI Setup
 
     private func setUpViews() {
+        textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(title)
         addSubview(selectStatusView)
