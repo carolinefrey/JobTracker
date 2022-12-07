@@ -45,6 +45,9 @@ class JobDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        detailsStackView = DetailsStackView(job: job)
+        
         view.backgroundColor = UIColor(named: "Background")
         navigationItem.rightBarButtonItem = editJobButton
         
@@ -55,6 +58,8 @@ class JobDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        detailsStackView = DetailsStackView(job: job)
 
         view.backgroundColor = UIColor(named: "Background")
         navigationItem.rightBarButtonItem = editJobButton
@@ -67,7 +72,7 @@ class JobDetailsViewController: UIViewController {
     // MARK: - Functions
     
     @objc func editJob() {
-        let editJobVC = AddEditJobViewController(editView: true, title: "Edit job", job: job)
+        let editJobVC = EditJobViewController(job: job)
         navigationController?.pushViewController(editJobVC, animated: true)
     }
     

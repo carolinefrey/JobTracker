@@ -1,22 +1,24 @@
 //
-//  AddJobContentView.swift
+//  EditJobContentView.swift
 //  JobTracker
 //
-//  Created by Caroline Frey on 11/30/22.
+//  Created by Caroline Frey on 12/6/22.
 //
 
 import UIKit
 
-class AddJobContentView: UIView {
+class EditJobContentView: UIView {
 
     // MARK: - UI Properties
 
+    var job: Job
+    
     let title: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-SemiBold", size: 26)
         title.textColor = UIColor(named: "Color4")
-        title.text = "Add a new job"
+        title.text = "Edit job"
         return title
     }()
     
@@ -30,8 +32,16 @@ class AddJobContentView: UIView {
     
     // MARK: - Initializers
 
-    init() {
+    init(job: Job) {
+        self.job = job
         textFieldStackView = TextFieldStackView()
+        
+        //TODO: - Prefill Status Field
+        textFieldStackView.companyField.textFieldView.text = job.company
+        textFieldStackView.roleField.textFieldView.text = job.role
+        textFieldStackView.locationField.textFieldView.text = job.location
+        textFieldStackView.linkField.textFieldView.text = job.link
+        textFieldStackView.notesField.textFieldView.text = job.notes
         
         super.init(frame: .zero)
         

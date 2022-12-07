@@ -7,12 +7,9 @@
 
 import UIKit
 
-class AddJobTextFieldStackView: UIView {
-
-    // MARK: - UI Properties
+class TextFieldStackView: UIView {
     
-    var editView: Bool
-    var job: Job
+    // MARK: - UI Properties
     
     private let textFieldStackView: UIStackView = {
         let stack = UIStackView()
@@ -23,31 +20,21 @@ class AddJobTextFieldStackView: UIView {
         return stack
     }()
     
-    var companyField: AddJobTextFieldView
-    var roleField: AddJobTextFieldView
-    var locationField: AddJobTextFieldView
-    var linkField: AddJobTextFieldView
-    var notesField: AddJobTextFieldView
+    var companyField: TextFieldView
+    var roleField: TextFieldView
+    var locationField: TextFieldView
+    var linkField: TextFieldView
+    var notesField: TextFieldView
     
     // MARK: - Initializers
     
-    init(editView: Bool, job: Job) {
-        self.editView = editView
-        self.job = job
+    init() {
         
-        if !editView {
-            companyField = AddJobTextFieldView(textFieldTitle: "company", textFieldHeight: 45)
-            roleField = AddJobTextFieldView(textFieldTitle: "role", textFieldHeight: 45)
-            locationField = AddJobTextFieldView(textFieldTitle: "location", textFieldHeight: 45)
-            linkField = AddJobTextFieldView(textFieldTitle: "link", textFieldHeight: 45)
-            notesField = AddJobTextFieldView(textFieldTitle: "notes", textFieldHeight: 75)
-        } else {
-            companyField = AddJobTextFieldView(textFieldTitle: "company", textFieldHeight: 45, prefill: job.company ?? "")
-            roleField = AddJobTextFieldView(textFieldTitle: "role", textFieldHeight: 45, prefill: job.role ?? "")
-            locationField = AddJobTextFieldView(textFieldTitle: "location", textFieldHeight: 45, prefill: job.location ?? "")
-            linkField = AddJobTextFieldView(textFieldTitle: "link", textFieldHeight: 45, prefill: job.link ?? "")
-            notesField = AddJobTextFieldView(textFieldTitle: "notes", textFieldHeight: 75, prefill: job.notes ?? "")
-        }
+        companyField = TextFieldView(textFieldTitle: "company", textFieldHeight: 45)
+        roleField = TextFieldView(textFieldTitle: "role", textFieldHeight: 45)
+        locationField = TextFieldView(textFieldTitle: "location", textFieldHeight: 45)
+        linkField = TextFieldView(textFieldTitle: "link", textFieldHeight: 45)
+        notesField = TextFieldView(textFieldTitle: "notes", textFieldHeight: 75)
         
         super.init(frame: .zero)
         
@@ -57,7 +44,7 @@ class AddJobTextFieldStackView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: - UI Setup
     
     private func setUpViews() {
@@ -83,5 +70,5 @@ class AddJobTextFieldStackView: UIView {
             textFieldStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
-
+    
 }

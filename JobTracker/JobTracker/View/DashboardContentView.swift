@@ -10,9 +10,7 @@ import UIKit
 class DashboardContentView: UIView {
     
     // MARK: - UI Properties
-    
-    var jobs = [SingleJob]()
-    
+        
     let headerView: HeaderView = {
         let view = HeaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
