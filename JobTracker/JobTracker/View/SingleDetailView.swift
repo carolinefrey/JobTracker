@@ -127,7 +127,6 @@ class SingleDetailView: UIView {
             detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            //detailLabel.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
     

@@ -27,7 +27,7 @@ class DashboardContentView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: 150, height: 150)
-        layout.sectionInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        layout.sectionInset = UIEdgeInsets(top: 24, left: 30, bottom: 24, right: 30)
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false

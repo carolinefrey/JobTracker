@@ -15,7 +15,7 @@ class TextFieldStackView: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillProportionally
-        stack.spacing = 5
+        stack.spacing = 15
         stack.axis = .vertical
         return stack
     }()
@@ -68,6 +68,12 @@ class TextFieldStackView: UIView {
             textFieldStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             textFieldStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            companyField.heightAnchor.constraint(equalToConstant: 65),
+            roleField.heightAnchor.constraint(equalToConstant: 65),
+            locationField.heightAnchor.constraint(equalToConstant: 65),
+            linkField.heightAnchor.constraint(equalToConstant: 65),
+            notesField.heightAnchor.constraint(equalToConstant: 95),
         ])
     }
     

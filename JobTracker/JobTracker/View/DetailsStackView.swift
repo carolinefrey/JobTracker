@@ -16,7 +16,8 @@ class DetailsStackView: UIView {
     private let detailsStackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .equalSpacing
+        stack.distribution = .fillProportionally
+        stack.spacing = 15
         stack.axis = .vertical
         return stack
     }()
@@ -66,6 +67,13 @@ class DetailsStackView: UIView {
             detailsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             detailsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             detailsStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            
+            statusDetailView.heightAnchor.constraint(equalToConstant: 70),
+            companyDetailView.heightAnchor.constraint(equalToConstant: 70),
+            roleDetailView.heightAnchor.constraint(equalToConstant: 70),
+            locationDetailView.heightAnchor.constraint(equalToConstant: 70),
+            linkDetailView.heightAnchor.constraint(equalToConstant: 70),
+            notesDetailView.heightAnchor.constraint(equalToConstant: 70),
         ])
     }
     // MARK: - UI Setup

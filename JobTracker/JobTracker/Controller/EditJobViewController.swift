@@ -80,6 +80,8 @@ class EditJobViewController: UIViewController {
         }
         
         contentView.textFieldStackView.companyField.textFieldView.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
+        contentView.deleteJobButton.addTarget(self, action: #selector(deleteJob), for: .touchUpInside)
     }
     
     // MARK: - Functions
@@ -110,6 +112,11 @@ class EditJobViewController: UIViewController {
     
     @objc func favoriteJob() {
         //TODO: - Implement favorite jobs
+    }
+    
+    @objc func deleteJob() {
+        DataManager.deleteJob(item: job)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func textFieldChanged(sender: UITextField) {

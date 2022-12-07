@@ -38,7 +38,7 @@ class StatusBoxView: UIView {
         let count = UILabel()
         count.translatesAutoresizingMaskIntoConstraints = false
         count.textAlignment = .center
-        count.font = UIFont(name: "Nunito-SemiBold", size: 14)
+        count.font = UIFont(name: "Nunito-SemiBold", size: 20)
         count.text = "3"
         return count
     }()
@@ -51,13 +51,17 @@ class StatusBoxView: UIView {
         
         switch status {
         case .open:
-            statusLabel.textColor = UIColor(named: "OpenStatus")
+            statusLabel.textColor = UIColor(named: "OpenStatusLabel")
+            countLabel.textColor = UIColor(named: "OpenStatusLabel")
         case .applied:
-            statusLabel.textColor = UIColor(named: "AppliedStatus")
+            statusLabel.textColor = UIColor(named: "AppliedStatusLabel")
+            countLabel.textColor = UIColor(named: "AppliedStatusLabel")
         case .interview:
-            statusLabel.textColor = UIColor(named: "InterviewStatus")
+            statusLabel.textColor = UIColor(named: "InterviewStatusLabel")
+            countLabel.textColor = UIColor(named: "InterviewStatusLabel")
         case .closed:
             statusLabel.textColor = .darkGray
+            countLabel.textColor = .darkGray
         }
         
         super.init(frame: .zero)
@@ -82,14 +86,14 @@ class StatusBoxView: UIView {
             box.leadingAnchor.constraint(equalTo: leadingAnchor),
             box.trailingAnchor.constraint(equalTo: trailingAnchor),
             box.bottomAnchor.constraint(equalTo: bottomAnchor),
-            box.heightAnchor.constraint(equalToConstant: 75),
-            box.widthAnchor.constraint(equalToConstant: 75),
+            box.heightAnchor.constraint(equalToConstant: 76),
+            box.widthAnchor.constraint(equalToConstant: 76),
             
             statusLabel.centerXAnchor.constraint(equalTo: box.centerXAnchor),
-            statusLabel.topAnchor.constraint(equalTo: box.topAnchor, constant: 10),
+            statusLabel.topAnchor.constraint(equalTo: box.topAnchor, constant: 16),
             
             countLabel.centerXAnchor.constraint(equalTo: box.centerXAnchor),
-            countLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
+            countLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 5),
         ])
     }
 }

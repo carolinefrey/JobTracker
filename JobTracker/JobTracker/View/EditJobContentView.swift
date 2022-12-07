@@ -26,14 +26,20 @@ class EditJobContentView: UIView {
     
     let textFieldStackView: TextFieldStackView
     
+    lazy var deleteJobButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.role = .destructive
+        button.setTitle("Delete job", for: .normal)
+        return button
+    }()
+    
     // MARK: - Initializers
 
     init(job: Job) {
         self.job = job
         textFieldStackView = TextFieldStackView()
         selectStatusView = SelectJobStatusView(status: JobStatus(rawValue: job.status!) ?? .open)
-        
-        //TODO: - Prefill Status Field
         textFieldStackView.companyField.textFieldView.text = job.company
         textFieldStackView.roleField.textFieldView.text = job.role
         textFieldStackView.locationField.textFieldView.text = job.location
@@ -60,6 +66,7 @@ class EditJobContentView: UIView {
         addSubview(title)
         addSubview(selectStatusView)
         addSubview(textFieldStackView)
+        addSubview(deleteJobButton)
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -74,7 +81,9 @@ class EditJobContentView: UIView {
             textFieldStackView.topAnchor.constraint(equalTo: selectStatusView.bottomAnchor, constant: 30),
             textFieldStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             textFieldStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            textFieldStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            deleteJobButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 20),
+            deleteJobButton.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }
 }
