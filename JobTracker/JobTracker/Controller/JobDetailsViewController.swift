@@ -11,12 +11,12 @@ enum Detail: String {
     case status, company, role, location, link, notes
 }
 
-class JobDetailsViewController: UIViewController {
-    
+class JobDetailsViewController: UIViewController, UpdateJobDelegate {
+
     // MARK: - UI Properties
     
     var job: Job
-
+    
     private var detailsStackView: DetailsStackView
     
     lazy var editJobButton: UIBarButtonItem = {
@@ -27,13 +27,21 @@ class JobDetailsViewController: UIViewController {
         return button
     }()
     
+    lazy var favoriteButton: UIBarButtonItem = {
+        let config = UIImage.SymbolConfiguration(textStyle: .title3)
+        let icon = UIImage(systemName: "heart", withConfiguration: config)
+        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
+        button.tintColor = UIColor(named: "FavoriteButtonColor")
+        return button
+    }()
+    
     // MARK: - Initializers
     
     init(job: Job) {
         self.job = job
         
         detailsStackView = DetailsStackView(job: job)
-
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,24 +53,8 @@ class JobDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        detailsStackView = DetailsStackView(job: job)
-        
         view.backgroundColor = UIColor(named: "Background")
-        navigationItem.rightBarButtonItem = editJobButton
-        
-        view.addSubview(detailsStackView)
-        
-        configureStackView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        detailsStackView = DetailsStackView(job: job)
-
-        view.backgroundColor = UIColor(named: "Background")
-        navigationItem.rightBarButtonItem = editJobButton
+        navigationItem.rightBarButtonItems = [editJobButton, favoriteButton]
         
         view.addSubview(detailsStackView)
         
@@ -71,9 +63,25 @@ class JobDetailsViewController: UIViewController {
     
     // MARK: - Functions
     
+    func didUpdateJob(job: Job) {
+        detailsStackView.statusDetailView.detailLabel.text = job.status?.capitalized
+        detailsStackView.statusDetailView.detail = .status
+        detailsStackView.statusDetailView.setStatusBoxColor(status: JobStatus(rawValue: job.status!) ?? .open)
+        detailsStackView.companyDetailView.detailLabel.text = job.company
+        detailsStackView.roleDetailView.detailLabel.text = job.role
+        detailsStackView.locationDetailView.detailLabel.text = job.location
+        detailsStackView.linkDetailView.detailLabel.text = job.link
+        detailsStackView.notesDetailView.detailLabel.text = job.notes
+    }
+    
     @objc func editJob() {
         let editJobVC = EditJobViewController(job: job)
+        editJobVC.delegate = self
         navigationController?.pushViewController(editJobVC, animated: true)
+    }
+    
+    @objc func favoriteJob() {
+        //TODO: - Implement favorite jobs
     }
     
     private func configureStackView () {

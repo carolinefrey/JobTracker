@@ -12,7 +12,7 @@ class SelectJobStatusView: UIView {
     // MARK: - UI Properties
     
     var selectedStatus: [JobStatus: Bool] = [.open: false, .applied: false, .interview: false, .closed: false]
-    var status: JobStatus = .open
+    var status: JobStatus
     
     let statusLabel: UILabel = {
         let statusLabel = UILabel()
@@ -75,10 +75,13 @@ class SelectJobStatusView: UIView {
     
     // MARK: - Initializers
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(status: JobStatus) {
+        self.status = status
+        super.init(frame: .zero)
         
         setUpViews()
+        selectedStatus[status] = true
+        configureStatusBox(statuses: selectedStatus)
     }
     
     required init?(coder: NSCoder) {
@@ -88,7 +91,6 @@ class SelectJobStatusView: UIView {
     // MARK: - Functions
     
     @objc func statusBoxSelected(_ sender: UIButton) {
-        
         resetBoxes()
         
         switch sender.tag {
@@ -112,7 +114,7 @@ class SelectJobStatusView: UIView {
         configureStatusBox(statuses: selectedStatus)
     }
     
-    private func configureStatusBox(statuses: Dictionary<JobStatus, Bool>) {
+    func configureStatusBox(statuses: Dictionary<JobStatus, Bool>) {
         
         let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .medium)
         let checkmarkIcon = UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.withTintColor(.white, renderingMode: .alwaysOriginal)

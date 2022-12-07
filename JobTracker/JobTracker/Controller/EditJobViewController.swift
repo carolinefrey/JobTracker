@@ -7,14 +7,20 @@
 
 import UIKit
 
+protocol UpdateJobDelegate {
+    func didUpdateJob(job: Job)
+}
+
 class EditJobViewController: UIViewController {
     
     // MARK: - UI Properties
     
+    var delegate: UpdateJobDelegate?
+
     var job: Job
     
     private var contentView: EditJobContentView
-    
+        
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +35,14 @@ class EditJobViewController: UIViewController {
         let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(updateJob))
         button.tintColor = UIColor(named: "Color4")
         button.isEnabled = false //disable until user enters company name
+        return button
+    }()
+    
+    lazy var favoriteButton: UIBarButtonItem = {
+        let config = UIImage.SymbolConfiguration(textStyle: .title3)
+        let icon = UIImage(systemName: "heart", withConfiguration: config)
+        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
+        button.tintColor = UIColor(named: "FavoriteButtonColor")
         return button
     }()
     
@@ -49,7 +63,7 @@ class EditJobViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = updateJobButton
+        navigationItem.rightBarButtonItems = [updateJobButton, favoriteButton]
         view.backgroundColor = UIColor(named: "Background")
         
         view.addSubview(scrollView)
@@ -90,7 +104,12 @@ class EditJobViewController: UIViewController {
     
     @objc func updateJob() {
         DataManager.updateJob(job: job, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status.rawValue, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.textFieldView.text ?? "none")
+        delegate?.didUpdateJob(job: job)
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func favoriteJob() {
+        //TODO: - Implement favorite jobs
     }
     
     @objc func textFieldChanged(sender: UITextField) {

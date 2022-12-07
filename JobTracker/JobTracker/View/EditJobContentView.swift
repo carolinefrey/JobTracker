@@ -22,11 +22,7 @@ class EditJobContentView: UIView {
         return title
     }()
     
-    let selectStatusView: SelectJobStatusView = {
-        let view = SelectJobStatusView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let selectStatusView: SelectJobStatusView
     
     let textFieldStackView: TextFieldStackView
     
@@ -35,6 +31,7 @@ class EditJobContentView: UIView {
     init(job: Job) {
         self.job = job
         textFieldStackView = TextFieldStackView()
+        selectStatusView = SelectJobStatusView(status: JobStatus(rawValue: job.status!) ?? .open)
         
         //TODO: - Prefill Status Field
         textFieldStackView.companyField.textFieldView.text = job.company
@@ -58,6 +55,7 @@ class EditJobContentView: UIView {
 
     private func setUpViews() {
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
+        selectStatusView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(title)
         addSubview(selectStatusView)

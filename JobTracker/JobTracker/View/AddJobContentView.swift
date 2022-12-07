@@ -20,11 +20,7 @@ class AddJobContentView: UIView {
         return title
     }()
     
-    let selectStatusView: SelectJobStatusView = {
-        let view = SelectJobStatusView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    let selectStatusView: SelectJobStatusView
     
     let textFieldStackView: TextFieldStackView
     
@@ -32,6 +28,7 @@ class AddJobContentView: UIView {
 
     init() {
         textFieldStackView = TextFieldStackView()
+        selectStatusView = SelectJobStatusView(status: .open)
         
         super.init(frame: .zero)
         
@@ -48,7 +45,8 @@ class AddJobContentView: UIView {
 
     private func setUpViews() {
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
-        
+        selectStatusView.translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(title)
         addSubview(selectStatusView)
         addSubview(textFieldStackView)

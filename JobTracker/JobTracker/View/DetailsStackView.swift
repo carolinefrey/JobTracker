@@ -17,17 +17,16 @@ class DetailsStackView: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .equalSpacing
-        //stack.spacing = 5
         stack.axis = .vertical
         return stack
     }()
     
-    private var statusDetailView: SingleDetailView
-    private var companyDetailView: SingleDetailView
-    private var roleDetailView: SingleDetailView
-    private var locationDetailView: SingleDetailView
-    private var linkDetailView: SingleDetailView    
-    private var notesDetailView: SingleDetailView
+    var statusDetailView: SingleDetailView
+    var companyDetailView: SingleDetailView
+    var roleDetailView: SingleDetailView
+    var locationDetailView: SingleDetailView
+    var linkDetailView: SingleDetailView
+    var notesDetailView: SingleDetailView
 
     // MARK: - Initializers
     

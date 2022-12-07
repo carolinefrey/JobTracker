@@ -12,10 +12,10 @@ class SingleDetailView: UIView {
     // MARK: - UI Properties
     
     var job: Job
-    private let detail: Detail
-    private var showStatusBox = false
+    var detail: Detail
+    var showStatusBox = false
     
-    private let detailTitleLabel: UILabel = {
+    private var detailTitleLabel: UILabel = {
         let detailLabel = UILabel()
         detailLabel.translatesAutoresizingMaskIntoConstraints = false
         detailLabel.textAlignment = .left
@@ -24,7 +24,7 @@ class SingleDetailView: UIView {
         return detailLabel
     }()
     
-    private let detailLabel: UILabel = {
+    var detailLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
@@ -32,7 +32,7 @@ class SingleDetailView: UIView {
         return label
     }()
     
-    private let statusBox: UIView = {
+    var statusBox: UIView = {
         let box = UIView()
         box.translatesAutoresizingMaskIntoConstraints = false
         box.layer.cornerRadius = 10
@@ -131,7 +131,7 @@ class SingleDetailView: UIView {
         ])
     }
     
-    private func setStatusBoxColor(status: JobStatus) {
+    func setStatusBoxColor(status: JobStatus) {
         switch status {
         case .open:
             statusBox.backgroundColor = UIColor(named: "OpenStatus")
