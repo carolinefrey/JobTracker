@@ -105,7 +105,7 @@ class EditJobViewController: UIViewController {
     }
     
     @objc func updateJob() {
-        DataManager.updateJob(job: job, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status.rawValue, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.textFieldView.text ?? "none")
+        DataManager.updateJob(job: job, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status.rawValue, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none")
         delegate?.didUpdateJob(job: job)
         navigationController?.popViewController(animated: true)
     }
@@ -136,7 +136,7 @@ class EditJobViewController: UIViewController {
         contentView.textFieldStackView.roleField.textFieldView.delegate = self
         contentView.textFieldStackView.locationField.textFieldView.delegate = self
         contentView.textFieldStackView.linkField.textFieldView.delegate = self
-        contentView.textFieldStackView.notesField.textFieldView.delegate = self
+        contentView.textFieldStackView.notesField.notesFieldView.delegate = self
     }
 }
 
@@ -147,4 +147,10 @@ extension EditJobViewController: UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
+}
+
+// MARK: - UITextViewDelegate
+
+extension EditJobViewController: UITextViewDelegate {
+
 }

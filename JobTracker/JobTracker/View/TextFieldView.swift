@@ -65,7 +65,7 @@ class TextFieldView: UIView {
             textFieldView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 5),
             textFieldView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textFieldView.heightAnchor.constraint(equalToConstant: CGFloat(textFieldHeight)),
+            textFieldView.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
 }

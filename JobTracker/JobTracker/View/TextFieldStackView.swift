@@ -24,7 +24,7 @@ class TextFieldStackView: UIView {
     var roleField: TextFieldView
     var locationField: TextFieldView
     var linkField: TextFieldView
-    var notesField: TextFieldView
+    var notesField: NotesFieldView
     
     // MARK: - Initializers
     
@@ -34,8 +34,8 @@ class TextFieldStackView: UIView {
         roleField = TextFieldView(textFieldTitle: "role", textFieldHeight: 45)
         locationField = TextFieldView(textFieldTitle: "location", textFieldHeight: 45)
         linkField = TextFieldView(textFieldTitle: "link", textFieldHeight: 45)
-        notesField = TextFieldView(textFieldTitle: "notes", textFieldHeight: 75)
-        
+        notesField = NotesFieldView()
+
         super.init(frame: .zero)
         
         setUpViews()

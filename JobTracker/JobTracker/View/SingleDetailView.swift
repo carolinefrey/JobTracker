@@ -29,6 +29,9 @@ class SingleDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.textColor = UIColor(named: "Color4")
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.textAlignment = .left
         return label
     }()
     
@@ -63,6 +66,14 @@ class SingleDetailView: UIView {
     // MARK: - UI Setup
     
     private func setUpViews() {
+        addSubview(detailTitleLabel)
+        
+        NSLayoutConstraint.activate([
+            detailTitleLabel.topAnchor.constraint(equalTo: topAnchor),
+            detailTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            detailTitleLabel.heightAnchor.constraint(equalToConstant: 35)
+        ])
+        
         switch detail {
         case .status:
             detailLabel.font = UIFont(name: "Nunito-SemiBold", size: 26)
@@ -87,18 +98,11 @@ class SingleDetailView: UIView {
             detailLabel.text = job.notes
         }
         
-        addSubview(detailTitleLabel)
-        
         if showStatusBox == true {
             configureStatusBoxStack()
         } else {
             configureStandardDetailLabel()
         }
-        
-        NSLayoutConstraint.activate([
-            detailTitleLabel.topAnchor.constraint(equalTo: topAnchor),
-            detailTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-        ])
     }
     
     // MARK: - Functions
@@ -126,7 +130,6 @@ class SingleDetailView: UIView {
             detailLabel.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor, constant: 5),
             detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
     
