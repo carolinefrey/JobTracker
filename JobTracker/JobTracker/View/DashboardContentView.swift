@@ -53,7 +53,6 @@ class DashboardContentView: UIView {
     // MARK: - UI Setup
     
     private func setUpViews() {
-        
         addSubview(headerView)
         addSubview(statusBoxes)
         addSubview(collectionView)
@@ -61,6 +60,7 @@ class DashboardContentView: UIView {
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            headerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             headerView.heightAnchor.constraint(equalToConstant: 80),
             
             statusBoxes.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20),

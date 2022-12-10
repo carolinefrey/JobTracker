@@ -7,8 +7,12 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, SetUsernameDelegate {
         
+    // MARK: - UserDefaults
+    
+    let defaults = UserDefaults.standard
+    
     // MARK: - UI Properties
     
     private var contentView: DashboardContentView!
@@ -37,11 +41,17 @@ class DashboardViewController: UIViewController {
         
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
-        
+    
+        contentView.headerView.icon.addTarget(self, action: #selector(presentSettingsView), for: .touchUpInside)
+
         fetchJobs()
         updateJobStatusCounts()
         
         fetchJobs()
+        
+        //set greeting name
+        let name = defaults.string(forKey: "name")
+        contentView.headerView.greeting.text = "Hey, \(name ?? "")!"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,9 +61,19 @@ class DashboardViewController: UIViewController {
 
     // MARK: - Functions
     
+    func didSetUsername(name: String) {
+        let name = defaults.string(forKey: "name")
+        contentView.headerView.greeting.text = "Hey, \(name ?? "")!"
+    }
+    
     @objc func addNewJob(_ sender: UIBarButtonItem) {
         let addNewJobVC = AddJobViewController()
         navigationController?.pushViewController(addNewJobVC, animated: true)
+    }
+    
+    @objc func presentSettingsView() {
+        let settingsVC = SettingsViewController()
+        present(settingsVC, animated: true)
     }
     
     private func updateJobStatusCounts() {

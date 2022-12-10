@@ -11,12 +11,14 @@ class HeaderView: UIView {
 
     // MARK: - UI Properties
 
-    let icon: UIImageView = {
-        let icon = UIImageView()
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.image = UIImage(named: "meCircle")
-        icon.contentMode = .scaleAspectFit
-        return icon
+    lazy var icon: UIButton = {
+        let config = UIImage.SymbolConfiguration(pointSize: 65)
+        let icon = UIImage(systemName: "briefcase.circle", withConfiguration: config)
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(icon, for: .normal)
+        button.tintColor = UIColor(named: "OpenStatusLabel")
+        return button
     }()
     
     let greeting: UILabel = {
@@ -25,8 +27,7 @@ class HeaderView: UIView {
         label.font = UIFont(name: "Nunito-SemiBold", size: 26)
         label.textColor = UIColor(named: "Color4")
         label.textAlignment = .left
-        label.text = "Hey, Caroline"
-        //label.text = NSUserName()
+        //label.text = "Hey, Caroline!"
         return label
     }()
     
@@ -63,15 +64,12 @@ class HeaderView: UIView {
         NSLayoutConstraint.activate([
             icon.topAnchor.constraint(equalTo: topAnchor),
             icon.leadingAnchor.constraint(equalTo: leadingAnchor),
-            icon.heightAnchor.constraint(equalToConstant: 75),
-            icon.widthAnchor.constraint(equalToConstant: 75),
             
             greeting.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             greeting.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 7),
         
             title.topAnchor.constraint(equalTo: greeting.bottomAnchor),
             title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 7),
-        
         ])
     }
 }

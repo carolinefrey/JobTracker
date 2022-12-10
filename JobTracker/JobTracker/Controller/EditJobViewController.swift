@@ -13,10 +13,10 @@ protocol UpdateJobDelegate {
 
 class EditJobViewController: UIViewController {
     
-    // MARK: - UI Properties
-    
     var delegate: UpdateJobDelegate?
 
+    // MARK: - UI Properties
+    
     var job: Job
     
     private var contentView: EditJobContentView

@@ -11,7 +11,7 @@ class AddJobViewController: UIViewController {
     
     // MARK: - UI Properties
     
-    private var contentView: AddJobContentView
+    private var contentView = AddJobContentView()
     
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -37,18 +37,6 @@ class AddJobViewController: UIViewController {
         button.tintColor = UIColor(named: "FavoriteButtonColor")
         return button
     }()
-    
-    // MARK: - Initializer
-    
-    init() {
-        contentView = AddJobContentView()
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: - Lifecycle
     
