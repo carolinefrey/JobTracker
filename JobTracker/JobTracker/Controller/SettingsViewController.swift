@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SetUsernameDelegate {
+protocol SetUsernameDelegate: AnyObject {
     func didSetUsername(name: String)
 }
 
 class SettingsViewController: UIViewController {
 
-    var delegate: SetUsernameDelegate?
+    weak var delegate: SetUsernameDelegate?
     
     // MARK: - UserDefaults
     
@@ -38,9 +38,8 @@ class SettingsViewController: UIViewController {
     @objc func saveSettings() {
         let name = contentView.textFieldView.text ?? ""
         defaults.set("\(name)", forKey: "name")
-        dismiss(animated: true) {
-            self.delegate?.didSetUsername(name: name)
-        }
+        dismiss(animated: true)
+        self.delegate?.didSetUsername(name: name)
     }
 }
 
