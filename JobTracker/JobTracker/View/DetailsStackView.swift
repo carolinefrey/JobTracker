@@ -76,6 +76,4 @@ class DetailsStackView: UIView {
             notesDetailView.heightAnchor.constraint(equalToConstant: 70),
         ])
     }
-    // MARK: - UI Setup
-
 }

@@ -90,15 +90,17 @@ class SingleDetailView: UIView {
             detailLabel.font = UIFont(name: "Nunito-SemiBold", size: 26)
             detailLabel.text = job.location
         case .link:
-            //TODO: format link
             detailLabel.font = UIFont(name: "Nunito-Regular", size: 20)
             detailLabel.text = job.link
+            let tapAction = UITapGestureRecognizer(target: self, action: #selector(configureURL(_:)))
+            detailLabel.isUserInteractionEnabled = true
+            detailLabel.addGestureRecognizer(tapAction)
         case .notes:
             detailLabel.font = UIFont(name: "Nunito-Regular", size: 20)
             detailLabel.text = job.notes
         }
         
-        if showStatusBox == true {
+        if showStatusBox {
             configureStatusBoxStack()
         } else {
             configureStandardDetailLabel()
@@ -106,6 +108,7 @@ class SingleDetailView: UIView {
     }
     
     // MARK: - Functions
+    
     private func configureStatusBoxStack() {
         addSubview(statusBox)
         addSubview(detailLabel)
@@ -144,6 +147,12 @@ class SingleDetailView: UIView {
         case .closed:
             statusBox.backgroundColor = .darkGray
         }
+    }
+    
+    @objc func configureURL(_ sender: UITapGestureRecognizer) {
+        let webURL = URL(string: job.link ?? "")!
+        let application = UIApplication.shared
+        application.open(webURL)
     }
 }
 

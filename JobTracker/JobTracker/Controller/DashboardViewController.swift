@@ -46,7 +46,12 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         contentView.collectionView.delegate = self
     
         contentView.headerView.icon.addTarget(self, action: #selector(presentSettingsView), for: .touchUpInside)
-        contentView.headerView.greeting.text = "Hey, \(name)!"
+        if name != "" {
+            contentView.headerView.greeting.text = "Hey, \(name)!"
+        } else {
+            contentView.headerView.greeting.text = "Hey!"
+        }
+
 
         fetchJobs()
         updateJobStatusCounts()
