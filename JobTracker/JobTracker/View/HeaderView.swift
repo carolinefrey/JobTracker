@@ -27,19 +27,18 @@ class HeaderView: UIView {
         label.font = UIFont(name: "Nunito-SemiBold", size: 26)
         label.textColor = UIColor(named: "Color4")
         label.textAlignment = .left
-        //label.text = "Hey, Caroline!"
         return label
     }()
     
-    let title: UILabel = {
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.font = UIFont(name: "Nunito-Light", size: 14)
-        title.textColor = UIColor(named: "Color4")
-        title.textAlignment = .left
-        title.text = "Future iOS Engineer"
-        return title
-    }()
+//    let title: UILabel = {
+//        let title = UILabel()
+//        title.translatesAutoresizingMaskIntoConstraints = false
+//        title.font = UIFont(name: "Nunito-Light", size: 14)
+//        title.textColor = UIColor(named: "Color4")
+//        title.textAlignment = .left
+//        title.text = "Future iOS Engineer"
+//        return title
+//    }()
     
     // MARK: - Initializers
 
@@ -59,17 +58,18 @@ class HeaderView: UIView {
         
         addSubview(icon)
         addSubview(greeting)
-        addSubview(title)
+//        addSubview(title)
         
         NSLayoutConstraint.activate([
             icon.topAnchor.constraint(equalTo: topAnchor),
             icon.leadingAnchor.constraint(equalTo: leadingAnchor),
             
-            greeting.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            //greeting.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            greeting.centerYAnchor.constraint(equalTo: icon.centerYAnchor),
             greeting.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 7),
         
-            title.topAnchor.constraint(equalTo: greeting.bottomAnchor),
-            title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 7),
+//            title.topAnchor.constraint(equalTo: greeting.bottomAnchor),
+//            title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 7),
         ])
     }
 }
