@@ -27,13 +27,13 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         return button
     }()
     
-    lazy var favoriteButton: UIBarButtonItem = {
-        let config = UIImage.SymbolConfiguration(textStyle: .title3)
-        let icon = UIImage(systemName: "heart", withConfiguration: config)
-        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
-        button.tintColor = UIColor(named: "FavoriteButtonColor")
-        return button
-    }()
+//    lazy var favoriteButton: UIBarButtonItem = {
+//        let config = UIImage.SymbolConfiguration(textStyle: .title3)
+//        let icon = UIImage(systemName: "heart", withConfiguration: config)
+//        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
+//        button.tintColor = UIColor(named: "FavoriteButtonColor")
+//        return button
+//    }()
     
     // MARK: - Initializers
     
@@ -54,7 +54,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "Background")
-        navigationItem.rightBarButtonItems = [editJobButton, favoriteButton]
+        navigationItem.rightBarButtonItems = [editJobButton]
         
         view.addSubview(detailsStackView)
         

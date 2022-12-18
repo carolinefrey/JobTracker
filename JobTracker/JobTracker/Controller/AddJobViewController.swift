@@ -30,19 +30,19 @@ class AddJobViewController: UIViewController {
         return button
     }()
     
-    lazy var favoriteButton: UIBarButtonItem = {
-        let config = UIImage.SymbolConfiguration(textStyle: .title3)
-        let icon = UIImage(systemName: "heart", withConfiguration: config)
-        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
-        button.tintColor = UIColor(named: "FavoriteButtonColor")
-        return button
-    }()
+//    lazy var favoriteButton: UIBarButtonItem = {
+//        let config = UIImage.SymbolConfiguration(textStyle: .title3)
+//        let icon = UIImage(systemName: "heart", withConfiguration: config)
+//        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
+//        button.tintColor = UIColor(named: "FavoriteButtonColor")
+//        return button
+//    }()
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItems = [saveJobButton, favoriteButton]
+        navigationItem.rightBarButtonItems = [saveJobButton]
         view.backgroundColor = UIColor(named: "Background")
         
         view.addSubview(scrollView)
@@ -86,9 +86,9 @@ class AddJobViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func favoriteJob() {
-        //TODO: - Implement favorite jobs
-    }
+//    @objc func favoriteJob() {
+//        //TODO: - Implement favorite jobs
+//    }
     
     @objc func textFieldChanged(sender: UITextField) {
         if contentView.textFieldStackView.companyField.textFieldView.text != "" {
