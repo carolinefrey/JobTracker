@@ -30,10 +30,10 @@ class TextFieldStackView: UIView {
     
     init() {
         
-        companyField = TextFieldView(textFieldTitle: "company", textFieldHeight: 45)
-        roleField = TextFieldView(textFieldTitle: "role", textFieldHeight: 45)
-        locationField = TextFieldView(textFieldTitle: "location", textFieldHeight: 45)
-        linkField = TextFieldView(textFieldTitle: "link", textFieldHeight: 45)
+        companyField = TextFieldView(textFieldTitle: "company", textFieldHeight: 45, autoCap: true)
+        roleField = TextFieldView(textFieldTitle: "role", textFieldHeight: 45, autoCap: true)
+        locationField = TextFieldView(textFieldTitle: "location", textFieldHeight: 45, autoCap: true)
+        linkField = TextFieldView(textFieldTitle: "link", textFieldHeight: 45, autoCap: false)
         notesField = NotesFieldView()
 
         super.init(frame: .zero)

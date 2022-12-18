@@ -8,17 +8,16 @@
 import UIKit
 
 class DashboardViewController: UIViewController, SetUsernameDelegate {
-        
-    // MARK: - UserDefaults
     
     let defaults = UserDefaults.standard
-    var name: String = ""
     
     // MARK: - UI Properties
+
+    var name: String = ""
     
     private var contentView: DashboardContentView!
     
-    private var statusCounts: [String: Int] = [:]
+    private var statusCounts: [String: Int] = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
     
     private var savedJobs = [Job]()
         
@@ -36,7 +35,7 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         super.loadView()
         view.backgroundColor = .blue
         navigationItem.rightBarButtonItem = addNewJobButton
-
+        
         contentView = DashboardContentView()
         view = contentView
         
@@ -44,27 +43,28 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
-    
+        
         contentView.headerView.icon.addTarget(self, action: #selector(presentSettingsView), for: .touchUpInside)
+        
         if name != "" {
             contentView.headerView.greeting.text = "Hey, \(name)!"
         } else {
             contentView.headerView.greeting.text = "Hey!"
         }
-
-
+        
         fetchJobs()
         updateJobStatusCounts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchJobs()
+        updateJobStatusCounts()
         contentView.collectionView.reloadData()
     }
 
     // MARK: - Functions
     
-    func didSetUsername(name: String) {
+    func didUpdateSettings(name: String) {
         contentView.headerView.greeting.text = "Hey, \(name)!"
     }
     
@@ -80,8 +80,10 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
     }
     
     private func updateJobStatusCounts() {
-        for status in savedJobs {
-            statusCounts[status.status ?? "open", default: 0] += 1
+        statusCounts = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
+        
+        for job in savedJobs {
+            statusCounts[job.status ?? "open", default: 0] += 1
         }
 
         contentView.statusBoxes.openStatusBox.countLabel.text = "\(statusCounts["open"] ?? 0)"

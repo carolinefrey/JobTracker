@@ -13,6 +13,7 @@ class TextFieldView: UIView {
 
     var textFieldTitle: String
     var textFieldHeight: Int
+    var autoCap: Bool
     
     private let titleView: UILabel = {
         let title = UILabel()
@@ -37,10 +38,16 @@ class TextFieldView: UIView {
     
     // MARK: - Initializers
     
-    init(textFieldTitle: String, textFieldHeight: Int) {
+    init(textFieldTitle: String, textFieldHeight: Int, autoCap: Bool) {
         self.textFieldTitle = textFieldTitle
         titleView.text = textFieldTitle
+        
         self.textFieldHeight = textFieldHeight
+        
+        self.autoCap = autoCap
+        if !autoCap {
+            textFieldView.autocapitalizationType = .none
+        }
     
         super.init(frame: .zero)
 

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SetUsernameDelegate: AnyObject {
-    func didSetUsername(name: String)
+    func didUpdateSettings(name: String)
 }
 
 class SettingsViewController: UIViewController {
@@ -39,7 +39,7 @@ class SettingsViewController: UIViewController {
         let name = contentView.textFieldView.text ?? ""
         defaults.set("\(name)", forKey: "name")
         dismiss(animated: true)
-        self.delegate?.didSetUsername(name: name)
+        self.delegate?.didUpdateSettings(name: name)
     }
 }
 
