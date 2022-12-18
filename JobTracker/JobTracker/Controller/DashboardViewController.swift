@@ -65,7 +65,11 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
     // MARK: - Functions
     
     func didUpdateSettings(name: String) {
-        contentView.headerView.greeting.text = "Hey, \(name)!"
+        if name != "" {
+            contentView.headerView.greeting.text = "Hey, \(name)!"
+        } else {
+            contentView.headerView.greeting.text = "Hey!"
+        }
     }
     
     @objc func addNewJob(_ sender: UIBarButtonItem) {

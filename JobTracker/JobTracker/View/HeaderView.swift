@@ -12,8 +12,7 @@ class HeaderView: UIView {
     // MARK: - UI Properties
 
     lazy var icon: UIButton = {
-        let config = UIImage.SymbolConfiguration(pointSize: 65)
-        let icon = UIImage(systemName: "briefcase.circle", withConfiguration: config)
+        let icon = UIImage(named: "briefcaseIcon")
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(icon, for: .normal)
@@ -62,10 +61,11 @@ class HeaderView: UIView {
         NSLayoutConstraint.activate([
             icon.topAnchor.constraint(equalTo: topAnchor),
             icon.leadingAnchor.constraint(equalTo: leadingAnchor),
+            icon.heightAnchor.constraint(equalToConstant: 80),
+            icon.widthAnchor.constraint(equalToConstant: 80),
             
-            //greeting.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             greeting.centerYAnchor.constraint(equalTo: icon.centerYAnchor),
-            greeting.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 7),
+            greeting.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
         
             title.topAnchor.constraint(equalTo: greeting.bottomAnchor),
             title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 7),
