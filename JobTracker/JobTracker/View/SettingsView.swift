@@ -52,6 +52,7 @@ class SettingsView: UIView {
         field.returnKeyType = .done
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunit-Regular", size: 18)
+        field.textColor = UIColor(named: "Color4")
         field.setLeftPadding(10)
         field.setRightPadding(10)
         return field

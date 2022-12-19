@@ -68,8 +68,8 @@ class DashboardContentView: UIView {
             statusBoxes.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             collectionView.topAnchor.constraint(equalTo: statusBoxes.bottomAnchor, constant: 20),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }

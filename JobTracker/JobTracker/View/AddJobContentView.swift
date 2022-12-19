@@ -53,17 +53,17 @@ class AddJobContentView: UIView {
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            title.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             title.heightAnchor.constraint(equalToConstant: 30),
             
             selectStatusView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 24),
-            selectStatusView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            selectStatusView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            selectStatusView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            selectStatusView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
             selectStatusView.heightAnchor.constraint(equalToConstant: 55),
             
             textFieldStackView.topAnchor.constraint(equalTo: selectStatusView.bottomAnchor, constant: 30),
-            textFieldStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            textFieldStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            textFieldStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            textFieldStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
             textFieldStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
