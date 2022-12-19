@@ -27,7 +27,6 @@ class StatusBoxView: UIView {
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.textAlignment = .center
         statusLabel.font = UIFont(name: "Nunito-SemiBold", size: 14)
-        
         statusLabel.text = ""
         statusLabel.textColor = .green
         

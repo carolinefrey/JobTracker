@@ -31,6 +31,9 @@ class SelectJobStatusView: UIView {
         open.layer.cornerRadius = 10
         open.backgroundColor = UIColor(named: "OpenStatus")
         open.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
+        open.setTitle("open", for: .normal)
+        open.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
+        open.setTitleColor(UIColor(named: "Color4"), for: .normal)
         return open
     }()
     
@@ -41,6 +44,9 @@ class SelectJobStatusView: UIView {
         applied.layer.cornerRadius = 10
         applied.backgroundColor = UIColor(named: "AppliedStatus")
         applied.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
+        applied.setTitle("applied", for: .normal)
+        applied.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
+        applied.setTitleColor(UIColor(named: "Color4"), for: .normal)
         return applied
     }()
     
@@ -51,6 +57,9 @@ class SelectJobStatusView: UIView {
         interview.layer.cornerRadius = 10
         interview.backgroundColor = UIColor(named: "InterviewStatus")
         interview.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
+        interview.setTitle("interview", for: .normal)
+        interview.titleLabel?.font = UIFont(name: "Nunito-Light", size: 11)
+        interview.setTitleColor(UIColor(named: "Color4"), for: .normal)
         return interview
     }()
     
@@ -61,6 +70,9 @@ class SelectJobStatusView: UIView {
         closed.layer.cornerRadius = 10
         closed.backgroundColor = .lightGray
         closed.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
+        closed.setTitle("closed", for: .normal)
+        closed.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
+        closed.setTitleColor(UIColor(named: "Color4"), for: .normal)
         return closed
     }()
     
@@ -121,21 +133,33 @@ class SelectJobStatusView: UIView {
         
         if statuses[.open] == true {
             openStatusBox.setImage(checkmarkIcon, for: .normal)
+            openStatusBox.setTitle("", for: .normal)
         } else if statuses[.applied] == true {
             appliedStatusBox.setImage(checkmarkIcon, for: .normal)
+            appliedStatusBox.setTitle("", for: .normal)
         } else if statuses[.interview] == true {
             interviewStatusBox.setImage(checkmarkIcon, for: .normal)
+            interviewStatusBox.setTitle("", for: .normal)
         } else if statuses[.closed] == true {
             closedStatusBox.setImage(checkmarkIcon, for: .normal)
+            closedStatusBox.setTitle("", for: .normal)
         }
     }
     
     private func resetBoxes() {
         selectedStatus = [.open: false, .applied: false, .interview: false, .closed: false]
+        openStatusBox.setTitle("open", for: .normal)
         openStatusBox.setImage(nil, for: .normal)
+        
+        appliedStatusBox.setTitle("applied", for: .normal)
         appliedStatusBox.setImage(nil, for: .normal)
+        
+        interviewStatusBox.setTitle("interview", for: .normal)
         interviewStatusBox.setImage(nil, for: .normal)
+        
+        closedStatusBox.setTitle("closed", for: .normal)
         closedStatusBox.setImage(nil, for: .normal)
+        
     }
     
     // MARK: - UI Setup

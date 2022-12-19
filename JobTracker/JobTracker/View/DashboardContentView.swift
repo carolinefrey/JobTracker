@@ -33,6 +33,7 @@ class DashboardContentView: UIView {
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(DashboardCollectionViewCell.self, forCellWithReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier)
         collection.layer.cornerRadius = 20
+        collection.backgroundColor = .white
         return collection
     }()
     

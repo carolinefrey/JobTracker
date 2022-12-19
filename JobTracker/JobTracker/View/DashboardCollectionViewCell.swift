@@ -26,7 +26,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         let companyLabel = UILabel()
         companyLabel.translatesAutoresizingMaskIntoConstraints = false
         companyLabel.font = UIFont(name: "Nunito-SemiBold", size: 28)
-        companyLabel.textColor = .black
+        companyLabel.textColor = UIColor(named: "Color4")
         companyLabel.textAlignment = .left
         companyLabel.lineBreakMode = .byTruncatingTail
         companyLabel.numberOfLines = 1
@@ -40,6 +40,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         locationLabel.text = ("📍 Remote")
         locationLabel.lineBreakMode = .byTruncatingTail
         locationLabel.numberOfLines = 1
+        locationLabel.textColor = UIColor(named: "Color4")
         return locationLabel
     }()
 
