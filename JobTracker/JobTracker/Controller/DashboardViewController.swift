@@ -29,6 +29,8 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         return button
     }()
     
+    let setUsernameAlert = UIAlertController(title: nil, message: "Click the briefcase to enter your name!", preferredStyle: .alert)
+    
     // MARK: - Lifecycle
     
     override func loadView() {
@@ -50,6 +52,8 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
             contentView.headerView.greeting.text = "Hey, \(name)!"
         } else {
             contentView.headerView.greeting.text = "Hey!"
+            setUsernameAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
+            self.present(setUsernameAlert, animated: true)
         }
         
         fetchJobs()
