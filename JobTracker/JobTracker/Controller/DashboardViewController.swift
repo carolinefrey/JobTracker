@@ -29,7 +29,7 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         return button
     }()
     
-    let setUsernameAlert = UIAlertController(title: nil, message: "Click the briefcase to enter your name!", preferredStyle: .alert)
+    let setUsernameAlert = UIAlertController(title: "Add your name!", message: "Click the briefcase to enter your name in Settings.", preferredStyle: .alert)
     
     // MARK: - Lifecycle
     
@@ -117,6 +117,11 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
 
 extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if savedJobs.count == 0 {
+            collectionView.displayEmptyMessage()
+        } else {
+            collectionView.restore()
+        }
         return savedJobs.count
     }
     
@@ -136,3 +141,19 @@ extension DashboardViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - UICollectionView Extension
+
+extension UICollectionView {
+    func displayEmptyMessage() {
+        let messageLabel = UILabel()
+        messageLabel.text = "Add a job by clicking the plus button!"
+        messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
+        messageLabel.textAlignment = .center
+        
+        self.backgroundView = messageLabel
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+    }
+}
