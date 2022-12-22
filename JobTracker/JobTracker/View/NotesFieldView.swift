@@ -28,6 +28,7 @@ class NotesFieldView: UIView {
         field.returnKeyType = .done
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 14)
+        field.textColor = UIColor(named: "Color4")
         return field
     }()
     

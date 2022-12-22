@@ -29,14 +29,23 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         return button
     }()
     
-    let setUsernameAlert = UIAlertController(title: "Add your name!", message: "Click the briefcase to enter your name in Settings.", preferredStyle: .alert)
+    lazy var settingsButton: UIBarButtonItem = {
+        let config = UIImage.SymbolConfiguration(textStyle: .title3)
+        let icon = UIImage(systemName: "gear", withConfiguration: config)
+        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(presentSettingsView))
+        button.tintColor = UIColor(named: "Color4")
+        return button
+    }()
+    
+//    let setUsernameAlert = UIAlertController(title: "Add your name!", message: "Click the briefcase to enter your name in Settings.", preferredStyle: .alert)
     
     // MARK: - Lifecycle
     
     override func loadView() {
         super.loadView()
         view.backgroundColor = .blue
-        navigationItem.rightBarButtonItem = addNewJobButton
+        navigationItem.rightBarButtonItems = [settingsButton, addNewJobButton]
+//        navigationItem.leftBarButtonItem = settingsButton
         
         contentView = DashboardContentView()
         view = contentView
@@ -46,14 +55,14 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
         
-        contentView.headerView.icon.addTarget(self, action: #selector(presentSettingsView), for: .touchUpInside)
+//        contentView.headerView.icon.addTarget(self, action: #selector(presentSettingsView), for: .touchUpInside)
         
         if name != "" {
             contentView.headerView.greeting.text = "Hey, \(name)!"
         } else {
             contentView.headerView.greeting.text = "Hey!"
-            setUsernameAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
-            self.present(setUsernameAlert, animated: true)
+//            setUsernameAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
+//            self.present(setUsernameAlert, animated: true)
         }
         
         fetchJobs()

@@ -11,13 +11,11 @@ class HeaderView: UIView {
 
     // MARK: - UI Properties
 
-    lazy var icon: UIButton = {
-        let icon = UIImage(named: "briefcaseIcon")
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(icon, for: .normal)
-        button.tintColor = UIColor(named: "OpenStatusLabel")
-        return button
+    lazy var icon: UIImageView = {
+        let image = UIImage(named: "briefcaseIcon")
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     let greeting: UILabel = {
