@@ -149,6 +149,7 @@ extension UICollectionView {
         messageLabel.text = "Add a job by clicking the plus button!"
         messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
         messageLabel.textAlignment = .center
+        messageLabel.textColor = UIColor(named: "Color4")
         
         self.backgroundView = messageLabel
     }
