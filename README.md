@@ -1,6 +1,6 @@
-# Job Tracker
+# JobApp Tracker
 
-Keep track of your job applications with JobTracker!
+Keep track of your job applications with JobApp Tracker!
 
 <p float="center">
 <img src="https://user-images.githubusercontent.com/22801309/208324927-d7e36532-4aa4-42a2-9099-be15c0d71f46.png" width="230">
