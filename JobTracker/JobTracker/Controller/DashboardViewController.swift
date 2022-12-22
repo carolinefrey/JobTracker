@@ -20,7 +20,9 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
     private var statusCounts: [String: Int] = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
     
     private var savedJobs = [Job]()
-        
+    private var filteredJobs = [Job]()
+    private var filterApplied: Bool = false
+    
     lazy var addNewJobButton: UIBarButtonItem = {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "plus", withConfiguration: config)
@@ -36,35 +38,33 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         button.tintColor = UIColor(named: "Color4")
         return button
     }()
-    
-//    let setUsernameAlert = UIAlertController(title: "Add your name!", message: "Click the briefcase to enter your name in Settings.", preferredStyle: .alert)
-    
+        
     // MARK: - Lifecycle
     
     override func loadView() {
         super.loadView()
         view.backgroundColor = .blue
         navigationItem.rightBarButtonItems = [settingsButton, addNewJobButton]
-//        navigationItem.leftBarButtonItem = settingsButton
         
         contentView = DashboardContentView()
         view = contentView
         
         name = defaults.string(forKey: "name") ?? ""
-        
+                        
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
         
-//        contentView.headerView.icon.addTarget(self, action: #selector(presentSettingsView), for: .touchUpInside)
-        
+        contentView.statusBoxes.openStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.appliedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.interviewStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.closedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+                
         if name != "" {
             contentView.headerView.greeting.text = "Hey, \(name)!"
         } else {
             contentView.headerView.greeting.text = "Hey!"
-//            setUsernameAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
-//            self.present(setUsernameAlert, animated: true)
         }
-        
+            
         fetchJobs()
         updateJobStatusCounts()
     }
@@ -96,6 +96,36 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         present(settingsVC, animated: true)
     }
     
+    @objc func filterJobs(sender: UIButton) {
+        filterApplied.toggle()
+        
+        if filterApplied {
+            switch sender {
+            case contentView.statusBoxes.openStatusBox.box:
+                filteredJobs = savedJobs.filter { job in
+                    return job.status == "open"
+                }
+            case contentView.statusBoxes.appliedStatusBox.box:
+                filteredJobs = savedJobs.filter { job in
+                    return job.status == "applied"
+                }
+            case contentView.statusBoxes.interviewStatusBox.box:
+                filteredJobs = savedJobs.filter { job in
+                    return job.status == "interview"
+                }
+            case contentView.statusBoxes.closedStatusBox.box:
+                filteredJobs = savedJobs.filter { job in
+                    return job.status == "closed"
+                }
+            default:
+                return
+            }
+        } else {
+            filteredJobs = savedJobs
+        }
+        contentView.collectionView.reloadData()
+    }
+    
     private func updateJobStatusCounts() {
         statusCounts = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
         
@@ -119,6 +149,7 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
                 }
             }
         }
+        filteredJobs = savedJobs
     }
 }
 
@@ -126,17 +157,31 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
 
 extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if savedJobs.count == 0 {
-            collectionView.displayEmptyMessage()
+        if filterApplied {
+            if filteredJobs.count == 0 {
+                collectionView.displayEmptyMessage()
+            } else {
+                collectionView.restore()
+            }
+            return filteredJobs.count
         } else {
-            collectionView.restore()
+            if savedJobs.count == 0 {
+                collectionView.displayEmptyMessage()
+            } else {
+                collectionView.restore()
+            }
+            return savedJobs.count
         }
-        return savedJobs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier, for: indexPath) as! DashboardCollectionViewCell
-        cell.configure(company: savedJobs[indexPath.row].company ?? "N/A", location: savedJobs[indexPath.row].location ?? "N/A", status: savedJobs[indexPath.row].status ?? "open")
+        
+        if filterApplied {
+            cell.configure(company: filteredJobs[indexPath.row].company ?? "N/A", location: filteredJobs[indexPath.row].location ?? "N/A", status: filteredJobs[indexPath.row].status ?? "open")
+        } else {
+            cell.configure(company: savedJobs[indexPath.row].company ?? "N/A", location: savedJobs[indexPath.row].location ?? "N/A", status: savedJobs[indexPath.row].status ?? "open")
+        }
         return cell
     }
 }
@@ -145,7 +190,7 @@ extension DashboardViewController: UICollectionViewDataSource {
 
 extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = JobDetailsViewController(job: savedJobs[indexPath.row]) //add parameters to pass in job info
+        let detailVC = JobDetailsViewController(job: savedJobs[indexPath.row])
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

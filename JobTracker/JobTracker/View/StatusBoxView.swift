@@ -12,9 +12,9 @@ class StatusBoxView: UIView {
     // MARK: - UI Properties
     
     let status: String
-        
-    let box: UIView = {
-        let box = UIView()
+       
+    let box: UIButton = {
+        let box = UIButton()
         box.translatesAutoresizingMaskIntoConstraints = false
         box.clipsToBounds = true
         box.layer.cornerRadius = 20
@@ -75,6 +75,8 @@ class StatusBoxView: UIView {
     // MARK: - UI Setup
 
     private func setUpViews() {
+        box.addSubview(statusLabel)
+        box.addSubview(countLabel)
         
         addSubview(box)
         addSubview(statusLabel)
@@ -95,4 +97,14 @@ class StatusBoxView: UIView {
             countLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 5),
         ])
     }
+}
+
+extension UIButton {
+    func setBackgroundColor(_ color: UIColor, forState controlState: UIControl.State) {
+        let colorImage = UIGraphicsImageRenderer(size: CGSize(width: 1, height: 1)).image { _ in
+          color.setFill()
+          UIBezierPath(rect: CGRect(x: 0, y: 0, width: 1, height: 1)).fill()
+        }
+        setBackgroundImage(colorImage, for: controlState)
+      }
 }
