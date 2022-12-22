@@ -51,6 +51,48 @@ class DashboardContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Functions
+    
+    func configureFilteredStatusButtonAppearance(status: JobStatus) {
+        
+        switch status {
+        case .open:
+            statusBoxes.openStatusBox.box.backgroundColor = UIColor(named: "OpenStatus")
+            statusBoxes.openStatusBox.statusLabel.textColor = .black
+            statusBoxes.openStatusBox.countLabel.textColor = .black
+        case .applied:
+            statusBoxes.appliedStatusBox.box.backgroundColor = UIColor(named: "AppliedStatus")
+            statusBoxes.appliedStatusBox.statusLabel.textColor = .black
+            statusBoxes.appliedStatusBox.countLabel.textColor = .black
+        case .interview:
+            statusBoxes.interviewStatusBox.box.backgroundColor = UIColor(named: "InterviewStatus")
+            statusBoxes.interviewStatusBox.statusLabel.textColor = .black
+            statusBoxes.interviewStatusBox.countLabel.textColor = .black
+        case .closed:
+            statusBoxes.closedStatusBox.box.backgroundColor = .darkGray
+            statusBoxes.closedStatusBox.statusLabel.textColor = .white
+            statusBoxes.closedStatusBox.countLabel.textColor = .white
+        }
+    }
+    
+    func configureDefaultStatusButtonAppearance() {
+        statusBoxes.openStatusBox.box.backgroundColor = UIColor(named: "StatusBoxBackground")
+        statusBoxes.openStatusBox.statusLabel.textColor = UIColor(named: "OpenStatusLabel")
+        statusBoxes.openStatusBox.countLabel.textColor = UIColor(named: "OpenStatusLabel")
+        
+        statusBoxes.appliedStatusBox.box.backgroundColor = UIColor(named: "StatusBoxBackground")
+        statusBoxes.appliedStatusBox.statusLabel.textColor = UIColor(named: "AppliedStatusLabel")
+        statusBoxes.appliedStatusBox.countLabel.textColor = UIColor(named: "AppliedStatusLabel")
+        
+        statusBoxes.interviewStatusBox.box.backgroundColor = UIColor(named: "StatusBoxBackground")
+        statusBoxes.interviewStatusBox.statusLabel.textColor = UIColor(named: "InterviewStatusLabel")
+        statusBoxes.interviewStatusBox.countLabel.textColor = UIColor(named: "InterviewStatusLabel")
+        
+        statusBoxes.closedStatusBox.box.backgroundColor = UIColor(named: "StatusBoxBackground")
+        statusBoxes.closedStatusBox.statusLabel.textColor = .darkGray
+        statusBoxes.closedStatusBox.countLabel.textColor = .darkGray
+    }
+    
     // MARK: - UI Setup
     
     private func setUpViews() {

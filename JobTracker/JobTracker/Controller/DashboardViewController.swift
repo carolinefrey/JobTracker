@@ -102,18 +102,22 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         if filterApplied {
             switch sender {
             case contentView.statusBoxes.openStatusBox.box:
+                contentView.configureFilteredStatusButtonAppearance(status: .open)
                 filteredJobs = savedJobs.filter { job in
                     return job.status == "open"
                 }
             case contentView.statusBoxes.appliedStatusBox.box:
+                contentView.configureFilteredStatusButtonAppearance(status: .applied)
                 filteredJobs = savedJobs.filter { job in
                     return job.status == "applied"
                 }
             case contentView.statusBoxes.interviewStatusBox.box:
+                contentView.configureFilteredStatusButtonAppearance(status: .interview)
                 filteredJobs = savedJobs.filter { job in
                     return job.status == "interview"
                 }
             case contentView.statusBoxes.closedStatusBox.box:
+                contentView.configureFilteredStatusButtonAppearance(status: .closed)
                 filteredJobs = savedJobs.filter { job in
                     return job.status == "closed"
                 }
@@ -121,6 +125,7 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
                 return
             }
         } else {
+            contentView.configureDefaultStatusButtonAppearance()
             filteredJobs = savedJobs
         }
         contentView.collectionView.reloadData()
