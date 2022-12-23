@@ -22,7 +22,6 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
     private var savedJobs = [Job]()
     private var filteredJobs = [Job]()
     private var filtersApplied = [JobStatus]()
-    //private var filterApplied: Bool = false
     
     lazy var addNewJobButton: UIBarButtonItem = {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)

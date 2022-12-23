@@ -119,9 +119,3 @@ extension AddJobViewController: UITextFieldDelegate {
         return false
     }
 }
-
-// MARK: - UITextViewDelegate
-
-extension AddJobViewController: UITextViewDelegate {
-    
-}
