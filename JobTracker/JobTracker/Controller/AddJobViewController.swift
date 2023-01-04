@@ -7,7 +7,12 @@
 
 import UIKit
 
-class AddJobViewController: UIViewController {
+class AddJobViewController: UIViewController, UITextViewDelegate {
+    
+//    // MARK: - UserDefaults
+//
+//    let defaults = UserDefaults.standard
+//    var favoriteJobs = FavoriteJobs(favorites: [])
     
     // MARK: - UI Properties
     
@@ -87,7 +92,7 @@ class AddJobViewController: UIViewController {
     }
     
 //    @objc func favoriteJob() {
-//        //TODO: - Implement favorite jobs
+//
 //    }
     
     @objc func textFieldChanged(sender: UITextField) {

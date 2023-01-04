@@ -22,7 +22,7 @@ public struct SingleJob: Codable {
     var link: String?
     var notes: String?
     
-    init(status: JobStatus = .open, company: String = "", role: String = "", location: String = "", link: String? = "", notes: String? = "") {
+    init(status: JobStatus = .open, company: String = "", role: String = "", location: String = "", link: String? = "", notes: String?) {
         self.status = status
         self.company = company
         self.role = role
@@ -30,4 +30,8 @@ public struct SingleJob: Codable {
         self.link = link
         self.notes = notes
     }
+}
+
+public struct FavoriteJobs {
+    var favorites: [SingleJob]
 }

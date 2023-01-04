@@ -68,7 +68,7 @@ class DataManager {
     
     // MARK: - Update
     
-        static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?) {
+    static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?) {
     
             job.company = company
             job.role = role

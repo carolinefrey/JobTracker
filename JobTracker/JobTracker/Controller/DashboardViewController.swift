@@ -53,6 +53,8 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         
         contentView.collectionView.dataSource = self
         contentView.collectionView.delegate = self
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
+        contentView.collectionView.addGestureRecognizer(gesture)
         
         configureStatusBoxButtonTargets()
         
@@ -72,20 +74,21 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         contentView.collectionView.reloadData()
     }
     
-    // MARK: - Functions
+    // MARK: - Selector Functions
     
-    func configureStatusBoxButtonTargets() {
-        contentView.statusBoxes.openStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.appliedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.interviewStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.closedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-    }
-    
-    func didUpdateSettings(name: String) {
-        if name != "" {
-            contentView.headerView.greeting.text = "Hey, \(name)!"
-        } else {
-            contentView.headerView.greeting.text = "Hey!"
+    @objc func handleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            guard let targetIndexPath = contentView.collectionView.indexPathForItem(at: gesture.location(in: contentView.collectionView)) else {
+                return
+            }
+            contentView.collectionView.beginInteractiveMovementForItem(at: targetIndexPath)
+        case .changed:
+            contentView.collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: contentView.collectionView))
+        case .ended:
+            contentView.collectionView.endInteractiveMovement()
+        default:
+            contentView.collectionView.cancelInteractiveMovement()
         }
     }
     
@@ -152,7 +155,24 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         
         contentView.collectionView.reloadData()
     }
-
+    
+    // MARK: - Functions
+    
+    func configureStatusBoxButtonTargets() {
+        contentView.statusBoxes.openStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.appliedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.interviewStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.closedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+    }
+    
+    func didUpdateSettings(name: String) {
+        if name != "" {
+            contentView.headerView.greeting.text = "Hey, \(name)!"
+        } else {
+            contentView.headerView.greeting.text = "Hey!"
+        }
+    }
+    
     private func updateJobStatusCounts() {
         statusCounts = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
         
@@ -210,6 +230,15 @@ extension DashboardViewController: UICollectionViewDataSource {
             cell.configure(company: savedJobs[indexPath.row].company ?? "N/A", location: savedJobs[indexPath.row].location ?? "N/A", status: savedJobs[indexPath.row].status ?? "open")
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = savedJobs.remove(at: sourceIndexPath.row) //move the job within the actual data array
+        savedJobs.insert(item, at: destinationIndexPath.row)
     }
 }
 

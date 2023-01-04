@@ -80,9 +80,9 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         navigationController?.pushViewController(editJobVC, animated: true)
     }
     
-    @objc func favoriteJob() {
-        //TODO: - Implement favorite jobs
-    }
+//    @objc func favoriteJob() {
+//        //TODO: - Implement favorite jobs
+//    }
     
     private func configureStackView () {
         detailsStackView.translatesAutoresizingMaskIntoConstraints = false

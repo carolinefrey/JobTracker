@@ -22,7 +22,6 @@ extension Job {
     @NSManaged public var link: String?
     @NSManaged public var notes: String?
     @NSManaged public var status: JobStatus.RawValue?
-
 }
 
 extension Job : Identifiable {
