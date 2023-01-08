@@ -14,24 +14,24 @@ public enum JobStatus: String, Codable {
     case closed = "closed"
 }
 
-public struct SingleJob: Codable {
-    var status: JobStatus
-    var company: String
-    var role: String
-    var location: String
-    var link: String?
-    var notes: String?
-    
-    init(status: JobStatus = .open, company: String = "", role: String = "", location: String = "", link: String? = "", notes: String?) {
-        self.status = status
-        self.company = company
-        self.role = role
-        self.location = location
-        self.link = link
-        self.notes = notes
-    }
-}
+//public struct SingleJob: Codable {
+//    var status: JobStatus
+//    var company: String
+//    var role: String
+//    var location: String
+//    var link: String?
+//    var notes: String?
+//
+//    init(status: JobStatus = .open, company: String = "", role: String = "", location: String = "", link: String? = "", notes: String?) {
+//        self.status = status
+//        self.company = company
+//        self.role = role
+//        self.location = location
+//        self.link = link
+//        self.notes = notes
+//    }
+//}
 
-public struct FavoriteJobs {
-    var favorites: [SingleJob]
-}
+//public struct FavoriteJobs {
+//    var favorites: [SingleJob]
+//}

@@ -19,8 +19,7 @@ class DataManager {
     
     // MARK: - Create
     
-    static func addJob(company: String, role: String?, location: String?, status: JobStatus, link: String?, notes: String?) {
-
+    static func addJob(company: String, role: String?, location: String?, status: JobStatus, link: String?, notes: String?, displayOrder: NSNumber = 0) {
         let job = Job(context: managedObjectContext)
         job.company = company
         job.role = role
@@ -28,6 +27,7 @@ class DataManager {
         job.status = status.rawValue
         job.link = link
         job.notes = notes
+        
         do {
             try managedObjectContext.save()
         }
@@ -51,7 +51,6 @@ class DataManager {
     }
     
     static func fetchJob(job: String, completion: (Job?) -> Void) {
-        
         let fetchRequest = NSFetchRequest<Job>(entityName: "Job")
         fetchRequest.predicate = NSPredicate(format: "job == %@", job)
         
@@ -68,14 +67,14 @@ class DataManager {
     
     // MARK: - Update
     
-    static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?) {
-    
+    static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?, displayOrder: NSNumber = 0) {
             job.company = company
             job.role = role
             job.location = location
             job.status = status
             job.link = link
             job.notes = notes
+            job.displayOrder = displayOrder
     
             do {
                 try managedObjectContext.save()

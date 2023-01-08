@@ -74,6 +74,55 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         contentView.collectionView.reloadData()
     }
     
+    // MARK: - Functions
+    
+    func configureStatusBoxButtonTargets() {
+        contentView.statusBoxes.openStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.appliedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.interviewStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+        contentView.statusBoxes.closedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+    }
+    
+    func didUpdateSettings(name: String) {
+        if name != "" {
+            contentView.headerView.greeting.text = "Hey, \(name)!"
+        } else {
+            contentView.headerView.greeting.text = "Hey!"
+        }
+    }
+    
+    private func updateJobStatusCounts() {
+        statusCounts = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
+        
+        for job in savedJobs {
+            statusCounts[job.status ?? "open", default: 0] += 1
+        }
+        
+        contentView.statusBoxes.openStatusBox.countLabel.text = "\(statusCounts["open"] ?? 0)"
+        contentView.statusBoxes.appliedStatusBox.countLabel.text = "\(statusCounts["applied"] ?? 0)"
+        contentView.statusBoxes.interviewStatusBox.countLabel.text = "\(statusCounts["interview"] ?? 0)"
+        contentView.statusBoxes.closedStatusBox.countLabel.text = "\(statusCounts["closed"] ?? 0)"
+    }
+    
+    private func fetchJobs() {
+        DataManager.fetchJobs { [weak self] jobs in
+            if let jobs = jobs {
+                savedJobs = jobs
+                DispatchQueue.main.async { [weak self] in
+                    self?.contentView.collectionView.reloadData()
+                }
+            }
+        }
+        sortJobs()
+        filteredJobs = savedJobs
+    }
+    
+    private func sortJobs() {
+        savedJobs.sort { job1, job2 in
+            return job1.displayOrder?.intValue ?? 0 <= job2.displayOrder?.intValue ?? 0
+        }
+    }
+    
     // MARK: - Selector Functions
     
     @objc func handleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
@@ -155,49 +204,6 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         
         contentView.collectionView.reloadData()
     }
-    
-    // MARK: - Functions
-    
-    func configureStatusBoxButtonTargets() {
-        contentView.statusBoxes.openStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.appliedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.interviewStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.closedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-    }
-    
-    func didUpdateSettings(name: String) {
-        if name != "" {
-            contentView.headerView.greeting.text = "Hey, \(name)!"
-        } else {
-            contentView.headerView.greeting.text = "Hey!"
-        }
-    }
-    
-    private func updateJobStatusCounts() {
-        statusCounts = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
-        
-        for job in savedJobs {
-            statusCounts[job.status ?? "open", default: 0] += 1
-        }
-        
-        contentView.statusBoxes.openStatusBox.countLabel.text = "\(statusCounts["open"] ?? 0)"
-        contentView.statusBoxes.appliedStatusBox.countLabel.text = "\(statusCounts["applied"] ?? 0)"
-        contentView.statusBoxes.interviewStatusBox.countLabel.text = "\(statusCounts["interview"] ?? 0)"
-        contentView.statusBoxes.closedStatusBox.countLabel.text = "\(statusCounts["closed"] ?? 0)"
-    }
-    
-    private func fetchJobs() {
-        DataManager.fetchJobs { [weak self] jobs in
-            if let jobs = jobs {
-                savedJobs = jobs
-                
-                DispatchQueue.main.async { [weak self] in
-                    self?.contentView.collectionView.reloadData()
-                }
-            }
-        }
-        filteredJobs = savedJobs
-    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -239,6 +245,13 @@ extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let item = savedJobs.remove(at: sourceIndexPath.row) //move the job within the actual data array
         savedJobs.insert(item, at: destinationIndexPath.row)
+        
+        for i in 0..<savedJobs.count {
+            savedJobs[i].displayOrder = i as NSNumber
+            
+            DataManager.updateJob(job: savedJobs[i].self, company: savedJobs[i].company ?? "", role: savedJobs[i].role, location: savedJobs[i].location, status: savedJobs[i].status, link: savedJobs[i].link, notes: savedJobs[i].notes, displayOrder: savedJobs[i].displayOrder ?? 0)
+        }
+        
     }
 }
 
