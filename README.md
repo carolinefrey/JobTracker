@@ -18,4 +18,4 @@ Users can filter the collection view of job applications based on the status of 
 <img src="https://user-images.githubusercontent.com/22801309/209336947-773d1334-7480-461a-a5e4-52bf5c48e63e.png" width="200">
 </p>
 
-Users can reorder their job applications by tapping, holding and dragging the collection view cells.
+Users can reorder their job applications by tapping, holding and dragging the collection view cells. The application order is persisted across app launches via CoreData.
