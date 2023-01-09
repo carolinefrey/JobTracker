@@ -4,18 +4,18 @@ Keep track of your job applications with JobApp Tracker!
 
 Add the company, role, location, link and any notes about the job. Select the status of the application (open, applied, interview, or closed).
 <p float="center">
-<img src="https://user-images.githubusercontent.com/22801309/209336938-c3744ceb-c70b-482d-a8b5-470d2bd1b061.png" width="200">
+<img src="https://user-images.githubusercontent.com/22801309/211418250-c332ee6d-860f-4a5e-84d2-df08699f566f.png" width="200">
 <img src="https://user-images.githubusercontent.com/22801309/209336940-aeeff1ae-127c-48f0-8350-cdca13315ff0.png" width="200">
-<img src="https://user-images.githubusercontent.com/22801309/209336941-6f1dd77e-2206-4a21-97e5-d1386036caac.png" width="200">
+<img src="https://user-images.githubusercontent.com/22801309/211418298-19d3981b-acf1-42b4-8c63-cd5cbdb486bc.png" width="200">
 <img src="https://user-images.githubusercontent.com/22801309/209336942-8348a186-d6f5-45a6-937c-646d76290395.png" width="200">
 </p>
 
 Users can filter the collection view of job applications based on the status of the application.
 
 <p float="center">
-<img src="https://user-images.githubusercontent.com/22801309/209336943-10407cd8-41df-4183-b304-182441eb045d.png" width="200">
-<img src="https://user-images.githubusercontent.com/22801309/209336945-66741f0b-d811-4b96-8002-18f09ca7e8d0.png" width="200">
-<img src="https://user-images.githubusercontent.com/22801309/209336947-773d1334-7480-461a-a5e4-52bf5c48e63e.png" width="200">
+<img src="https://user-images.githubusercontent.com/22801309/211418360-bae07b41-37e7-4f6c-84fe-60088da57e13.png" width="200">
+<img src="https://user-images.githubusercontent.com/22801309/211418381-2a09b4db-939a-40f6-bd5a-ac5c2556c0cf.png" width="200">
+<img src="https://user-images.githubusercontent.com/22801309/211418396-8b3637bf-e6cd-48ea-a04d-53aed1cca3bb.png" width="200">
 </p>
 
-Users can reorder their job applications by tapping, holding and dragging the collection view cells. The application order is persisted across app launches via CoreData.
+Users can reorder their job applications by tapping, holding and dragging the collection view cells. The application order is persisted across app launches using CoreData.
