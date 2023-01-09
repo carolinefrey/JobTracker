@@ -28,10 +28,12 @@ class DashboardContentView: UIView {
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: 150, height: 150)
         layout.sectionInset = UIEdgeInsets(top: 24, left: 30, bottom: 24, right: 30)
+        layout.headerReferenceSize = CGSize(width: frame.size.width, height: 35)
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(DashboardCollectionViewCell.self, forCellWithReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier)
+        collection.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
         collection.layer.cornerRadius = 20
         collection.backgroundColor = .white
         return collection
@@ -54,7 +56,6 @@ class DashboardContentView: UIView {
     // MARK: - Functions
     
     func configureFilteredStatusButtonAppearance(status: JobStatus) {
-        
         switch status {
         case .open:
             statusBoxes.openStatusBox.box.backgroundColor = UIColor(named: "OpenStatus")
@@ -102,7 +103,7 @@ class DashboardContentView: UIView {
         addSubview(headerView)
         addSubview(statusBoxes)
         addSubview(collectionView)
-        
+                        
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

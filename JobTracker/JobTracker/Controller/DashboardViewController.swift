@@ -23,14 +23,6 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
     private var filteredJobs = [Job]()
     private var filtersApplied = [JobStatus]()
     
-    lazy var addNewJobButton: UIBarButtonItem = {
-        let config = UIImage.SymbolConfiguration(textStyle: .title3)
-        let icon = UIImage(systemName: "plus", withConfiguration: config)
-        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(addNewJob))
-        button.tintColor = UIColor(named: "Color4")
-        return button
-    }()
-    
     lazy var settingsButton: UIBarButtonItem = {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "gear", withConfiguration: config)
@@ -44,7 +36,7 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
     override func loadView() {
         super.loadView()
         view.backgroundColor = .blue
-        navigationItem.rightBarButtonItems = [settingsButton, addNewJobButton]
+        navigationItem.rightBarButtonItem = settingsButton
         
         contentView = DashboardContentView()
         view = contentView
@@ -141,7 +133,7 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         }
     }
     
-    @objc func addNewJob(_ sender: UIBarButtonItem) {
+    @objc func addNewJob(_ sender: UIButton) {
         let addNewJobVC = AddJobViewController()
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
@@ -251,7 +243,13 @@ extension DashboardViewController: UICollectionViewDataSource {
             
             DataManager.updateJob(job: savedJobs[i].self, company: savedJobs[i].company ?? "", role: savedJobs[i].role, location: savedJobs[i].location, status: savedJobs[i].status, link: savedJobs[i].link, notes: savedJobs[i].notes, displayOrder: savedJobs[i].displayOrder ?? 0)
         }
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
+        header.configure()
+        header.addNewJobButton.addTarget(self, action: #selector(addNewJob(_:)), for: .touchUpInside)
+        return header
     }
 }
 

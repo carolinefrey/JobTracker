@@ -19,7 +19,7 @@ class DataManager {
     
     // MARK: - Create
     
-    static func addJob(company: String, role: String?, location: String?, status: JobStatus, link: String?, notes: String?, displayOrder: NSNumber = 0) {
+    static func addJob(company: String, role: String?, location: String?, status: JobStatus, link: String?, notes: String?) {
         let job = Job(context: managedObjectContext)
         job.company = company
         job.role = role
@@ -27,6 +27,7 @@ class DataManager {
         job.status = status.rawValue
         job.link = link
         job.notes = notes
+        job.displayOrder = 0
         
         do {
             try managedObjectContext.save()

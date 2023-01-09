@@ -51,7 +51,6 @@ class EditJobViewController: UIViewController {
     init(job: Job) {
         self.job = job
         contentView = EditJobContentView(job: job)
-        
         super.init(nibName: nil, bundle: nil)
     }
     

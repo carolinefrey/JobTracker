@@ -20,6 +20,7 @@
 		B976797D2942070C00F78490 /* NotesFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B976797C2942070C00F78490 /* NotesFieldView.swift */; };
 		B97979BA2938CF4300F46578 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979B92938CF4300F46578 /* TextFieldView.swift */; };
 		B97979BC2938D21B00F46578 /* TextFieldStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979BB2938D21B00F46578 /* TextFieldStackView.swift */; };
+		B98C1E61296CBD830059E95D /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */; };
 		B99A78EB293AEAAB001A5996 /* DetailsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */; };
 		B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */; };
 		B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */; };
@@ -54,6 +55,7 @@
 		B976797C2942070C00F78490 /* NotesFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesFieldView.swift; sourceTree = "<group>"; };
 		B97979B92938CF4300F46578 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B97979BB2938D21B00F46578 /* TextFieldStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackView.swift; sourceTree = "<group>"; };
+		B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsStackView.swift; sourceTree = "<group>"; };
 		B9B5CACD292EBA7200C7EC58 /* JobTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				B9C03F142936808B00ED2AD7 /* StatusBoxView.swift */,
 				B9C03F162936832E00ED2AD7 /* StatusBoxesStackView.swift */,
 				B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */,
+				B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */,
 				B9D3B6CA2937641B004CB5A4 /* AddJobContentView.swift */,
 				B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */,
 				B97979B92938CF4300F46578 /* TextFieldView.swift */,
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B5CAD5292EBA7200C7EC58 /* DashboardViewController.swift in Sources */,
+				B98C1E61296CBD830059E95D /* HeaderCollectionReusableView.swift in Sources */,
 				B95A3E3B2937ECB000518CA3 /* DataManager.swift in Sources */,
 				B95A3E382937EBFC00518CA3 /* Job+CoreDataClass.swift in Sources */,
 				B97979BC2938D21B00F46578 /* TextFieldStackView.swift in Sources */,
@@ -460,7 +464,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -487,7 +491,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
