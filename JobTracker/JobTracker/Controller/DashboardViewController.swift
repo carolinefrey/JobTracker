@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController, SetUsernameDelegate {
+class DashboardViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
@@ -35,27 +35,21 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
     
     override func loadView() {
         super.loadView()
-        view.backgroundColor = .blue
         navigationItem.rightBarButtonItem = settingsButton
         
         contentView = DashboardContentView()
         view = contentView
         
         name = defaults.string(forKey: "name") ?? ""
-        
-        contentView.collectionView.dataSource = self
-        contentView.collectionView.delegate = self
-        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
-        contentView.collectionView.addGestureRecognizer(gesture)
-        
-        configureStatusBoxButtonTargets()
-        
+                
         if name != "" {
             contentView.headerView.greeting.text = "Hey, \(name)!"
         } else {
             contentView.headerView.greeting.text = "Hey!"
         }
         
+        configureStatusBoxDelegates()
+        configureCollectionView()
         fetchJobs()
         updateJobStatusCounts()
     }
@@ -68,21 +62,20 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
     
     // MARK: - Functions
     
-    func configureStatusBoxButtonTargets() {
-        contentView.statusBoxes.openStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.appliedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.interviewStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
-        contentView.statusBoxes.closedStatusBox.box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
+    private func configureStatusBoxDelegates() {
+        contentView.statusBoxes.openStatusBox.delegate = self
+        contentView.statusBoxes.appliedStatusBox.delegate = self
+        contentView.statusBoxes.interviewStatusBox.delegate = self
+        contentView.statusBoxes.closedStatusBox.delegate = self
     }
     
-    func didUpdateSettings(name: String) {
-        if name != "" {
-            contentView.headerView.greeting.text = "Hey, \(name)!"
-        } else {
-            contentView.headerView.greeting.text = "Hey!"
-        }
+    private func configureCollectionView() {
+        contentView.collectionView.dataSource = self
+        contentView.collectionView.delegate = self
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
+        contentView.collectionView.addGestureRecognizer(gesture)
     }
-    
+
     private func updateJobStatusCounts() {
         statusCounts = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
         
@@ -133,68 +126,10 @@ class DashboardViewController: UIViewController, SetUsernameDelegate {
         }
     }
     
-    @objc func addNewJob(_ sender: UIButton) {
-        let addNewJobVC = AddJobViewController()
-        navigationController?.pushViewController(addNewJobVC, animated: true)
-    }
-    
     @objc func presentSettingsView() {
         let settingsVC = SettingsViewController()
         settingsVC.delegate = self
         present(settingsVC, animated: true)
-    }
-    
-    @objc func filterJobs(sender: UIButton) {
-        switch sender {
-        case contentView.statusBoxes.openStatusBox.box:
-            if filtersApplied.contains(.open) {
-                contentView.configureDefaultStatusButtonAppearance(status: .open)
-                filtersApplied.removeAll { status in
-                    status == .open
-                }
-            } else {
-                contentView.configureFilteredStatusButtonAppearance(status: .open)
-                filtersApplied.append(.open)
-            }
-        case contentView.statusBoxes.appliedStatusBox.box:
-            if filtersApplied.contains(.applied) {
-                contentView.configureDefaultStatusButtonAppearance(status: .applied)
-                filtersApplied.removeAll { status in
-                    status == .applied
-                }
-            } else {
-                contentView.configureFilteredStatusButtonAppearance(status: .applied)
-                filtersApplied.append(.applied)
-            }
-        case contentView.statusBoxes.interviewStatusBox.box:
-            if filtersApplied.contains(.interview) {
-                contentView.configureDefaultStatusButtonAppearance(status: .interview)
-                filtersApplied.removeAll { status in
-                    status == .interview
-                }
-            } else {
-                contentView.configureFilteredStatusButtonAppearance(status: .interview)
-                filtersApplied.append(.interview)
-            }
-        case contentView.statusBoxes.closedStatusBox.box:
-            if filtersApplied.contains(.closed) {
-                contentView.configureDefaultStatusButtonAppearance(status: .closed)
-                filtersApplied.removeAll { status in
-                    status == .closed
-                }
-            } else {
-                contentView.configureFilteredStatusButtonAppearance(status: .closed)
-                filtersApplied.append(.closed)
-            }
-        default:
-            return
-        }
-        
-        filteredJobs = savedJobs.filter { job in
-            return filtersApplied.contains(JobStatus(rawValue: job.status!)!)
-        }
-        
-        contentView.collectionView.reloadData()
     }
 }
 
@@ -248,7 +183,7 @@ extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
         header.configure()
-        header.addNewJobButton.addTarget(self, action: #selector(addNewJob(_:)), for: .touchUpInside)
+        header.delegate = self
         return header
     }
 }
@@ -279,3 +214,82 @@ extension UICollectionView {
         self.backgroundView = nil
     }
 }
+
+// MARK: - SetUsernameDelegate
+
+extension DashboardViewController: SetUsernameDelegate {
+    func didUpdateSettings(name: String) {
+        if name != "" {
+            contentView.headerView.greeting.text = "Hey, \(name)!"
+        } else {
+            contentView.headerView.greeting.text = "Hey!"
+        }
+    }
+}
+
+// MARK: - HeaderCollectionReusableViewDelegate
+
+extension DashboardViewController: HeaderCollectionReusableViewDelegate {
+    func tapAddNewJobButton() {
+        let addNewJobVC = AddJobViewController()
+        navigationController?.pushViewController(addNewJobVC, animated: true)
+    }
+}
+
+// MARK: - StatusBoxViewDelegate
+
+extension DashboardViewController: StatusBoxViewDelegate {
+    func tapStatusBox(_ sender: UIButton) {
+        switch sender {
+        case contentView.statusBoxes.openStatusBox.box:
+            if filtersApplied.contains(.open) {
+                contentView.configureDefaultStatusButtonAppearance(status: .open)
+                filtersApplied.removeAll { status in
+                    status == .open
+                }
+            } else {
+                contentView.configureFilteredStatusButtonAppearance(status: .open)
+                filtersApplied.append(.open)
+            }
+        case contentView.statusBoxes.appliedStatusBox.box:
+            if filtersApplied.contains(.applied) {
+                contentView.configureDefaultStatusButtonAppearance(status: .applied)
+                filtersApplied.removeAll { status in
+                    status == .applied
+                }
+            } else {
+                contentView.configureFilteredStatusButtonAppearance(status: .applied)
+                filtersApplied.append(.applied)
+            }
+        case contentView.statusBoxes.interviewStatusBox.box:
+            if filtersApplied.contains(.interview) {
+                contentView.configureDefaultStatusButtonAppearance(status: .interview)
+                filtersApplied.removeAll { status in
+                    status == .interview
+                }
+            } else {
+                contentView.configureFilteredStatusButtonAppearance(status: .interview)
+                filtersApplied.append(.interview)
+            }
+        case contentView.statusBoxes.closedStatusBox.box:
+            if filtersApplied.contains(.closed) {
+                contentView.configureDefaultStatusButtonAppearance(status: .closed)
+                filtersApplied.removeAll { status in
+                    status == .closed
+                }
+            } else {
+                contentView.configureFilteredStatusButtonAppearance(status: .closed)
+                filtersApplied.append(.closed)
+            }
+        default:
+            return
+        }
+        
+        filteredJobs = savedJobs.filter { job in
+            return filtersApplied.contains(JobStatus(rawValue: job.status!)!)
+        }
+        
+        contentView.collectionView.reloadData()
+    }
+}
+

@@ -7,18 +7,25 @@
 
 import UIKit
 
+protocol StatusBoxViewDelegate: AnyObject {
+    func tapStatusBox(_ sender: UIButton)
+}
+
 class StatusBoxView: UIView {
         
     // MARK: - UI Properties
     
+    weak var delegate: StatusBoxViewDelegate?
+    
     let status: String
        
-    let box: UIButton = {
+    lazy var box: UIButton = {
         let box = UIButton()
         box.translatesAutoresizingMaskIntoConstraints = false
         box.clipsToBounds = true
         box.layer.cornerRadius = 20
         box.backgroundColor = UIColor(named: "StatusBoxBackground")
+        box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
         return box
     }()
     
@@ -70,6 +77,12 @@ class StatusBoxView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Functions
+    
+    @objc func filterJobs(sender: UIButton) {
+        delegate?.tapStatusBox(sender)
     }
     
     // MARK: - UI Setup

@@ -115,7 +115,6 @@ class EditJobViewController: UIViewController {
     
     @objc func deleteJob() {
         DataManager.deleteJob(item: job)
-        
         navigationController?.popToRootViewController(animated: true)
     }
     

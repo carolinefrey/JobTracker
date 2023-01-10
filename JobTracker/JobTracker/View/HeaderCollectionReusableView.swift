@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol HeaderCollectionReusableViewDelegate: AnyObject {
+    func tapAddNewJobButton()
+}
+
 class HeaderCollectionReusableView: UICollectionReusableView {
     
     // MARK: - UI Properties
     
     static let identifier = "HeaderCollectionReusableView"
+    
+    weak var delegate: HeaderCollectionReusableViewDelegate?
     
     lazy var addNewJobButton: UIButton = {
         let button = UIButton()
@@ -20,8 +26,15 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         let buttonSymbol = UIImage(systemName: "plus", withConfiguration: largeConfig)
         button.setImage(buttonSymbol, for: .normal)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(addNewJob), for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Selector Function
+    
+    @objc func addNewJob(_ sender: UIButton) {
+        delegate?.tapAddNewJobButton()
+    }
     
     // MARK: - UI Setup
 

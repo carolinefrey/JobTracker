@@ -86,6 +86,16 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
         ])
     }
     
+    private func setTextViewDelegates() {
+        contentView.textFieldStackView.companyField.textFieldView.delegate = self
+        contentView.textFieldStackView.roleField.textFieldView.delegate = self
+        contentView.textFieldStackView.locationField.textFieldView.delegate = self
+        contentView.textFieldStackView.linkField.textFieldView.delegate = self
+        contentView.textFieldStackView.notesField.notesFieldView.delegate = self
+    }
+    
+    // MARK: - Selector Functions
+
     @objc func saveJob() {
         DataManager.addJob(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none")
         navigationController?.popViewController(animated: true)
@@ -105,14 +115,6 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
             let config = UIImage.SymbolConfiguration(textStyle: .title3)
             saveJobButton.image = UIImage(systemName: "square.and.arrow.down", withConfiguration: config)
         }
-    }
-    
-    private func setTextViewDelegates() {
-        contentView.textFieldStackView.companyField.textFieldView.delegate = self
-        contentView.textFieldStackView.roleField.textFieldView.delegate = self
-        contentView.textFieldStackView.locationField.textFieldView.delegate = self
-        contentView.textFieldStackView.linkField.textFieldView.delegate = self
-        contentView.textFieldStackView.notesField.notesFieldView.delegate = self
     }
 }
 
