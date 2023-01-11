@@ -26,15 +26,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         button.tintColor = UIColor(named: "Color4")
         return button
     }()
-    
-//    lazy var favoriteButton: UIBarButtonItem = {
-//        let config = UIImage.SymbolConfiguration(textStyle: .title3)
-//        let icon = UIImage(systemName: "heart", withConfiguration: config)
-//        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
-//        button.tintColor = UIColor(named: "FavoriteButtonColor")
-//        return button
-//    }()
-    
+
     // MARK: - Initializers
     
     init(job: Job) {
@@ -79,10 +71,6 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         editJobVC.delegate = self
         navigationController?.pushViewController(editJobVC, animated: true)
     }
-    
-//    @objc func favoriteJob() {
-//        //TODO: - Implement favorite jobs
-//    }
     
     private func configureStackView () {
         detailsStackView.translatesAutoresizingMaskIntoConstraints = false

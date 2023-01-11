@@ -9,11 +9,6 @@ import UIKit
 
 class AddJobViewController: UIViewController, UITextViewDelegate {
     
-//    // MARK: - UserDefaults
-//
-//    let defaults = UserDefaults.standard
-//    var favoriteJobs = FavoriteJobs(favorites: [])
-    
     // MARK: - UI Properties
     
     private var contentView = AddJobContentView()
@@ -34,15 +29,7 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
         button.isEnabled = false //disable until user enters company name
         return button
     }()
-    
-//    lazy var favoriteButton: UIBarButtonItem = {
-//        let config = UIImage.SymbolConfiguration(textStyle: .title3)
-//        let icon = UIImage(systemName: "heart", withConfiguration: config)
-//        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
-//        button.tintColor = UIColor(named: "FavoriteButtonColor")
-//        return button
-//    }()
-    
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -100,10 +87,6 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
         DataManager.addJob(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none")
         navigationController?.popViewController(animated: true)
     }
-    
-//    @objc func favoriteJob() {
-//
-//    }
     
     @objc func textFieldChanged(sender: UITextField) {
         if contentView.textFieldStackView.companyField.textFieldView.text != "" {

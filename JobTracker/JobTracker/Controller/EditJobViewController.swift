@@ -38,14 +38,6 @@ class EditJobViewController: UIViewController {
         return button
     }()
     
-//    lazy var favoriteButton: UIBarButtonItem = {
-//        let config = UIImage.SymbolConfiguration(textStyle: .title3)
-//        let icon = UIImage(systemName: "heart", withConfiguration: config)
-//        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJob))
-//        button.tintColor = UIColor(named: "FavoriteButtonColor")
-//        return button
-//    }()
-    
     // MARK: - Initializer
     
     init(job: Job) {
@@ -108,11 +100,7 @@ class EditJobViewController: UIViewController {
         delegate?.didUpdateJob(job: job)
         navigationController?.popViewController(animated: true)
     }
-    
-//    @objc func favoriteJob() {
-//        //TODO: - Implement favorite jobs
-//    }
-    
+
     @objc func deleteJob() {
         DataManager.deleteJob(item: job)
         navigationController?.popToRootViewController(animated: true)
