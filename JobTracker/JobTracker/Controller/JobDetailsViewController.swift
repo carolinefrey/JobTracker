@@ -68,7 +68,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     
     @objc func editJob() {
         let editJobVC = EditJobViewController(job: job)
-        editJobVC.delegate = self
+        editJobVC.updateJobDelegate = self
         navigationController?.pushViewController(editJobVC, animated: true)
     }
     

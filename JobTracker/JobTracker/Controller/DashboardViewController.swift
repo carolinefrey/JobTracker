@@ -41,7 +41,7 @@ class DashboardViewController: UIViewController {
         view = contentView
         
         name = defaults.string(forKey: "name") ?? ""
-                
+        
         if name != "" {
             contentView.headerView.greeting.text = "Hey, \(name)!"
         } else {
@@ -56,8 +56,8 @@ class DashboardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fetchJobs()
-        updateJobStatusCounts()
         contentView.collectionView.reloadData()
+        updateJobStatusCounts()
     }
     
     // MARK: - Functions
@@ -75,7 +75,7 @@ class DashboardViewController: UIViewController {
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
         contentView.collectionView.addGestureRecognizer(gesture)
     }
-
+    
     private func updateJobStatusCounts() {
         statusCounts = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
         
@@ -91,19 +91,21 @@ class DashboardViewController: UIViewController {
     
     private func fetchJobs() {
         DataManager.fetchJobs { [weak self] jobs in
-            if let jobs = jobs {
-                savedJobs = jobs
-                DispatchQueue.main.async { [weak self] in
-                    self?.contentView.collectionView.reloadData()
-                }
+            if let fetchedJobs = jobs {
+                savedJobs = fetchedJobs
+            }
+            DispatchQueue.main.async { [weak self] in
+                self?.contentView.collectionView.reloadData()
             }
         }
         sortJobs()
-        filteredJobs = savedJobs
     }
     
     private func sortJobs() {
         savedJobs.sort { job1, job2 in
+            return job1.displayOrder?.intValue ?? 0 <= job2.displayOrder?.intValue ?? 0
+        }
+        filteredJobs.sort { job1, job2 in
             return job1.displayOrder?.intValue ?? 0 <= job2.displayOrder?.intValue ?? 0
         }
     }
@@ -158,6 +160,9 @@ extension DashboardViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier, for: indexPath) as! DashboardCollectionViewCell
         
         if filtersApplied != [] {
+            filteredJobs = savedJobs.filter { job in
+                return filtersApplied.contains(JobStatus(rawValue: job.status!)!)
+            }
             cell.configure(company: filteredJobs[indexPath.row].company ?? "N/A", location: filteredJobs[indexPath.row].location ?? "N/A", status: filteredJobs[indexPath.row].status ?? "open")
         } else {
             cell.configure(company: savedJobs[indexPath.row].company ?? "N/A", location: savedJobs[indexPath.row].location ?? "N/A", status: savedJobs[indexPath.row].status ?? "open")
@@ -192,8 +197,13 @@ extension DashboardViewController: UICollectionViewDataSource {
 
 extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = JobDetailsViewController(job: savedJobs[indexPath.row])
-        navigationController?.pushViewController(detailVC, animated: true)
+        if filtersApplied != [] {
+            let detailVC = JobDetailsViewController(job: filteredJobs[indexPath.row])
+            navigationController?.pushViewController(detailVC, animated: true)
+        } else {
+            let detailVC = JobDetailsViewController(job: savedJobs[indexPath.row])
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
 

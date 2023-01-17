@@ -39,7 +39,7 @@ class EditJobContentView: UIView {
     init(job: Job) {
         self.job = job
         textFieldStackView = TextFieldStackView()
-        selectStatusView = SelectJobStatusView(status: JobStatus(rawValue: job.status!) ?? .open)
+        selectStatusView = SelectJobStatusView(status: JobStatus(rawValue: job.status ?? "open") ?? .open)
         textFieldStackView.companyField.textFieldView.text = job.company
         textFieldStackView.roleField.textFieldView.text = job.role
         textFieldStackView.locationField.textFieldView.text = job.location

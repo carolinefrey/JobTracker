@@ -11,7 +11,7 @@ import CoreData
 
 
 extension Job {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Job> {
         return NSFetchRequest<Job>(entityName: "Job")
     }
@@ -25,6 +25,6 @@ extension Job {
     @NSManaged public var displayOrder: NSNumber?
 }
 
-extension Job : Identifiable {
+extension Job: Identifiable {
 
 }

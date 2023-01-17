@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol UpdateJobDelegate {
+protocol UpdateJobDelegate: AnyObject {
     func didUpdateJob(job: Job)
 }
 
 class EditJobViewController: UIViewController {
     
-    var delegate: UpdateJobDelegate?
+    var updateJobDelegate: UpdateJobDelegate?
 
     // MARK: - UI Properties
     
@@ -97,7 +97,7 @@ class EditJobViewController: UIViewController {
     
     @objc func updateJob() {
         DataManager.updateJob(job: job, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status.rawValue, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none")
-        delegate?.didUpdateJob(job: job)
+        updateJobDelegate?.didUpdateJob(job: job)
         navigationController?.popViewController(animated: true)
     }
 
