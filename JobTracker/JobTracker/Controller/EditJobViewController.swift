@@ -11,10 +11,15 @@ protocol UpdateJobDelegate: AnyObject {
     func didUpdateJob(job: Job)
 }
 
+protocol DeleteJobDelegate: AnyObject {
+    func didDeleteJob(job: Job)
+}
+
 class EditJobViewController: UIViewController {
     
     var updateJobDelegate: UpdateJobDelegate?
-
+    var deleteJobDelegate: DeleteJobDelegate?
+    
     // MARK: - UI Properties
     
     var job: Job
@@ -103,6 +108,7 @@ class EditJobViewController: UIViewController {
 
     @objc func deleteJob() {
         DataManager.deleteJob(item: job)
+        deleteJobDelegate?.didDeleteJob(job: job)
         navigationController?.popToRootViewController(animated: true)
     }
     

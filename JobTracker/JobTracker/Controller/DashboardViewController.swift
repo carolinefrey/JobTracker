@@ -199,9 +199,11 @@ extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if filtersApplied != [] {
             let detailVC = JobDetailsViewController(job: filteredJobs[indexPath.row])
+            detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
         } else {
             let detailVC = JobDetailsViewController(job: savedJobs[indexPath.row])
+            detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
@@ -243,6 +245,15 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
     func tapAddNewJobButton() {
         let addNewJobVC = AddJobViewController()
         navigationController?.pushViewController(addNewJobVC, animated: true)
+    }
+}
+
+// MARK: - JobDeletedDelegate
+extension DashboardViewController: DeleteJobDelegate {
+    func didDeleteJob(job: Job) {
+        filteredJobs.removeAll { filteredJob in
+            filteredJob == job
+        }
     }
 }
 

@@ -17,6 +17,8 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     
     var job: Job
     
+    var deleteJobDelegate: DeleteJobDelegate? //pass from DashboardVC --> EditJobVC through this VC
+    
     private var detailsStackView: DetailsStackView
     
     lazy var editJobButton: UIBarButtonItem = {
@@ -69,6 +71,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     @objc func editJob() {
         let editJobVC = EditJobViewController(job: job)
         editJobVC.updateJobDelegate = self
+        editJobVC.deleteJobDelegate = self.deleteJobDelegate
         navigationController?.pushViewController(editJobVC, animated: true)
     }
     
