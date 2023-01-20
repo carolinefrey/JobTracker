@@ -25,6 +25,7 @@ class TextFieldStackView: UIView {
     var locationField: TextFieldView
     var linkField: TextFieldView
     var notesField: NotesFieldView
+    var dateField: DateFieldView
     
     // MARK: - Initializers
     
@@ -35,6 +36,7 @@ class TextFieldStackView: UIView {
         locationField = TextFieldView(textFieldTitle: "location", textFieldHeight: 45, autoCap: true)
         linkField = TextFieldView(textFieldTitle: "link", textFieldHeight: 45, autoCap: false)
         notesField = NotesFieldView()
+        dateField = DateFieldView()
 
         super.init(frame: .zero)
         
@@ -54,6 +56,7 @@ class TextFieldStackView: UIView {
         locationField.translatesAutoresizingMaskIntoConstraints = false
         linkField.translatesAutoresizingMaskIntoConstraints = false
         notesField.translatesAutoresizingMaskIntoConstraints = false
+        dateField.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(textFieldStackView)
         
@@ -62,6 +65,7 @@ class TextFieldStackView: UIView {
         textFieldStackView.addArrangedSubview(locationField)
         textFieldStackView.addArrangedSubview(linkField)
         textFieldStackView.addArrangedSubview(notesField)
+        textFieldStackView.addArrangedSubview(dateField)
         
         NSLayoutConstraint.activate([
             textFieldStackView.topAnchor.constraint(equalTo: topAnchor),
@@ -74,6 +78,7 @@ class TextFieldStackView: UIView {
             locationField.heightAnchor.constraint(equalToConstant: 65),
             linkField.heightAnchor.constraint(equalToConstant: 65),
             notesField.heightAnchor.constraint(equalToConstant: 95),
+            dateField.heightAnchor.constraint(equalToConstant: 95)
         ])
     }
     

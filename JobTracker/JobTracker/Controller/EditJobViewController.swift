@@ -85,7 +85,7 @@ class EditJobViewController: UIViewController {
     private func configureScrollView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        scrollView.contentSize = CGSize(width: view.frame.size.width, height: contentView.bounds.height+900)
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: contentView.bounds.height+950)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -101,7 +101,7 @@ class EditJobViewController: UIViewController {
     }
     
     @objc func updateJob() {
-        DataManager.updateJob(job: job, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status.rawValue, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none")
+        DataManager.updateJob(job: job, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status.rawValue, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none", dateApplied: contentView.textFieldStackView.dateField.dateAppliedField.date)
         updateJobDelegate?.didUpdateJob(job: job)
         navigationController?.popViewController(animated: true)
     }

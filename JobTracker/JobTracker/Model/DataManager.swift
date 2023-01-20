@@ -19,7 +19,7 @@ class DataManager {
     
     // MARK: - Create
     
-    static func addJob(company: String, role: String?, location: String?, status: JobStatus, link: String?, notes: String?) {
+    static func addJob(company: String, role: String?, location: String?, status: JobStatus, link: String?, notes: String?, dateApplied: Date?) {
         let job = Job(context: managedObjectContext)
         job.company = company
         job.role = role
@@ -27,6 +27,7 @@ class DataManager {
         job.status = status.rawValue
         job.link = link
         job.notes = notes
+        job.dateApplied = dateApplied
         job.displayOrder = 0
         
         do {
@@ -68,13 +69,14 @@ class DataManager {
     
     // MARK: - Update
     
-    static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?, displayOrder: NSNumber = 0) {
+    static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?, dateApplied: Date?, displayOrder: NSNumber = 0) {
             job.company = company
             job.role = role
             job.location = location
             job.status = status
             job.link = link
             job.notes = notes
+            job.dateApplied = dateApplied
             job.displayOrder = displayOrder
     
             do {

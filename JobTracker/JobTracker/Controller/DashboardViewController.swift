@@ -181,7 +181,7 @@ extension DashboardViewController: UICollectionViewDataSource {
         for i in 0..<savedJobs.count {
             savedJobs[i].displayOrder = i as NSNumber
             
-            DataManager.updateJob(job: savedJobs[i].self, company: savedJobs[i].company ?? "", role: savedJobs[i].role, location: savedJobs[i].location, status: savedJobs[i].status, link: savedJobs[i].link, notes: savedJobs[i].notes, displayOrder: savedJobs[i].displayOrder ?? 0)
+            DataManager.updateJob(job: savedJobs[i].self, company: savedJobs[i].company ?? "", role: savedJobs[i].role, location: savedJobs[i].location, status: savedJobs[i].status, link: savedJobs[i].link, notes: savedJobs[i].notes, dateApplied: savedJobs[i].dateApplied, displayOrder: savedJobs[i].displayOrder ?? 0)
         }
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 enum Detail: String {
-    case status, company, role, location, link, notes
+    case status, company, role, location, link, notes, dateApplied
 }
 
 class JobDetailsViewController: UIViewController, UpdateJobDelegate {
@@ -66,6 +66,9 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         detailsStackView.locationDetailView.detailLabel.text = job.location
         detailsStackView.linkDetailView.detailLabel.text = job.link
         detailsStackView.notesDetailView.detailLabel.text = job.notes
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy"
+        detailsStackView.dateAppliedDetailView.detailLabel.text = formatter.string(from: job.dateApplied ?? Date.now)
     }
     
     @objc func editJob() {

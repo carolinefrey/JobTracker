@@ -45,6 +45,7 @@ class EditJobContentView: UIView {
         textFieldStackView.locationField.textFieldView.text = job.location
         textFieldStackView.linkField.textFieldView.text = job.link
         textFieldStackView.notesField.notesFieldView.text = job.notes
+        textFieldStackView.dateField.dateAppliedField.date = job.dateApplied ?? Date.now
         
         super.init(frame: .zero)
         

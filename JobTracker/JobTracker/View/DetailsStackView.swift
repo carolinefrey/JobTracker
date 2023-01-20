@@ -28,6 +28,7 @@ class DetailsStackView: UIView {
     var locationDetailView: SingleDetailView
     var linkDetailView: SingleDetailView
     var notesDetailView: SingleDetailView
+    var dateAppliedDetailView: SingleDetailView
 
     // MARK: - Initializers
     
@@ -40,6 +41,7 @@ class DetailsStackView: UIView {
         locationDetailView = SingleDetailView(job: job, detail: .location)
         linkDetailView = SingleDetailView(job: job, detail: .link)
         notesDetailView = SingleDetailView(job: job, detail: .notes)
+        dateAppliedDetailView = SingleDetailView(job: job, detail: .dateApplied)
         
         super.init(frame: .zero)
         
@@ -61,6 +63,7 @@ class DetailsStackView: UIView {
         detailsStackView.addArrangedSubview(locationDetailView)
         detailsStackView.addArrangedSubview(linkDetailView)
         detailsStackView.addArrangedSubview(notesDetailView)
+        detailsStackView.addArrangedSubview(dateAppliedDetailView)
         
         NSLayoutConstraint.activate([
             detailsStackView.topAnchor.constraint(equalTo: topAnchor),
@@ -74,6 +77,7 @@ class DetailsStackView: UIView {
             locationDetailView.heightAnchor.constraint(equalToConstant: 70),
             linkDetailView.heightAnchor.constraint(equalToConstant: 70),
             notesDetailView.heightAnchor.constraint(equalToConstant: 70),
+            dateAppliedDetailView.heightAnchor.constraint(equalToConstant: 70),
         ])
     }
 }

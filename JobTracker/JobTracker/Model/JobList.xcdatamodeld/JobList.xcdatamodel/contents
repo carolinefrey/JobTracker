@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="22A400" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Job" representedClassName="Job" syncable="YES">
         <attribute name="company" attributeType="String"/>
+        <attribute name="dateApplied" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="displayOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="link" optional="YES" attributeType="String"/>
         <attribute name="location" optional="YES" attributeType="String"/>

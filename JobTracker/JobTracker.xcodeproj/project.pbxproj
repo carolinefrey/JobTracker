@@ -20,6 +20,7 @@
 		B976797D2942070C00F78490 /* NotesFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B976797C2942070C00F78490 /* NotesFieldView.swift */; };
 		B97979BA2938CF4300F46578 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979B92938CF4300F46578 /* TextFieldView.swift */; };
 		B97979BC2938D21B00F46578 /* TextFieldStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979BB2938D21B00F46578 /* TextFieldStackView.swift */; };
+		B97C8534297AC8CA0049C636 /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97C8533297AC8CA0049C636 /* DateFieldView.swift */; };
 		B98C1E61296CBD830059E95D /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */; };
 		B99A78EB293AEAAB001A5996 /* DetailsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */; };
 		B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 		B976797C2942070C00F78490 /* NotesFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesFieldView.swift; sourceTree = "<group>"; };
 		B97979B92938CF4300F46578 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B97979BB2938D21B00F46578 /* TextFieldStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackView.swift; sourceTree = "<group>"; };
+		B97C8533297AC8CA0049C636 /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsStackView.swift; sourceTree = "<group>"; };
 		B9B5CACD292EBA7200C7EC58 /* JobTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */,
 				B97979B92938CF4300F46578 /* TextFieldView.swift */,
 				B976797C2942070C00F78490 /* NotesFieldView.swift */,
+				B97C8533297AC8CA0049C636 /* DateFieldView.swift */,
 				B97979BB2938D21B00F46578 /* TextFieldStackView.swift */,
 				B9C54106293AE11700D5C5E6 /* SingleDetailView.swift */,
 				B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */,
@@ -303,6 +306,7 @@
 				B97979BA2938CF4300F46578 /* TextFieldView.swift in Sources */,
 				B9C03F192936CB5500ED2AD7 /* DashboardCollectionViewCell.swift in Sources */,
 				B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */,
+				B97C8534297AC8CA0049C636 /* DateFieldView.swift in Sources */,
 				B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */,
 				B99A78EB293AEAAB001A5996 /* DetailsStackView.swift in Sources */,
 				B9C03F1329367D0400ED2AD7 /* AddJobViewController.swift in Sources */,
@@ -464,7 +468,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -491,7 +495,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

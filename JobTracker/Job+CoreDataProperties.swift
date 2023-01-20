@@ -23,6 +23,7 @@ extension Job {
     @NSManaged public var notes: String?
     @NSManaged public var status: JobStatus.RawValue?
     @NSManaged public var displayOrder: NSNumber?
+    @NSManaged public var dateApplied: Date?
 }
 
 extension Job: Identifiable {
