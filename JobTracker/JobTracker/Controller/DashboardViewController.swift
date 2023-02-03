@@ -259,19 +259,23 @@ extension DashboardViewController: FilterByFavoritesDelegate {
         if filterByFavorites {
             filterByFavorites = false
             
-            let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
-            let icon = UIImage(systemName: "heart", withConfiguration: config)
-            button.setImage(icon, for: .normal)
+            button.setImage(UIImage(systemName: "heart"), for: .normal)
+            button.tintColor = .black
+            button.setTitle("view favorites", for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.backgroundColor = UIColor(named: "FavoriteButtonColor")
             
             favoritedJobs.removeAll()
             contentView.collectionView.reloadData()
         } else {
             filterByFavorites = true
             
-            let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
-            let icon = UIImage(systemName: "heart.fill", withConfiguration: config)
-            button.setImage(icon, for: .normal)
-            
+            button.setImage(UIImage(systemName: "circle.grid.2x2.fill"), for: .normal)
+            button.tintColor = .black
+            button.setTitle("view all", for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.backgroundColor = .lightGray
+                        
             favoritedJobs = savedJobs.filter { job in
                 return job.favorite == true
             }

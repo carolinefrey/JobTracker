@@ -38,10 +38,13 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     lazy var filterByFavoritesButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
-        let buttonSymbol = UIImage(systemName: "heart", withConfiguration: largeConfig)
-        button.setImage(buttonSymbol, for: .normal)
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = .black
+        button.setTitle("view favorites", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = UIColor(named: "FavoriteButtonColor")
+        button.layer.cornerRadius = 8
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         button.addTarget(self, action: #selector(filterbyFavorites), for: .touchUpInside)
         return button
     }()
