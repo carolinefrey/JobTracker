@@ -79,6 +79,7 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
         contentView.textFieldStackView.locationField.textFieldView.delegate = self
         contentView.textFieldStackView.linkField.textFieldView.delegate = self
         contentView.textFieldStackView.notesField.notesFieldView.delegate = self
+        contentView.textFieldStackView.notesField.addJobFieldDelegate = self
     }
     
     // MARK: - Selector Functions
@@ -108,5 +109,13 @@ extension AddJobViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+}
+
+// MARK: - NotesFieldAddJobViewDelegate
+
+extension AddJobViewController: NotesFieldAddJobViewDelegate {
+    func tapDoneButtonFromAddView() {
+        self.view.endEditing(true)
     }
 }

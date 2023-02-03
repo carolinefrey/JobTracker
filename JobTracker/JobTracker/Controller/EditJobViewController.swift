@@ -15,7 +15,7 @@ protocol DeleteJobDelegate: AnyObject {
     func didDeleteJob(job: Job)
 }
 
-class EditJobViewController: UIViewController {
+class EditJobViewController: UIViewController, UITextViewDelegate {
     
     var updateJobDelegate: UpdateJobDelegate?
     var deleteJobDelegate: DeleteJobDelegate?
@@ -130,6 +130,7 @@ class EditJobViewController: UIViewController {
         contentView.textFieldStackView.locationField.textFieldView.delegate = self
         contentView.textFieldStackView.linkField.textFieldView.delegate = self
         contentView.textFieldStackView.notesField.notesFieldView.delegate = self
+        contentView.textFieldStackView.notesField.editJobFieldDelegate = self
     }
 }
 
@@ -142,8 +143,10 @@ extension EditJobViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - UITextViewDelegate
+// MARK: - NotesFieldEditJobViewDelegate
 
-extension EditJobViewController: UITextViewDelegate {
-
+extension EditJobViewController: NotesFieldEditJobViewDelegate {
+    func tapDoneButtonFromEditView() {
+        self.view.endEditing(true)
+    }
 }

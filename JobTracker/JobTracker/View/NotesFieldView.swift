@@ -7,9 +7,20 @@
 
 import UIKit
 
+protocol NotesFieldAddJobViewDelegate: AnyObject {
+    func tapDoneButtonFromAddView()
+}
+
+protocol NotesFieldEditJobViewDelegate: AnyObject {
+    func tapDoneButtonFromEditView()
+}
+
 class NotesFieldView: UIView {
     
     // MARK: - UI Properties
+    
+    weak var addJobFieldDelegate: NotesFieldAddJobViewDelegate?
+    weak var editJobFieldDelegate: NotesFieldEditJobViewDelegate?
     
     private let titleView: UILabel = {
         let title = UILabel()
@@ -25,11 +36,20 @@ class NotesFieldView: UIView {
         let field = UITextView()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.backgroundColor = .white
-        field.returnKeyType = .done
+        field.returnKeyType = .default
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 14)
         field.textColor = UIColor(named: "Color4")
         return field
+    }()
+    
+    let keyboardToolbar: UIToolbar = {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        keyboardToolbar.setItems([flexible, doneBarButton], animated: false)
+        return keyboardToolbar
     }()
     
     // MARK: - Initializers
@@ -42,11 +62,20 @@ class NotesFieldView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    // MARK: - Functions
+    
+    @objc func dismissKeyboard() {
+        addJobFieldDelegate?.tapDoneButtonFromAddView()
+        editJobFieldDelegate?.tapDoneButtonFromEditView()
+    }
+    
     // MARK: - UI Setup
     
     private func setUpViews() {
         
+        notesFieldView.inputAccessoryView = keyboardToolbar
+
         addSubview(titleView)
         addSubview(notesFieldView)
         
@@ -61,3 +90,4 @@ class NotesFieldView: UIView {
         ])
     }
 }
+
