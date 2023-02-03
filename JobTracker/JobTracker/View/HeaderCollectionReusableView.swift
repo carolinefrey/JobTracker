@@ -12,7 +12,7 @@ protocol HeaderCollectionReusableViewDelegate: AnyObject {
 }
 
 protocol FilterByFavoritesDelegate: AnyObject {
-    func tapFilterButton(button: UIButton)
+    func tapFavoritesFilterButton(button: UIButton)
 }
 
 class HeaderCollectionReusableView: UICollectionReusableView {
@@ -56,7 +56,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     }
     
     @objc func filterbyFavorites(_ sender: UIButton) {
-        filterByFavoritesDelegate?.tapFilterButton(button: sender)
+        filterByFavoritesDelegate?.tapFavoritesFilterButton(button: sender)
     }
     
     // MARK: - UI Setup

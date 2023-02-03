@@ -255,7 +255,7 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
 // MARK: - HeaderCollectionReusableViewDelegate
 
 extension DashboardViewController: FilterByFavoritesDelegate {
-    func tapFilterButton(button: UIButton) {
+    func tapFavoritesFilterButton(button: UIButton) {
         if filterByFavorites {
             filterByFavorites = false
             
@@ -266,6 +266,7 @@ extension DashboardViewController: FilterByFavoritesDelegate {
             button.backgroundColor = UIColor(named: "FavoriteButtonColor")
             
             favoritedJobs.removeAll()
+            tapStatusBox(button)
             contentView.collectionView.reloadData()
         } else {
             filterByFavorites = true
@@ -279,6 +280,8 @@ extension DashboardViewController: FilterByFavoritesDelegate {
             favoritedJobs = savedJobs.filter { job in
                 return job.favorite == true
             }
+            filtersApplied.removeAll()
+            tapStatusBox(button)
             contentView.collectionView.reloadData()
         }
     }
@@ -310,6 +313,9 @@ extension DashboardViewController: StatusBoxViewDelegate {
             } else {
                 contentView.configureFilteredStatusButtonAppearance(status: .open)
                 filtersApplied.append(.open)
+                if filterByFavorites {  //turn off favorites filter if a status box is selected (they're mutually exclusive)
+                    filterByFavorites = false
+                }
             }
         case contentView.statusBoxes.appliedStatusBox.box:
             if filtersApplied.contains(.applied) {
@@ -320,6 +326,9 @@ extension DashboardViewController: StatusBoxViewDelegate {
             } else {
                 contentView.configureFilteredStatusButtonAppearance(status: .applied)
                 filtersApplied.append(.applied)
+                if filterByFavorites {
+                    filterByFavorites = false
+                }
             }
         case contentView.statusBoxes.interviewStatusBox.box:
             if filtersApplied.contains(.interview) {
@@ -330,6 +339,9 @@ extension DashboardViewController: StatusBoxViewDelegate {
             } else {
                 contentView.configureFilteredStatusButtonAppearance(status: .interview)
                 filtersApplied.append(.interview)
+                if filterByFavorites {
+                    filterByFavorites = false
+                }
             }
         case contentView.statusBoxes.closedStatusBox.box:
             if filtersApplied.contains(.closed) {
@@ -340,9 +352,15 @@ extension DashboardViewController: StatusBoxViewDelegate {
             } else {
                 contentView.configureFilteredStatusButtonAppearance(status: .closed)
                 filtersApplied.append(.closed)
+                if filterByFavorites {
+                    filterByFavorites = false
+                }
             }
-        default:
-            return
+        default: //falls to this case when "view favorites" is tapped. removes all status filters.
+            contentView.configureDefaultStatusButtonAppearance(status: .open)
+            contentView.configureDefaultStatusButtonAppearance(status: .closed)
+            contentView.configureDefaultStatusButtonAppearance(status: .interview)
+            contentView.configureDefaultStatusButtonAppearance(status: .applied)
         }
         filteredJobs = savedJobs.filter { job in
             return filtersApplied.contains(JobStatus(rawValue: job.status!)!)
