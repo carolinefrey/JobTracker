@@ -29,6 +29,14 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         return button
     }()
     
+    lazy var favoriteJobButton: UIBarButtonItem = {
+        let config = UIImage.SymbolConfiguration(textStyle: .title3)
+        let icon = UIImage(systemName: "heart", withConfiguration: config)
+        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJobButtonTapped))
+        button.tintColor = .systemPink
+        return button
+    }()
+    
     // MARK: - Initializers
     
     init(job: Job) {
@@ -48,7 +56,12 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "Background")
-        navigationItem.rightBarButtonItems = [editJobButton]
+        navigationItem.rightBarButtonItems = [editJobButton, favoriteJobButton]
+        
+        if job.favorite {
+            let config = UIImage.SymbolConfiguration(textStyle: .title3)
+            favoriteJobButton.image = UIImage(systemName: "heart.fill", withConfiguration: config)
+        }
         
         view.addSubview(detailsStackView)
         
@@ -56,6 +69,18 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     }
     
     // MARK: - Functions
+    
+    @objc func favoriteJobButtonTapped() {
+        if job.favorite {
+            DataManager.favoriteJob(job: job, favorite: false)
+            let config = UIImage.SymbolConfiguration(textStyle: .title3)
+            favoriteJobButton.image = UIImage(systemName: "heart", withConfiguration: config)
+        } else {
+            DataManager.favoriteJob(job: job, favorite: true)
+            let config = UIImage.SymbolConfiguration(textStyle: .title3)
+            favoriteJobButton.image = UIImage(systemName: "heart.fill", withConfiguration: config)
+        }
+    }
     
     func didUpdateJob(job: Job) {
         detailsStackView.statusDetailView.detailLabel.text = job.status?.capitalized
