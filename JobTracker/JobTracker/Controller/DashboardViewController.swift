@@ -20,9 +20,11 @@ class DashboardViewController: UIViewController {
     private var statusCounts: [String: Int] = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
     
     private var savedJobs = [Job]()
+    private var favoritedJobs = [Job]()
+    private var filterByFavorites: Bool = false
     private var filteredJobs = [Job]()
     private var filtersApplied = [JobStatus]()
-    
+
     lazy var settingsButton: UIBarButtonItem = {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "gear", withConfiguration: config)
@@ -146,6 +148,8 @@ extension DashboardViewController: UICollectionViewDataSource {
                 collectionView.restore()
             }
             return filteredJobs.count
+        } else if favoritedJobs != [] && filterByFavorites {
+            return favoritedJobs.count
         } else {
             if savedJobs.count == 0 {
                 collectionView.displayEmptyMessage()
@@ -158,12 +162,11 @@ extension DashboardViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier, for: indexPath) as! DashboardCollectionViewCell
-        
+
         if filtersApplied != [] {
-            filteredJobs = savedJobs.filter { job in
-                return filtersApplied.contains(JobStatus(rawValue: job.status!)!)
-            }
             cell.configure(company: filteredJobs[indexPath.row].company ?? "N/A", location: filteredJobs[indexPath.row].location ?? "N/A", status: filteredJobs[indexPath.row].status ?? "open")
+        } else if favoritedJobs != [] && filterByFavorites {
+            cell.configure(company: favoritedJobs[indexPath.row].company ?? "N/A", location: favoritedJobs[indexPath.row].location ?? "N/A", status: favoritedJobs[indexPath.row].status ?? "open")
         } else {
             cell.configure(company: savedJobs[indexPath.row].company ?? "N/A", location: savedJobs[indexPath.row].location ?? "N/A", status: savedJobs[indexPath.row].status ?? "open")
         }
@@ -188,7 +191,8 @@ extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
         header.configure()
-        header.delegate = self
+        header.newJobDelegate = self
+        header.filterByFavoritesDelegate = self
         return header
     }
 }
@@ -248,11 +252,42 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
     }
 }
 
+// MARK: - HeaderCollectionReusableViewDelegate
+
+extension DashboardViewController: FilterByFavoritesDelegate {
+    func tapFilterButton(button: UIButton) {
+        if filterByFavorites {
+            filterByFavorites = false
+            
+            let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
+            let icon = UIImage(systemName: "heart", withConfiguration: config)
+            button.setImage(icon, for: .normal)
+            
+            favoritedJobs.removeAll()
+            contentView.collectionView.reloadData()
+        } else {
+            filterByFavorites = true
+            
+            let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
+            let icon = UIImage(systemName: "heart.fill", withConfiguration: config)
+            button.setImage(icon, for: .normal)
+            
+            favoritedJobs = savedJobs.filter { job in
+                return job.favorite == true
+            }
+            contentView.collectionView.reloadData()
+        }
+    }
+}
+
 // MARK: - JobDeletedDelegate
 extension DashboardViewController: DeleteJobDelegate {
     func didDeleteJob(job: Job) {
         filteredJobs.removeAll { filteredJob in
             filteredJob == job
+        }
+        favoritedJobs.removeAll { favoritedJob in
+            favoritedJob == job
         }
     }
 }
@@ -305,11 +340,9 @@ extension DashboardViewController: StatusBoxViewDelegate {
         default:
             return
         }
-        
         filteredJobs = savedJobs.filter { job in
             return filtersApplied.contains(JobStatus(rawValue: job.status!)!)
         }
-        
         contentView.collectionView.reloadData()
     }
 }

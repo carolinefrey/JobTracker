@@ -4,6 +4,7 @@
         <attribute name="company" attributeType="String"/>
         <attribute name="dateApplied" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="displayOrder" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="link" optional="YES" attributeType="String"/>
         <attribute name="location" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>

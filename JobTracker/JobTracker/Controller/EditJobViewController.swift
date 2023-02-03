@@ -43,6 +43,15 @@ class EditJobViewController: UIViewController {
         return button
     }()
     
+    lazy var favoriteJobButton: UIBarButtonItem = {
+        let config = UIImage.SymbolConfiguration(textStyle: .title3)
+        let icon = UIImage(systemName: "heart", withConfiguration: config)
+        let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(favoriteJobButtonTapped))
+        button.tintColor = .systemPink
+        return button
+    }()
+
+    
     // MARK: - Initializer
     
     init(job: Job) {
@@ -59,8 +68,13 @@ class EditJobViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItems = [updateJobButton]
+        navigationItem.rightBarButtonItems = [updateJobButton, favoriteJobButton]
         view.backgroundColor = UIColor(named: "Background")
+        
+        if job.favorite {
+            let config = UIImage.SymbolConfiguration(textStyle: .title3)
+            favoriteJobButton.image = UIImage(systemName: "heart.fill", withConfiguration: config)
+        }
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -110,6 +124,18 @@ class EditJobViewController: UIViewController {
         DataManager.deleteJob(item: job)
         deleteJobDelegate?.didDeleteJob(job: job)
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func favoriteJobButtonTapped() {
+        if job.favorite {
+            DataManager.favoriteJob(job: job, favorite: false)
+            let config = UIImage.SymbolConfiguration(textStyle: .title3)
+            favoriteJobButton.image = UIImage(systemName: "heart", withConfiguration: config)
+        } else {
+            DataManager.favoriteJob(job: job, favorite: true)
+            let config = UIImage.SymbolConfiguration(textStyle: .title3)
+            favoriteJobButton.image = UIImage(systemName: "heart.fill", withConfiguration: config)
+        }
     }
     
     @objc func textFieldChanged(sender: UITextField) {

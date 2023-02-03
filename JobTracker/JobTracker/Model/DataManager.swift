@@ -29,6 +29,7 @@ class DataManager {
         job.notes = notes
         job.dateApplied = dateApplied
         job.displayOrder = 0
+        job.favorite = false
         
         do {
             try managedObjectContext.save()
@@ -70,22 +71,33 @@ class DataManager {
     // MARK: - Update
     
     static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?, dateApplied: Date?, displayOrder: NSNumber = 0) {
-            job.company = company
-            job.role = role
-            job.location = location
-            job.status = status
-            job.link = link
-            job.notes = notes
-            job.dateApplied = dateApplied
-            job.displayOrder = displayOrder
-    
-            do {
-                try managedObjectContext.save()
-            }
-            catch {
-    
-            }
+        job.company = company
+        job.role = role
+        job.location = location
+        job.status = status
+        job.link = link
+        job.notes = notes
+        job.dateApplied = dateApplied
+        job.displayOrder = displayOrder
+        
+        do {
+            try managedObjectContext.save()
         }
+        catch {
+            
+        }
+    }
+    
+    static func favoriteJob(job: Job, favorite: Bool) {
+        job.favorite = favorite
+        
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            
+        }
+    }
     
     // MARK: - Delete
     

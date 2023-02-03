@@ -24,6 +24,7 @@ extension Job {
     @NSManaged public var status: JobStatus.RawValue?
     @NSManaged public var displayOrder: NSNumber?
     @NSManaged public var dateApplied: Date?
+    @NSManaged public var favorite: Bool
 }
 
 extension Job: Identifiable {

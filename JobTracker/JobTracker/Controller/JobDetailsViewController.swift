@@ -28,7 +28,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         button.tintColor = UIColor(named: "Color4")
         return button
     }()
-
+    
     // MARK: - Initializers
     
     init(job: Job) {

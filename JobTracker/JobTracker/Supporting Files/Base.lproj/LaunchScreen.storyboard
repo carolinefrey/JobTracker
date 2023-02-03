@@ -21,21 +21,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JobApp Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tS-mp-hwK">
-                                <rect key="frame" x="75" y="776" width="241" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JobApp Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tS-mp-hwK">
+                                <rect key="frame" x="104" y="775.33333333333337" width="182" height="35.666666666666629"/>
                                 <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="26"/>
                                 <color key="textColor" name="OpenStatusLabel"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="briefcase.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e4O-eZ-MmT">
-                                <rect key="frame" x="58" y="346" width="275" height="152.99999999999994"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="briefcase.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e4O-eZ-MmT">
+                                <rect key="frame" x="108.33333333333333" y="336" width="173.66666666666669" height="173.66666666666669"/>
                                 <color key="tintColor" name="OpenStatusLabel"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="116" scale="large"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="7tS-mp-hwK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0jE-xz-5Vu"/>
+                            <constraint firstItem="e4O-eZ-MmT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="A4B-Bs-4rq"/>
+                            <constraint firstItem="e4O-eZ-MmT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="AVl-Ty-oPp"/>
+                            <constraint firstItem="7tS-mp-hwK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="371" id="Bg0-sP-Nre"/>
+                            <constraint firstItem="e4O-eZ-MmT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="M4y-WC-Sg2"/>
+                            <constraint firstItem="7tS-mp-hwK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MOZ-hd-Gjq"/>
+                            <constraint firstItem="e4O-eZ-MmT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="g8J-zk-ulT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
