@@ -1,5 +1,7 @@
 # JobApp Tracker
 
+Available in the App Store [here](https://apps.apple.com/us/app/jobapp-tracker/id1661018820)!
+
 Keep track of your job applications with JobApp Tracker!
 
 Add the company, role, location, link and any notes about the job. Select the status of the application (open, applied, interview, or closed).
