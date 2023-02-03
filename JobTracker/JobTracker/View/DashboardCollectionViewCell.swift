@@ -25,7 +25,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     let companyLabel: UILabel = {
         let companyLabel = UILabel()
         companyLabel.translatesAutoresizingMaskIntoConstraints = false
-        companyLabel.font = UIFont(name: "Nunito-SemiBold", size: 28)
+        companyLabel.font = UIFont(name: "Nunito-SemiBold", size: 26)
         companyLabel.textColor = UIColor(named: "Color4")
         companyLabel.textAlignment = .left
         companyLabel.lineBreakMode = .byTruncatingTail
@@ -36,14 +36,21 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     let jobLocationLabel: UILabel = {
         let locationLabel = UILabel()
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
-        locationLabel.font = UIFont(name: "Nunito-Light", size: 12)
-        locationLabel.text = ("📍 Remote")
+        locationLabel.font = UIFont(name: "Nunito-Light", size: 14)
         locationLabel.lineBreakMode = .byTruncatingTail
         locationLabel.numberOfLines = 1
         locationLabel.textColor = UIColor(named: "Color4")
         return locationLabel
     }()
-
+    
+    let favoriteIndicator: UIImageView = {
+        let heart = UIImageView()
+        heart.translatesAutoresizingMaskIntoConstraints = false
+        heart.image = UIImage(systemName: "heart")
+        heart.tintColor = .black
+        return heart
+    }()
+    
     //MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -63,6 +70,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         addSubview(backgroundCell)
         addSubview(companyLabel)
         addSubview(jobLocationLabel)
+        addSubview(favoriteIndicator)
         
         NSLayoutConstraint.activate([
            backgroundCell.topAnchor.constraint(equalTo: topAnchor),
@@ -77,12 +85,20 @@ class DashboardCollectionViewCell: UICollectionViewCell {
            jobLocationLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor),
            jobLocationLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 20),
            jobLocationLabel.trailingAnchor.constraint(equalTo: backgroundCell.trailingAnchor, constant: -20),
+           
+           favoriteIndicator.topAnchor.constraint(equalTo: backgroundCell.topAnchor, constant: 10),
+           favoriteIndicator.trailingAnchor.constraint(equalTo: backgroundCell.trailingAnchor, constant: -10)
         ])
     }
     
-    func configure(company: String, location: String, status: String) {
+    func configure(company: String, location: String, status: String, favorite: Bool) {
         companyLabel.text = company
-        jobLocationLabel.text = "📍 \(location)"
+        
+        if location != "" {
+            jobLocationLabel.text = "📍 \(location)"
+        } else {
+            jobLocationLabel.text = ""
+        }
         
         let jobStatus = JobStatus(rawValue: status)
         
@@ -97,6 +113,12 @@ class DashboardCollectionViewCell: UICollectionViewCell {
             backgroundCell.backgroundColor = .lightGray
         default:
             backgroundCell.backgroundColor = UIColor(named: "OpenStatus")
+        }
+        
+        if favorite {
+            favoriteIndicator.image = UIImage(systemName: "heart")
+        } else {
+            favoriteIndicator.image = UIImage(systemName: "")
         }
     }
 }

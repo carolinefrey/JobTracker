@@ -164,11 +164,11 @@ extension DashboardViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier, for: indexPath) as! DashboardCollectionViewCell
 
         if filtersApplied != [] {
-            cell.configure(company: filteredJobs[indexPath.row].company ?? "N/A", location: filteredJobs[indexPath.row].location ?? "N/A", status: filteredJobs[indexPath.row].status ?? "open")
+            cell.configure(company: filteredJobs[indexPath.row].company ?? "N/A", location: filteredJobs[indexPath.row].location ?? "N/A", status: filteredJobs[indexPath.row].status ?? "open", favorite: filteredJobs[indexPath.row].favorite)
         } else if favoritedJobs != [] && filterByFavorites {
-            cell.configure(company: favoritedJobs[indexPath.row].company ?? "N/A", location: favoritedJobs[indexPath.row].location ?? "N/A", status: favoritedJobs[indexPath.row].status ?? "open")
+            cell.configure(company: favoritedJobs[indexPath.row].company ?? "N/A", location: favoritedJobs[indexPath.row].location ?? "N/A", status: favoritedJobs[indexPath.row].status ?? "open", favorite: favoritedJobs[indexPath.row].favorite)
         } else {
-            cell.configure(company: savedJobs[indexPath.row].company ?? "N/A", location: savedJobs[indexPath.row].location ?? "N/A", status: savedJobs[indexPath.row].status ?? "open")
+            cell.configure(company: savedJobs[indexPath.row].company ?? "N/A", location: savedJobs[indexPath.row].location ?? "N/A", status: savedJobs[indexPath.row].status ?? "open", favorite: savedJobs[indexPath.row].favorite)
         }
         return cell
     }
