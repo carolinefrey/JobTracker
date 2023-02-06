@@ -31,7 +31,9 @@ class SingleDetailView: UIView {
         label.textColor = UIColor(named: "Color4")
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
+        label.sizeToFit()
         label.textAlignment = .left
+        label.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         return label
     }()
     
@@ -123,7 +125,7 @@ class SingleDetailView: UIView {
         addSubview(detailLabel)
         
         NSLayoutConstraint.activate([
-            statusBox.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor, constant: 5),
+            statusBox.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor),
             statusBox.leadingAnchor.constraint(equalTo: leadingAnchor),
             statusBox.heightAnchor.constraint(equalToConstant: 25),
             statusBox.widthAnchor.constraint(equalToConstant: 25),

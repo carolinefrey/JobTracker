@@ -16,7 +16,7 @@ class DetailsStackView: UIView {
     private let detailsStackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .fillProportionally
+        stack.distribution = .fill
         stack.spacing = 15
         stack.axis = .vertical
         return stack
@@ -64,7 +64,7 @@ class DetailsStackView: UIView {
         detailsStackView.addArrangedSubview(linkDetailView)
         detailsStackView.addArrangedSubview(notesDetailView)
         detailsStackView.addArrangedSubview(dateAppliedDetailView)
-        
+                
         NSLayoutConstraint.activate([
             detailsStackView.topAnchor.constraint(equalTo: topAnchor),
             detailsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -76,7 +76,7 @@ class DetailsStackView: UIView {
             roleDetailView.heightAnchor.constraint(equalToConstant: 70),
             locationDetailView.heightAnchor.constraint(equalToConstant: 70),
             linkDetailView.heightAnchor.constraint(equalToConstant: 70),
-            notesDetailView.heightAnchor.constraint(equalToConstant: 70),
+            //notesDetailView.heightAnchor.constraint(equalToConstant: 70),
             dateAppliedDetailView.heightAnchor.constraint(equalToConstant: 70),
         ])
     }
