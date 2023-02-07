@@ -77,7 +77,7 @@ class SingleDetailView: UIView {
         NSLayoutConstraint.activate([
             detailTitleLabel.topAnchor.constraint(equalTo: topAnchor),
             detailTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            detailTitleLabel.heightAnchor.constraint(equalToConstant: 35)
+            detailTitleLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         switch detail {
@@ -125,7 +125,7 @@ class SingleDetailView: UIView {
         addSubview(detailLabel)
         
         NSLayoutConstraint.activate([
-            statusBox.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor),
+            statusBox.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor, constant: 3),
             statusBox.leadingAnchor.constraint(equalTo: leadingAnchor),
             statusBox.heightAnchor.constraint(equalToConstant: 25),
             statusBox.widthAnchor.constraint(equalToConstant: 25),
@@ -134,6 +134,7 @@ class SingleDetailView: UIView {
             detailLabel.leadingAnchor.constraint(equalTo: statusBox.trailingAnchor, constant: 5),
             detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailLabel.centerYAnchor.constraint(equalTo: statusBox.centerYAnchor),
+            //detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -141,7 +142,7 @@ class SingleDetailView: UIView {
         addSubview(detailLabel)
 
         NSLayoutConstraint.activate([
-            detailLabel.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor, constant: 5),
+            detailLabel.topAnchor.constraint(equalTo: detailTitleLabel.bottomAnchor, constant: 3),
             detailLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
