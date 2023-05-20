@@ -59,28 +59,44 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItems = [updateJobButton]
         view.backgroundColor = UIColor(named: "Background")
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         configureScrollView()
         
-        setTextViewDelegates()
+        navigationItem.rightBarButtonItems = [updateJobButton]
         
+        setTextViewDelegates()
+        configureSaveButton()
+        configureTargets()
+    }
+    
+    // MARK: - Functions
+    
+    private func setTextViewDelegates() {
+        contentView.textFieldStackView.companyField.textFieldView.delegate = self
+        contentView.textFieldStackView.roleField.textFieldView.delegate = self
+        contentView.textFieldStackView.locationField.textFieldView.delegate = self
+        contentView.textFieldStackView.linkField.textFieldView.delegate = self
+        contentView.textFieldStackView.notesField.notesFieldView.delegate = self
+        contentView.textFieldStackView.notesField.editJobFieldDelegate = self
+    }
+    
+    private func configureSaveButton() {
         // Disable save button until user enters Company name
         if contentView.textFieldStackView.companyField.textFieldView.text != "" {
             updateJobButton.isEnabled = true
             let config = UIImage.SymbolConfiguration(textStyle: .title3)
             updateJobButton.image = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
         }
-        
+    }
+    
+    private func configureTargets() {
         contentView.textFieldStackView.companyField.textFieldView.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         contentView.deleteJobButton.addTarget(self, action: #selector(deleteJob), for: .touchUpInside)
     }
-    
-    // MARK: - Functions
     
     private func configureScrollView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -122,15 +138,6 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
             let config = UIImage.SymbolConfiguration(textStyle: .title3)
             updateJobButton.image = UIImage(systemName: "square.and.arrow.down", withConfiguration: config)
         }
-    }
-    
-    private func setTextViewDelegates() {
-        contentView.textFieldStackView.companyField.textFieldView.delegate = self
-        contentView.textFieldStackView.roleField.textFieldView.delegate = self
-        contentView.textFieldStackView.locationField.textFieldView.delegate = self
-        contentView.textFieldStackView.linkField.textFieldView.delegate = self
-        contentView.textFieldStackView.notesField.notesFieldView.delegate = self
-        contentView.textFieldStackView.notesField.editJobFieldDelegate = self
     }
 }
 

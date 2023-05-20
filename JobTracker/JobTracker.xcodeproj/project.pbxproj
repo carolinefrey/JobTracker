@@ -124,13 +124,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		B904B088293592BB008BE140 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		B904B089293592CD008BE140 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +183,6 @@
 				B904B087293592A5008BE140 /* View */,
 				B904B089293592CD008BE140 /* Controller */,
 				B904B08A293592D5008BE140 /* Supporting Files */,
-				B904B088293592BB008BE140 /* ViewModel */,
 				B9B5CADE292EBA7300C7EC58 /* Info.plist */,
 			);
 			path = JobTracker;
@@ -468,7 +460,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -495,7 +487,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

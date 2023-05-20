@@ -34,26 +34,42 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItems = [saveJobButton]
         view.backgroundColor = UIColor(named: "Background")
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         configureScrollView()
         
+        navigationItem.rightBarButtonItems = [saveJobButton]
+
         setTextViewDelegates()
-        
+        configureSaveButton()
+        configureTargets()
+    }
+    
+    // MARK: - Functions
+    
+    private func setTextViewDelegates() {
+        contentView.textFieldStackView.companyField.textFieldView.delegate = self
+        contentView.textFieldStackView.roleField.textFieldView.delegate = self
+        contentView.textFieldStackView.locationField.textFieldView.delegate = self
+        contentView.textFieldStackView.linkField.textFieldView.delegate = self
+        contentView.textFieldStackView.notesField.notesFieldView.delegate = self
+        contentView.textFieldStackView.notesField.addJobFieldDelegate = self
+    }
+    
+    private func configureSaveButton() {
         // Disable save button until user enters Company name
         if contentView.textFieldStackView.companyField.textFieldView.text != "" {
             saveJobButton.isEnabled = true
             let config = UIImage.SymbolConfiguration(textStyle: .title3)
             saveJobButton.image = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
         }
-        
-        contentView.textFieldStackView.companyField.textFieldView.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
-    // MARK: - Functions
+    private func configureTargets() {
+        contentView.textFieldStackView.companyField.textFieldView.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+    }
     
     private func configureScrollView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,15 +87,6 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalTo: view.heightAnchor),
         ])
-    }
-    
-    private func setTextViewDelegates() {
-        contentView.textFieldStackView.companyField.textFieldView.delegate = self
-        contentView.textFieldStackView.roleField.textFieldView.delegate = self
-        contentView.textFieldStackView.locationField.textFieldView.delegate = self
-        contentView.textFieldStackView.linkField.textFieldView.delegate = self
-        contentView.textFieldStackView.notesField.notesFieldView.delegate = self
-        contentView.textFieldStackView.notesField.addJobFieldDelegate = self
     }
     
     // MARK: - Selector Functions

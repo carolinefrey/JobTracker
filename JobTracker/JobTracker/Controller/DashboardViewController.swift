@@ -41,15 +41,8 @@ class DashboardViewController: UIViewController {
         
         contentView = DashboardContentView()
         view = contentView
-        
-        name = defaults.string(forKey: "name") ?? ""
-        
-        if name != "" {
-            contentView.headerView.greeting.text = "Hey, \(name)!"
-        } else {
-            contentView.headerView.greeting.text = "Hey!"
-        }
-        
+            
+        configureHeaderView()
         configureStatusBoxDelegates()
         configureCollectionView()
         fetchJobs()
@@ -63,6 +56,16 @@ class DashboardViewController: UIViewController {
     }
     
     // MARK: - Functions
+    
+    private func configureHeaderView() {
+        name = defaults.string(forKey: "name") ?? ""
+
+        if name != "" {
+            contentView.headerView.greeting.text = "Hey, \(name)!"
+        } else {
+            contentView.headerView.greeting.text = "JobApp Tracker"
+        }
+    }
     
     private func configureStatusBoxDelegates() {
         contentView.statusBoxes.openStatusBox.delegate = self
@@ -238,7 +241,7 @@ extension DashboardViewController: SetUsernameDelegate {
         if name != "" {
             contentView.headerView.greeting.text = "Hey, \(name)!"
         } else {
-            contentView.headerView.greeting.text = "Hey!"
+            contentView.headerView.greeting.text = "JobApp Tracker"
         }
     }
 }

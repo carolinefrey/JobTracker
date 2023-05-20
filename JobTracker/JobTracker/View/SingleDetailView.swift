@@ -134,7 +134,6 @@ class SingleDetailView: UIView {
             detailLabel.leadingAnchor.constraint(equalTo: statusBox.trailingAnchor, constant: 5),
             detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailLabel.centerYAnchor.constraint(equalTo: statusBox.centerYAnchor),
-            //detailLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
