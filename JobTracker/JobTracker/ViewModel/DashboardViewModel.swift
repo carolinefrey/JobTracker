@@ -10,13 +10,6 @@ import UIKit
 
 struct DashboardViewModel {
     
-//    private var savedJobs: [Job]
-//    private var filteredJobs: [Job] = []
-//
-//    init(savedJobs: [Job]) {
-//        self.savedJobs = savedJobs
-//    }
-    
     func fetchJobs() -> [Job] {
         var finalJobs: [Job] = []
         DataManager.fetchJobs { jobs in
@@ -34,27 +27,40 @@ struct DashboardViewModel {
         }
         return sortedJobs
     }
-    
-    func handleNumItemsInSection(jobData: JobData, collectionView: UICollectionView) -> Int {
+
+    func handleNumItemsInSection(jobData: JobData) -> Int {
         if jobData.filtersApplied != [] {
-            if jobData.filteredJobs.count == 0 {
-                collectionView.displayEmptyMessage()
-            } else {
-                collectionView.restore()
-            }
             return jobData.filteredJobs.count
         } else if jobData.favoritedJobs != [] && jobData.filterByFavorites {
             return jobData.favoritedJobs.count
         } else {
-            if jobData.savedJobs.count == 0 {
-                collectionView.displayEmptyMessage()
-            } else {
-                collectionView.restore()
-            }
             return jobData.savedJobs.count
         }
     }
     
+    func handleToggleEmptyMessage(jobData: JobData) -> UILabel {
+        var messageLabel = UILabel()
+        if jobData.filtersApplied != [] {
+            messageLabel = jobData.filteredJobs.count == 0 ? showEmptyMessage(show: true) : showEmptyMessage(show: false)
+        } else if jobData.favoritedJobs != [] && jobData.filterByFavorites {
+            messageLabel = showEmptyMessage(show: false)
+        } else {
+            messageLabel = jobData.savedJobs.count == 0 ? showEmptyMessage(show: true) : showEmptyMessage(show: false)
+        }
+        return messageLabel
+    }
+
+    func showEmptyMessage(show: Bool) -> UILabel {
+        let messageLabel = UILabel()
+        if show {
+            messageLabel.text = "Add a job by clicking the plus button!"
+            messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
+            messageLabel.textAlignment = .center
+            messageLabel.textColor = UIColor(named: "Color4")
+        }
+        return messageLabel
+    }
+
     func handleCellForItemAt(data: JobData, cell: DashboardCollectionViewCell, indexPath: IndexPath) {
         if data.filtersApplied != [] {
             cell.configure(company: data.filteredJobs[indexPath.row].company ?? "N/A",

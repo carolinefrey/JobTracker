@@ -145,8 +145,8 @@ class DashboardViewController: UIViewController {
 
 extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        viewModel.handleNumItemsInSection(jobData: data, collectionView: collectionView)
+        collectionView.backgroundView = viewModel.handleToggleEmptyMessage(jobData: data)
+        return viewModel.handleNumItemsInSection(jobData: data)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -162,7 +162,6 @@ extension DashboardViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
         let item = data.savedJobs.remove(at: sourceIndexPath.row) //move the job within the actual data array
         data.savedJobs.insert(item, at: destinationIndexPath.row)
         
@@ -191,24 +190,6 @@ extension DashboardViewController: UICollectionViewDelegate {
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
         }
-    }
-}
-
-// MARK: - UICollectionView Extension
-
-extension UICollectionView {
-    func displayEmptyMessage() {
-        let messageLabel = UILabel()
-        messageLabel.text = "Add a job by clicking the plus button!"
-        messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
-        messageLabel.textAlignment = .center
-        messageLabel.textColor = UIColor(named: "Color4")
-        
-        self.backgroundView = messageLabel
-    }
-    
-    func restore() {
-        self.backgroundView = nil
     }
 }
 
