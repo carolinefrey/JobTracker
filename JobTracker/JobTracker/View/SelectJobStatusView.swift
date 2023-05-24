@@ -122,12 +122,10 @@ class SelectJobStatusView: UIView {
             selectedStatus[.open] = true
             status = .open
         }
-        
         configureStatusBox(statuses: selectedStatus)
     }
     
     func configureStatusBox(statuses: Dictionary<JobStatus, Bool>) {
-        
         let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .medium)
         let checkmarkIcon = UIImage(systemName: "checkmark.circle.fill", withConfiguration: config)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         
@@ -165,7 +163,6 @@ class SelectJobStatusView: UIView {
     // MARK: - UI Setup
     
     private func setUpViews() {
-        
         addSubview(statusLabel)
         addSubview(boxStackView)
         

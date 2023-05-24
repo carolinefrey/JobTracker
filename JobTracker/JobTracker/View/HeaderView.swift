@@ -51,7 +51,6 @@ class HeaderView: UIView {
     // MARK: - UI Setup
 
     private func setUpViews() {
-        
         addSubview(icon)
         addSubview(greeting)
         addSubview(title)

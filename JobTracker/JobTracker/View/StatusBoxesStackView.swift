@@ -48,7 +48,6 @@ class StatusBoxesStackView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-                
         setUpViews()
     }
     
@@ -59,7 +58,6 @@ class StatusBoxesStackView: UIView {
     // MARK: - UI Setup
 
     private func setUpViews() {
-        
         addSubview(statusBoxStack)
         
         statusBoxStack.addArrangedSubview(openStatusBox)

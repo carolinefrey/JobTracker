@@ -50,11 +50,7 @@ class SingleDetailView: UIView {
         self.job = job
         self.detail = detail
         
-        if detail == .dateApplied {
-            detailTitleLabel.text = "date applied"
-        } else {
-            detailTitleLabel.text = detail.rawValue
-        }
+        detailTitleLabel.text = detail == .dateApplied ? "date applied" : detail.rawValue
         
         if detail == .status {
             showStatusBox = true

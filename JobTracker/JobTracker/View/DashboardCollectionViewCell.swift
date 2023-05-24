@@ -66,7 +66,6 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     //MARK: - UI Setup
 
     private func setUpViews() {
-        
         addSubview(backgroundCell)
         addSubview(companyLabel)
         addSubview(jobLocationLabel)
@@ -93,12 +92,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     
     func configure(company: String, location: String, status: String, favorite: Bool) {
         companyLabel.text = company
-        
-        if location != "" {
-            jobLocationLabel.text = "📍 \(location)"
-        } else {
-            jobLocationLabel.text = ""
-        }
+        jobLocationLabel.text = location != "" ? "📍 \(location)" : ""
         
         let jobStatus = JobStatus(rawValue: status)
         
@@ -115,10 +109,6 @@ class DashboardCollectionViewCell: UICollectionViewCell {
             backgroundCell.backgroundColor = UIColor(named: "OpenStatus")
         }
         
-        if favorite {
-            favoriteIndicator.image = UIImage(systemName: "heart")
-        } else {
-            favoriteIndicator.image = UIImage(systemName: "")
-        }
+        favoriteIndicator.image = favorite ? UIImage(systemName: "heart") : UIImage(systemName: "")
     }
 }

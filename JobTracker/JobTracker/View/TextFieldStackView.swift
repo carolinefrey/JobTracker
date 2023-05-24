@@ -30,7 +30,6 @@ class TextFieldStackView: UIView {
     // MARK: - Initializers
     
     init() {
-        
         companyField = TextFieldView(textFieldTitle: "company", textFieldHeight: 45, autoCap: true)
         roleField = TextFieldView(textFieldTitle: "role", textFieldHeight: 45, autoCap: true)
         locationField = TextFieldView(textFieldTitle: "location", textFieldHeight: 45, autoCap: true)
@@ -50,7 +49,6 @@ class TextFieldStackView: UIView {
     // MARK: - UI Setup
     
     private func setUpViews() {
-        
         companyField.translatesAutoresizingMaskIntoConstraints = false
         roleField.translatesAutoresizingMaskIntoConstraints = false
         locationField.translatesAutoresizingMaskIntoConstraints = false

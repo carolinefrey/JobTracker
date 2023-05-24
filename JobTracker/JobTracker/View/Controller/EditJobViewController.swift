@@ -94,13 +94,11 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     
     private func configureTargets() {
         contentView.textFieldStackView.companyField.textFieldView.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        
         contentView.deleteJobButton.addTarget(self, action: #selector(deleteJob), for: .touchUpInside)
     }
     
     private func configureScrollView() {
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
         scrollView.contentSize = CGSize(width: view.frame.size.width, height: contentView.bounds.height+950)
         
         NSLayoutConstraint.activate([
@@ -117,7 +115,13 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func updateJob() {
-        DataManager.updateJob(job: job, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none", role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none", location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none", status: contentView.selectStatusView.status.rawValue, link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none", notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none", dateApplied: contentView.textFieldStackView.dateField.dateAppliedField.date)
+        DataManager.updateJob(job: job, company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none",
+                              role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none",
+                              location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none",
+                              status: contentView.selectStatusView.status.rawValue,
+                              link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none",
+                              notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
+                              dateApplied: contentView.textFieldStackView.dateField.dateAppliedField.date)
         updateJobDelegate?.didUpdateJob(job: job)
         navigationController?.popViewController(animated: true)
     }
@@ -131,12 +135,10 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     @objc func textFieldChanged(sender: UITextField) {
         if contentView.textFieldStackView.companyField.textFieldView.text != "" {
             updateJobButton.isEnabled = true
-            let config = UIImage.SymbolConfiguration(textStyle: .title3)
-            updateJobButton.image = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
+            updateJobButton.image = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: UIImage.SymbolConfiguration(textStyle: .title3))
         } else {
             updateJobButton.isEnabled = false
-            let config = UIImage.SymbolConfiguration(textStyle: .title3)
-            updateJobButton.image = UIImage(systemName: "square.and.arrow.down", withConfiguration: config)
+            updateJobButton.image = UIImage(systemName: "square.and.arrow.down", withConfiguration: UIImage.SymbolConfiguration(textStyle: .title3))
         }
     }
 }

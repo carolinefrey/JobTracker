@@ -59,8 +59,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         navigationItem.rightBarButtonItems = [editJobButton, favoriteJobButton]
         
         if job.favorite {
-            let config = UIImage.SymbolConfiguration(textStyle: .title3)
-            favoriteJobButton.image = UIImage(systemName: "heart.fill", withConfiguration: config)
+            favoriteJobButton.image = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(textStyle: .title3))
         }
         
         view.addSubview(detailsStackView)
@@ -73,12 +72,10 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     @objc func favoriteJobButtonTapped() {
         if job.favorite {
             DataManager.favoriteJob(job: job, favorite: false)
-            let config = UIImage.SymbolConfiguration(textStyle: .title3)
-            favoriteJobButton.image = UIImage(systemName: "heart", withConfiguration: config)
+            favoriteJobButton.image = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(textStyle: .title3))
         } else {
             DataManager.favoriteJob(job: job, favorite: true)
-            let config = UIImage.SymbolConfiguration(textStyle: .title3)
-            favoriteJobButton.image = UIImage(systemName: "heart.fill", withConfiguration: config)
+            favoriteJobButton.image = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(textStyle: .title3))
         }
     }
     

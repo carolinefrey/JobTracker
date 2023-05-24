@@ -44,7 +44,6 @@ class DateFieldView: UIView {
     // MARK: - UI Setup
     
     private func setUpView() {
-        
         addSubview(dateAppliedLabel)
         addSubview(dateAppliedField)
         

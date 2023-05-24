@@ -55,7 +55,6 @@ class DetailsStackView: UIView {
     // MARK: - UI Setup
 
     private func setUpViews() {
-
         addSubview(detailsStackView)
         detailsStackView.addArrangedSubview(statusDetailView)
         detailsStackView.addArrangedSubview(companyDetailView)
@@ -76,7 +75,6 @@ class DetailsStackView: UIView {
             roleDetailView.heightAnchor.constraint(equalToConstant: 70),
             locationDetailView.heightAnchor.constraint(equalToConstant: 70),
             linkDetailView.heightAnchor.constraint(equalToConstant: 70),
-            //notesDetailView.heightAnchor.constraint(equalToConstant: 70),
             dateAppliedDetailView.heightAnchor.constraint(equalToConstant: 70),
         ])
     }

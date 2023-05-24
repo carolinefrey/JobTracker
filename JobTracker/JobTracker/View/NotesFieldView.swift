@@ -73,7 +73,6 @@ class NotesFieldView: UIView {
     // MARK: - UI Setup
     
     private func setUpViews() {
-        
         notesFieldView.inputAccessoryView = keyboardToolbar
 
         addSubview(titleView)

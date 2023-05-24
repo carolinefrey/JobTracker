@@ -62,7 +62,6 @@ class TextFieldView: UIView {
     // MARK: - UI Setup
     
     private func setUpViews() {
-        
         addSubview(titleView)
         addSubview(textFieldView)
         
