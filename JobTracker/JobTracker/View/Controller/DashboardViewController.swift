@@ -22,6 +22,8 @@ class DashboardViewController: UIViewController {
     // MARK: - UI Properties
     
     var name: String = ""
+    var collectionViewEditMode = false
+    var selectedJobApps: [Job] = []
 
     private var statusCounts: [String: Int] = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
     
@@ -170,10 +172,8 @@ extension DashboardViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
-        header.configure()
-
-        header.newJobDelegate = self
-        header.filterByFavoritesDelegate = self
+        header.configure(editMode: collectionViewEditMode)
+        header.headerCollectionViewDelegate = self
         return header
     }
 }
@@ -186,6 +186,8 @@ extension DashboardViewController: UICollectionViewDelegate {
             let detailVC = JobDetailsViewController(job: data.filteredJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
+        } else if collectionViewEditMode {
+            selectedJobApps.append(data.savedJobs[indexPath.row])
         } else {
             let detailVC = JobDetailsViewController(job: data.savedJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
@@ -209,15 +211,6 @@ extension DashboardViewController: SetUsernameDelegate {
 // MARK: - HeaderCollectionReusableViewDelegate
 
 extension DashboardViewController: HeaderCollectionReusableViewDelegate {
-    func tapAddNewJobButton() {
-        let addNewJobVC = AddJobViewController()
-        navigationController?.pushViewController(addNewJobVC, animated: true)
-    }
-}
-
-// MARK: - HeaderCollectionReusableViewDelegate
-
-extension DashboardViewController: FilterByFavoritesDelegate {
     func tapFavoritesFilterButton(button: UIButton) {
         if data.filterByFavorites { //remove filter
             data.filterByFavorites = false
@@ -248,9 +241,37 @@ extension DashboardViewController: FilterByFavoritesDelegate {
             contentView.collectionView.reloadData()
         }
     }
+    
+    func tapAddNewJobButton() {
+        let addNewJobVC = AddJobViewController()
+        navigationController?.pushViewController(addNewJobVC, animated: true)
+    }
+
+    func tapEditJobsButton() {
+        collectionViewEditMode = true
+        
+        contentView.collectionView.reloadData()
+    }
+    
+    func tapDoneButton() {
+        collectionViewEditMode = false
+        
+        contentView.collectionView.reloadData()
+    }
+    
+    func batchDeleteJobs() {
+        for job in selectedJobApps {
+            DataManager.deleteJob(item: job)
+            data.savedJobs.removeAll { $0 == job }
+            data.filteredJobs.removeAll { $0 == job }
+            data.favoritedJobs.removeAll { $0 == job }
+        }
+        contentView.collectionView.reloadData()
+    }
 }
 
 // MARK: - JobDeletedDelegate
+
 extension DashboardViewController: DeleteJobDelegate {
     func didDeleteJob(job: Job) {
         data.filteredJobs.removeAll { $0 == job }
