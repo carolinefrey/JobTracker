@@ -9,7 +9,7 @@ import UIKit
 
 protocol HeaderCollectionReusableViewDelegate: AnyObject {
     func tapAddNewJobButton()
-    func tapEditJobsButton()
+    func tapDeleteTasksButton()
     func tapFavoritesFilterButton(button: UIButton)
     func tapDoneButton()
     func batchDeleteJobs()
@@ -89,7 +89,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     }
     
     @objc func editJobs() {
-        headerCollectionViewDelegate?.tapEditJobsButton()
+        headerCollectionViewDelegate?.tapDeleteTasksButton()
     }
     
     @objc func filterbyFavorites(_ sender: UIButton) {
@@ -148,7 +148,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         var menuItems: [UIAction] = []
         
         let deleteTasksAction = UIAction(title: "Delete Tasks", image: UIImage(systemName: "trash"), handler: { _ in
-            self.headerCollectionViewDelegate?.tapEditJobsButton()
+            self.headerCollectionViewDelegate?.tapDeleteTasksButton()
         })
         
         menuItems.append(deleteTasksAction)

@@ -155,7 +155,8 @@ extension DashboardViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier, for: indexPath) as! DashboardCollectionViewCell
         
         viewModel.handleCellForItemAt(data: data, cell: cell, indexPath: indexPath)
-
+        cell.removeCheckmark()
+        
         return cell
     }
     
@@ -187,12 +188,22 @@ extension DashboardViewController: UICollectionViewDelegate {
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
         } else if collectionViewEditMode {
+            if let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell {
+                cell.showCheckmark()
+            }
             selectedJobApps.append(data.savedJobs[indexPath.row])
         } else {
             let detailVC = JobDetailsViewController(job: data.savedJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell {
+            cell.removeCheckmark()
+        }
+        selectedJobApps.removeAll { $0 == data.savedJobs[indexPath.row] }
     }
 }
 
@@ -247,25 +258,29 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
 
-    func tapEditJobsButton() {
+    func tapDeleteTasksButton() {
         collectionViewEditMode = true
-        
+        contentView.collectionView.allowsMultipleSelection = true //******
         contentView.collectionView.reloadData()
     }
     
     func tapDoneButton() {
         collectionViewEditMode = false
-        
+        contentView.collectionView.allowsMultipleSelection = false //******
+        selectedJobApps.removeAll()
         contentView.collectionView.reloadData()
     }
     
     func batchDeleteJobs() {
+        //delete selected jobs
         for job in selectedJobApps {
             DataManager.deleteJob(item: job)
             data.savedJobs.removeAll { $0 == job }
             data.filteredJobs.removeAll { $0 == job }
             data.favoritedJobs.removeAll { $0 == job }
         }
+        selectedJobApps.removeAll()
+        updateJobStatusCounts()
         contentView.collectionView.reloadData()
     }
 }

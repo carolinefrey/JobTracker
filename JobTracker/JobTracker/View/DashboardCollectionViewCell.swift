@@ -51,6 +51,14 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         return heart
     }()
     
+    let checkmark: UIImageView = {
+        let checkmark = UIImageView()
+        checkmark.translatesAutoresizingMaskIntoConstraints = false
+        checkmark.image = UIImage(systemName: "checkmark")
+        checkmark.tintColor = .black
+        return checkmark
+    }()
+    
     //MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -110,5 +118,18 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         }
         
         favoriteIndicator.image = favorite ? UIImage(systemName: "heart") : UIImage(systemName: "")
+    }
+    
+    func showCheckmark() {
+        addSubview(checkmark)
+        
+        NSLayoutConstraint.activate([
+            checkmark.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            checkmark.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
+        ])
+    }
+    
+    func removeCheckmark() {
+        checkmark.removeFromSuperview()
     }
 }
