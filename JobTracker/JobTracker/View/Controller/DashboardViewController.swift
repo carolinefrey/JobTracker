@@ -189,6 +189,15 @@ extension DashboardViewController: UICollectionViewDelegate {
             navigationController?.pushViewController(detailVC, animated: true)
         } else if collectionViewEditMode {
             if let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell {
+                
+                UIView.animate(withDuration: 0.1, animations: {
+                    cell.alpha = 0.7
+                }) { (completed) in
+                    UIView.animate(withDuration: 0.1, animations: {
+                        cell.alpha = 1
+                    })
+                }
+                
                 cell.showCheckmark()
             }
             selectedJobApps.append(data.savedJobs[indexPath.row])
@@ -201,6 +210,15 @@ extension DashboardViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell {
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.alpha = 0.7
+            }) { (completed) in
+                UIView.animate(withDuration: 0.1, animations: {
+                    cell.alpha = 1
+                })
+            }
+            
             cell.removeCheckmark()
         }
         selectedJobApps.removeAll { $0 == data.savedJobs[indexPath.row] }
