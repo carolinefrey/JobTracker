@@ -269,13 +269,13 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
 
     func tapDeleteTasksButton() {
         collectionViewEditMode = true
-        contentView.collectionView.allowsMultipleSelection = true //******
+        contentView.collectionView.allowsMultipleSelection = true
         contentView.collectionView.reloadData()
     }
     
     func tapDoneButton() {
         collectionViewEditMode = false
-        contentView.collectionView.allowsMultipleSelection = false //******
+        contentView.collectionView.allowsMultipleSelection = false
         selectedJobApps.removeAll()
         contentView.collectionView.reloadData()
     }
