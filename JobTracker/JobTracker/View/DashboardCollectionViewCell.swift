@@ -25,7 +25,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     let companyLabel: UILabel = {
         let companyLabel = UILabel()
         companyLabel.translatesAutoresizingMaskIntoConstraints = false
-        companyLabel.font = UIFont(name: "Nunito-SemiBold", size: 26)
+        companyLabel.font = UIFont(name: "Nunito-SemiBold", size: 24)
         companyLabel.textColor = UIColor(named: "Color4")
         companyLabel.textAlignment = .left
         companyLabel.lineBreakMode = .byTruncatingTail

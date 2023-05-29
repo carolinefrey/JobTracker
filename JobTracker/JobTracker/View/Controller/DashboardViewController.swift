@@ -154,10 +154,7 @@ extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier, for: indexPath) as! DashboardCollectionViewCell
         
-        viewModel.handleCellForItemAt(data: data, cell: cell, indexPath: indexPath)
-        cell.removeCheckmark()
-        
-        return cell
+        return viewModel.handleCellForItemAt(data: data, cell: cell, indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
@@ -189,15 +186,7 @@ extension DashboardViewController: UICollectionViewDelegate {
             navigationController?.pushViewController(detailVC, animated: true)
         } else if collectionViewEditMode {
             if let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell {
-                
-                UIView.animate(withDuration: 0.1, animations: {
-                    cell.alpha = 0.7
-                }) { (completed) in
-                    UIView.animate(withDuration: 0.1, animations: {
-                        cell.alpha = 1
-                    })
-                }
-                
+                animateCellSelection(cell: cell)
                 cell.showCheckmark()
             }
             selectedJobApps.append(data.savedJobs[indexPath.row])
@@ -210,18 +199,20 @@ extension DashboardViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell {
-            
-            UIView.animate(withDuration: 0.1, animations: {
-                cell.alpha = 0.7
-            }) { (completed) in
-                UIView.animate(withDuration: 0.1, animations: {
-                    cell.alpha = 1
-                })
-            }
-            
+            animateCellSelection(cell: cell)
             cell.removeCheckmark()
         }
         selectedJobApps.removeAll { $0 == data.savedJobs[indexPath.row] }
+    }
+    
+    func animateCellSelection(cell: DashboardCollectionViewCell) {
+        UIView.animate(withDuration: 0.06, animations: {
+            cell.alpha = 0.7
+        }) { (completed) in
+            UIView.animate(withDuration: 0.06, animations: {
+                cell.alpha = 1
+            })
+        }
     }
 }
 

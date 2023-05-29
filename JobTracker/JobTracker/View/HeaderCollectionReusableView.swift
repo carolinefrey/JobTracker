@@ -147,7 +147,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     func configureHeaderMenu() {
         var menuItems: [UIAction] = []
         
-        let deleteTasksAction = UIAction(title: "Delete Tasks", image: UIImage(systemName: "trash"), handler: { _ in
+        let deleteTasksAction = UIAction(title: "Select Tasks", image: UIImage(systemName: "checkmark.circle"), handler: { _ in
             self.headerCollectionViewDelegate?.tapDeleteTasksButton()
         })
         

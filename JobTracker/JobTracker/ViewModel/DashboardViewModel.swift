@@ -61,7 +61,7 @@ struct DashboardViewModel {
         return messageLabel
     }
 
-    func handleCellForItemAt(data: JobData, cell: DashboardCollectionViewCell, indexPath: IndexPath) {
+    func handleCellForItemAt(data: JobData, cell: DashboardCollectionViewCell, indexPath: IndexPath) -> DashboardCollectionViewCell {
         if data.filtersApplied != [] {
             cell.configure(company: data.filteredJobs[indexPath.row].company ?? "N/A",
                            location: data.filteredJobs[indexPath.row].location ?? "N/A",
@@ -78,6 +78,8 @@ struct DashboardViewModel {
                            status: data.savedJobs[indexPath.row].status ?? "open",
                            favorite: data.savedJobs[indexPath.row].favorite)
         }
+        cell.removeCheckmark()
+        return cell
     }
     
     func handleMoveItem(data: JobData) {
