@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+enum MessageLabelCase {
+    case noJobs
+    case noFilteredJobs
+    case noFavorites
+    case doNotShow
+}
+
 struct DashboardViewModel {
     
     func fetchJobs() -> [Job] {
@@ -31,7 +38,7 @@ struct DashboardViewModel {
     func handleNumItemsInSection(jobData: JobData) -> Int {
         if jobData.filtersApplied != [] {
             return jobData.filteredJobs.count
-        } else if jobData.favoritedJobs != [] && jobData.filterByFavorites {
+        } else if jobData.filterByFavorites {
             return jobData.favoritedJobs.count
         } else {
             return jobData.savedJobs.count
@@ -41,22 +48,30 @@ struct DashboardViewModel {
     func handleToggleEmptyMessage(jobData: JobData) -> UILabel {
         var messageLabel = UILabel()
         if jobData.filtersApplied != [] {
-            messageLabel = jobData.filteredJobs.count == 0 ? showEmptyMessage(show: true) : showEmptyMessage(show: false)
-        } else if jobData.favoritedJobs != [] && jobData.filterByFavorites {
-            messageLabel = showEmptyMessage(show: false)
+            messageLabel = jobData.filteredJobs.count == 0 ? showEmptyMessage(show: .noFilteredJobs) : showEmptyMessage(show: .doNotShow)
+        } else if jobData.filterByFavorites {
+            messageLabel = jobData.favoritedJobs.count == 0 ? showEmptyMessage(show: .noFavorites) : showEmptyMessage(show: .doNotShow)
         } else {
-            messageLabel = jobData.savedJobs.count == 0 ? showEmptyMessage(show: true) : showEmptyMessage(show: false)
+            messageLabel = jobData.savedJobs.count == 0 ? showEmptyMessage(show: .noJobs) : showEmptyMessage(show: .doNotShow)
         }
         return messageLabel
     }
 
-    func showEmptyMessage(show: Bool) -> UILabel {
+    //UI related - technically, should not be in VM
+    func showEmptyMessage(show: MessageLabelCase) -> UILabel {
         let messageLabel = UILabel()
-        if show {
+        if show == .noJobs || show == .noFilteredJobs {
             messageLabel.text = "Add a job by clicking the plus button!"
             messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             messageLabel.textAlignment = .center
             messageLabel.textColor = UIColor(named: "Color4")
+        } else if show == .noFavorites {
+            messageLabel.text = "Favorite a job application by selecting it and tapping the heart in the top right corner!"
+            messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
+            messageLabel.textAlignment = .center
+            messageLabel.textColor = UIColor(named: "Color4")
+            messageLabel.lineBreakMode = .byWordWrapping
+            messageLabel.numberOfLines = 0
         }
         return messageLabel
     }

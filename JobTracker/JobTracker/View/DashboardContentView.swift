@@ -34,7 +34,7 @@ class DashboardContentView: UIView {
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(DashboardCollectionViewCell.self, forCellWithReuseIdentifier: DashboardCollectionViewCell.dashboardCollectionViewCellIdentifier)
         collection.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
-        collection.layer.cornerRadius = 20
+        collection.layer.cornerRadius = 30
         collection.backgroundColor = .white
         return collection
     }()
