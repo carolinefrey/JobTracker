@@ -25,7 +25,7 @@ class DashboardViewController: UIViewController {
     var collectionViewEditMode = false
     var selectedJobApps: [Job] = []
 
-    private var statusCounts: [String: Int] = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
+    private var statusCounts: [JobStatus: Int] = [.open: 0, .applied: 0, .interview: 0, .closed: 0]
     
     lazy var settingsButton: UIBarButtonItem = {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
@@ -101,16 +101,16 @@ class DashboardViewController: UIViewController {
     }
     
     private func updateJobStatusCounts() {
-        statusCounts = ["open": 0, "applied": 0, "interview": 0, "closed": 0]
+        statusCounts = [.open: 0, .applied: 0, .interview: 0, .closed: 0]
         
         for job in data.savedJobs {
-            statusCounts[job.status ?? "open", default: 0] += 1
+            statusCounts[JobStatus(rawValue: job.status ?? "open") ?? .open, default: 0] += 1
         }
         
-        contentView.statusBoxes.openStatusBox.countLabel.text = "\(statusCounts["open"] ?? 0)"
-        contentView.statusBoxes.appliedStatusBox.countLabel.text = "\(statusCounts["applied"] ?? 0)"
-        contentView.statusBoxes.interviewStatusBox.countLabel.text = "\(statusCounts["interview"] ?? 0)"
-        contentView.statusBoxes.closedStatusBox.countLabel.text = "\(statusCounts["closed"] ?? 0)"
+        contentView.statusBoxes.openStatusBox.countLabel.text = "\(statusCounts[.open] ?? 0)"
+        contentView.statusBoxes.appliedStatusBox.countLabel.text = "\(statusCounts[.applied] ?? 0)"
+        contentView.statusBoxes.interviewStatusBox.countLabel.text = "\(statusCounts[.interview] ?? 0)"
+        contentView.statusBoxes.closedStatusBox.countLabel.text = "\(statusCounts[.closed] ?? 0)"
     }
     
     private func sortJobs() {
@@ -174,21 +174,22 @@ extension DashboardViewController: UICollectionViewDataSource {
         header.headerCollectionViewDelegate = self
         return header
     }
+    
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! DashboardCollectionViewCell
+        animateCellSelection(cell: cell)
+
         if data.filtersApplied != [] {
             let detailVC = JobDetailsViewController(job: data.filteredJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
         } else if collectionViewEditMode {
-            if let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell {
-                animateCellSelection(cell: cell)
-                cell.showCheckmark()
-            }
+            cell.showCheckmark()
             selectedJobApps.append(data.savedJobs[indexPath.row])
         } else {
             let detailVC = JobDetailsViewController(job: data.savedJobs[indexPath.row])
