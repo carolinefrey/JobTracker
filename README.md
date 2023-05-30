@@ -29,3 +29,20 @@ Multiple job applications can be selected and batch deleted.
 <p float="center">
 <img src="https://github.com/carolinefrey/JobTracker/assets/22801309/8a4d2382-d088-4a49-a65b-1c3bab9cb6fc" width="250">
 </p>
+
+## Screenshots
+<p float="center">
+<img src="https://github.com/carolinefrey/JobTracker/assets/22801309/93fde6f6-3508-442b-a5d8-457947dbe5aa" width="200">
+<img src="https://github.com/carolinefrey/JobTracker/assets/22801309/a527141a-5b49-49fe-a90d-b4ef7c3b9456" width="200">
+<img src="https://github.com/carolinefrey/JobTracker/assets/22801309/0d033990-0a03-483c-9fef-cb9dc290e9aa" width="200">
+</p>
+<p float="center">
+<img src="https://github.com/carolinefrey/JobTracker/assets/22801309/d3919ddc-5db3-4234-88e7-54fa8b45707a" width="200">
+<img src="https://github.com/carolinefrey/JobTracker/assets/22801309/57e295a5-f08f-45b3-b9e5-29c1ba3c3183" width="200">
+<img src="https://github.com/carolinefrey/JobTracker/assets/22801309/8bf0fdc5-fe52-4220-9001-baec1507b016" width="200">
+</p>
+
+
+
+
+
