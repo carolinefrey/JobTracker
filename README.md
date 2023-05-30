@@ -25,7 +25,7 @@ Users can reorder their job applications by tapping, holding and dragging the co
 <img src="https://github.com/carolinefrey/JobTracker/assets/22801309/6778fd35-1ab1-4c32-b86b-04bca3b1f248" width="250">
 </p>
 
-Batch delete job applications
+Multiple job applications can be selected and batch deleted.
 <p float="center">
 <img src="https://github.com/carolinefrey/JobTracker/assets/22801309/8a4d2382-d088-4a49-a65b-1c3bab9cb6fc" width="250">
 </p>
