@@ -50,7 +50,16 @@ class SingleDetailView: UIView {
         self.job = job
         self.detail = detail
         
-        detailTitleLabel.text = detail == .dateApplied ? "date applied" : detail.rawValue
+        if detail == .dateApplied {
+            detailTitleLabel.text = "date applied"
+        } else if detail == .dateLastUpdated {
+            detailTitleLabel.text = "date last updated"
+        } else {
+            detailTitleLabel.text = detail.rawValue
+        }
+        
+//        detailTitleLabel.text = detail == .dateApplied ? "date applied" : detail.rawValue
+//        detailTitleLabel.text = detail == .dateLastUpdated ? "date last updated" : detail.rawValue
         
         if detail == .status {
             showStatusBox = true
@@ -100,8 +109,13 @@ class SingleDetailView: UIView {
         case .notes:
             detailLabel.font = UIFont(name: "Nunito-Regular", size: 20)
             detailLabel.text = job.notes
+        case .dateLastUpdated:
+            detailLabel.font = UIFont(name: "Nunito-Regular", size: 16)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM dd, yyyy"
+            detailLabel.text = formatter.string(from: job.dateLastUpdated ?? Date.now)
         case .dateApplied:
-            detailLabel.font = UIFont(name: "Nunito-SemiBold", size: 20)
+            detailLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM dd, yyyy"
             detailLabel.text = formatter.string(from: job.dateApplied ?? Date.now)

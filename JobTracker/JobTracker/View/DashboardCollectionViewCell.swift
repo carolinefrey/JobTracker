@@ -35,7 +35,6 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = UIFont(name: "Nunito-Light", size: 14)
         dateLabel.textColor = UIColor(named: "Color4")
-        dateLabel.text = "Wed 5/31"
         return dateLabel
     }()
     
@@ -128,10 +127,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     func configure(company: String, location: String, status: String, favorite: Bool, dateLastUpdated: Date) {
         companyLabel.text = company
         jobLocationLabel.text = location != "" ? "📍 \(location)" : ""
-        
-        print("DEBUG: dateLastUpdated = \(dateLastUpdated)")
-        
-        
+
         let dateFormatted = formatDate(date: dateLastUpdated)
         dateLastUpdatedLabel.text = "\(dateFormatted)"
         

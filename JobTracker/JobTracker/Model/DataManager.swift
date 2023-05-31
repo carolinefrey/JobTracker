@@ -31,7 +31,7 @@ class DataManager {
         job.displayOrder = 0
         job.favorite = false
         job.dateLastUpdated = Date.now
-        
+
         do {
             try managedObjectContext.save()
         }
@@ -81,7 +81,7 @@ class DataManager {
         job.dateApplied = dateApplied
         job.displayOrder = displayOrder
         job.dateLastUpdated = Date.now
-        
+
         do {
             try managedObjectContext.save()
         }

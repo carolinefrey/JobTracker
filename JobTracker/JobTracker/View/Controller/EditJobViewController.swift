@@ -121,7 +121,7 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
                               status: contentView.selectStatusView.status.rawValue,
                               link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none",
                               notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
-                              dateApplied: contentView.textFieldStackView.dateField.dateAppliedField.date)
+                              dateApplied: contentView.textFieldStackView.dateAppliedField.dateAppliedField.date)
         updateJobDelegate?.didUpdateJob(job: job)
         navigationController?.popViewController(animated: true)
     }
