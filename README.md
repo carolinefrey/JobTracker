@@ -32,7 +32,7 @@ Multiple job applications can be selected and batch deleted.
 
 ## Screenshots
 <p float="center">
-<img src="https://github.com/carolinefrey/JobTracker/assets/22801309/93fde6f6-3508-442b-a5d8-457947dbe5aa" width="200">
+<img src="https://github.com/carolinefrey/JobTracker/assets/22801309/93fde6f6-3508-442b-a5d8-457947dbe5aa" width="200"> 
 <img src="https://github.com/carolinefrey/JobTracker/assets/22801309/a527141a-5b49-49fe-a90d-b4ef7c3b9456" width="200">
 <img src="https://github.com/carolinefrey/JobTracker/assets/22801309/0d033990-0a03-483c-9fef-cb9dc290e9aa" width="200">
 </p>
