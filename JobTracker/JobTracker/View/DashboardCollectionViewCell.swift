@@ -22,6 +22,23 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         return cell
     }()
     
+    let dateLabelBackground: UIView = {
+        let background = UIView()
+        background.translatesAutoresizingMaskIntoConstraints = false
+        background.clipsToBounds = true
+        background.layer.cornerRadius = 10
+        return background
+    }()
+    
+    let dateLastUpdatedLabel: UILabel = {
+        let dateLabel = UILabel()
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.font = UIFont(name: "Nunito-Light", size: 14)
+        dateLabel.textColor = UIColor(named: "Color4")
+        dateLabel.text = "Wed 5/31"
+        return dateLabel
+    }()
+    
     let companyLabel: UILabel = {
         let companyLabel = UILabel()
         companyLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +92,8 @@ class DashboardCollectionViewCell: UICollectionViewCell {
 
     private func setUpViews() {
         addSubview(backgroundCell)
+        addSubview(dateLabelBackground)
+        addSubview(dateLastUpdatedLabel)
         addSubview(companyLabel)
         addSubview(jobLocationLabel)
         addSubview(favoriteIndicator)
@@ -84,6 +103,14 @@ class DashboardCollectionViewCell: UICollectionViewCell {
            backgroundCell.leadingAnchor.constraint(equalTo: leadingAnchor),
            backgroundCell.trailingAnchor.constraint(equalTo: trailingAnchor),
            backgroundCell.bottomAnchor.constraint(equalTo: bottomAnchor),
+           
+           dateLabelBackground.topAnchor.constraint(equalTo: backgroundCell.topAnchor, constant: 10),
+           dateLabelBackground.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 10),
+           dateLabelBackground.heightAnchor.constraint(equalToConstant: 25),
+           dateLabelBackground.widthAnchor.constraint(equalToConstant: 95),
+           
+           dateLastUpdatedLabel.centerXAnchor.constraint(equalTo: dateLabelBackground.centerXAnchor),
+           dateLastUpdatedLabel.centerYAnchor.constraint(equalTo: dateLabelBackground.centerYAnchor),
            
            companyLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 20),
            companyLabel.bottomAnchor.constraint(equalTo: backgroundCell.bottomAnchor, constant: -34),
@@ -98,25 +125,35 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func configure(company: String, location: String, status: String, favorite: Bool) {
+    func configure(company: String, location: String, status: String, favorite: Bool, dateLastUpdated: Date) {
         companyLabel.text = company
         jobLocationLabel.text = location != "" ? "📍 \(location)" : ""
+        
+        print("DEBUG: dateLastUpdated = \(dateLastUpdated)")
+        
+        
+        let dateFormatted = formatDate(date: dateLastUpdated)
+        dateLastUpdatedLabel.text = "\(dateFormatted)"
         
         let jobStatus = JobStatus(rawValue: status)
         
         switch jobStatus {
         case .open:
             backgroundCell.backgroundColor = UIColor(named: "OpenStatus")
+            dateLabelBackground.backgroundColor = UIColor(named: "OpenStatus")?.withAlphaComponent(0.6)
         case .applied:
             backgroundCell.backgroundColor = UIColor(named: "AppliedStatus")
+            dateLabelBackground.backgroundColor = UIColor(named: "AppliedStatus")?.withAlphaComponent(0.6)
         case .interview:
             backgroundCell.backgroundColor = UIColor(named: "InterviewStatus")
+            dateLabelBackground.backgroundColor = UIColor(named: "InterviewStatus")?.withAlphaComponent(0.6)
         case .closed:
             backgroundCell.backgroundColor = .lightGray
+            dateLabelBackground.backgroundColor = .darkGray.withAlphaComponent(0.4)
         default:
             backgroundCell.backgroundColor = UIColor(named: "OpenStatus")
+            dateLabelBackground.backgroundColor = UIColor(named: "OpenStatus")?.withAlphaComponent(0.6)
         }
-        
         favoriteIndicator.image = favorite ? UIImage(systemName: "heart") : UIImage(systemName: "")
     }
     
@@ -131,5 +168,27 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     
     func removeCheckmark() {
         checkmark.removeFromSuperview()
+    }
+    
+    func formatDate(date: Date) -> String {
+        var dateString = ""
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "E MM/dd"
+        
+        if let date = dateFormatterGet.date(from: "\(date)") {
+            dateString = dateFormatterPrint.string(from: date)
+        } else {
+            print("Error decoding string")
+        }
+        return dateString
+    }
+}
+
+extension Date {
+    var displayFormat: String {
+        self.formatted(.dateTime.month(.defaultDigits).day(.twoDigits))
     }
 }

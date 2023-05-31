@@ -30,6 +30,7 @@ class DataManager {
         job.dateApplied = dateApplied
         job.displayOrder = 0
         job.favorite = false
+        job.dateLastUpdated = Date.now
         
         do {
             try managedObjectContext.save()
@@ -79,6 +80,7 @@ class DataManager {
         job.notes = notes
         job.dateApplied = dateApplied
         job.displayOrder = displayOrder
+        job.dateLastUpdated = Date.now
         
         do {
             try managedObjectContext.save()
@@ -90,7 +92,7 @@ class DataManager {
     
     static func favoriteJob(job: Job, favorite: Bool) {
         job.favorite = favorite
-        
+        job.dateLastUpdated = Date.now
         do {
             try managedObjectContext.save()
         }

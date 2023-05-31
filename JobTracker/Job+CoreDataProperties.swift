@@ -25,6 +25,7 @@ extension Job {
     @NSManaged public var displayOrder: NSNumber?
     @NSManaged public var dateApplied: Date?
     @NSManaged public var favorite: Bool
+    @NSManaged public var dateLastUpdated: Date?
 }
 
 extension Job: Identifiable {
