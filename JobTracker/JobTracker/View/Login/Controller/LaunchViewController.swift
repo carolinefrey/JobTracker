@@ -48,24 +48,26 @@ extension LaunchViewController: LoginDelegate {
         if contentView.pinEntryField.text == pinString {
             navigationController?.pushViewController(DashboardViewController(viewModel: DashboardViewModel()), animated: true)
         } else {
-            //TODO: add alert
-            
-            print("Wrong pin")
+            showInvalidPINAlert(title: "Incorrect PIN", message: "The PIN you entered is incorrect.")
         }
     }
     
     func createPINButtonTapped() {
-        var pin = Int(contentView.pinEntryField.text ?? "-1")
-        
-        //TODO: enforce 4 digit pin (nothing less)
-        
-        if pin != -1 {
-            defaults.set(pin, forKey: "pin")
+        var pinString = contentView.pinEntryField.text
+        var pinInt = Int(pinString ?? "-1")
+        if pinString?.count == 4 {
+            defaults.set(pinInt, forKey: "pin")
             navigationController?.pushViewController(DashboardViewController(viewModel: DashboardViewModel()), animated: true)
         } else {
-            //TODO: add alert
-            
-            print("Invalid pin")
+            showInvalidPINAlert(title: "Invalid PIN", message: "Your PIN must contain 4-digits.")
         }
+    }
+    
+    private func showInvalidPINAlert(title: String, message: String) {
+        var alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        let okayButton = UIAlertAction(title: "Try again", style: .default)
+        alert.addAction(okayButton)
+        self.present(alert, animated: true)
     }
 }
