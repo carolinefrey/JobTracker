@@ -35,7 +35,7 @@ class SettingsView: UIView {
         return button
     }()
 
-    private let nameTitle: UILabel = {
+    private let nameTitleView: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-Regular", size: 18)
@@ -45,13 +45,13 @@ class SettingsView: UIView {
         return title
     }()
     
-    let textFieldView: UITextField = {
+    let nameTextFieldView: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.backgroundColor = .white
         field.returnKeyType = .done
         field.layer.cornerRadius = 10
-        field.font = UIFont(name: "Nunit-Regular", size: 18)
+        field.font = UIFont(name: "Nunito-Regular", size: 18)
         field.textColor = UIColor(named: "Color4")
         field.setLeftPadding(10)
         field.setRightPadding(10)
@@ -64,8 +64,8 @@ class SettingsView: UIView {
         super.init(frame: .zero)
         
         backgroundColor = UIColor(named: "Background")
-        textFieldView.text = defaults.string(forKey: "name")
-        
+        nameTextFieldView.text = defaults.string(forKey: "name")
+
         setUpViews()
     }
     
@@ -78,8 +78,8 @@ class SettingsView: UIView {
     private func setUpViews() {
         addSubview(screenTitle)
         addSubview(saveSettingsButton)
-        addSubview(nameTitle)
-        addSubview(textFieldView)
+        addSubview(nameTitleView)
+        addSubview(nameTextFieldView)
         
         NSLayoutConstraint.activate([
             screenTitle.topAnchor.constraint(equalTo: topAnchor, constant: 20),
@@ -89,13 +89,14 @@ class SettingsView: UIView {
             saveSettingsButton.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             saveSettingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            nameTitle.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 20),
-            nameTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            nameTitleView.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 20),
+            nameTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             
-            textFieldView.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 5),
-            textFieldView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            textFieldView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            textFieldView.heightAnchor.constraint(equalToConstant: 45),
+            nameTextFieldView.topAnchor.constraint(equalTo: nameTitleView.bottomAnchor, constant: 5),
+            nameTextFieldView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            nameTextFieldView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            nameTextFieldView.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
 }
+

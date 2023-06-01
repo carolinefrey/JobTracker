@@ -21,6 +21,11 @@
 		B97979BA2938CF4300F46578 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979B92938CF4300F46578 /* TextFieldView.swift */; };
 		B97979BC2938D21B00F46578 /* TextFieldStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979BB2938D21B00F46578 /* TextFieldStackView.swift */; };
 		B97C8534297AC8CA0049C636 /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97C8533297AC8CA0049C636 /* DateFieldView.swift */; };
+		B97E56D62A281E0700661396 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E56D52A281E0700661396 /* LaunchView.swift */; };
+		B97E56D82A281E1600661396 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E56D72A281E1600661396 /* LoginView.swift */; };
+		B97E56DA2A281E2500661396 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E56D92A281E2500661396 /* SignUpView.swift */; };
+		B97E56DC2A28204500661396 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E56DB2A28204500661396 /* LaunchViewController.swift */; };
+		B97E56DE2A2824BF00661396 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E56DD2A2824BF00661396 /* LaunchScreen.storyboard */; };
 		B98B1FB32A1B810C0045D3F9 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98B1FB22A1B810C0045D3F9 /* DashboardViewModel.swift */; };
 		B98C1E61296CBD830059E95D /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */; };
 		B99A78EB293AEAAB001A5996 /* DetailsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */; };
@@ -28,7 +33,6 @@
 		B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */; };
 		B9B5CAD5292EBA7200C7EC58 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD4292EBA7200C7EC58 /* DashboardViewController.swift */; };
 		B9B5CADA292EBA7300C7EC58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9B5CAD9292EBA7300C7EC58 /* Assets.xcassets */; };
-		B9B5CADD292EBA7300C7EC58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B5CADB292EBA7300C7EC58 /* LaunchScreen.storyboard */; };
 		B9BF4C8F2943EEEF005D7D39 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF4C8E2943EEEF005D7D39 /* SettingsViewController.swift */; };
 		B9BF4C912943F5BC005D7D39 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BF4C902943F5BC005D7D39 /* SettingsView.swift */; };
 		B9C03F1329367D0400ED2AD7 /* AddJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F1229367D0400ED2AD7 /* AddJobViewController.swift */; };
@@ -58,6 +62,11 @@
 		B97979B92938CF4300F46578 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B97979BB2938D21B00F46578 /* TextFieldStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackView.swift; sourceTree = "<group>"; };
 		B97C8533297AC8CA0049C636 /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
+		B97E56D52A281E0700661396 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		B97E56D72A281E1600661396 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B97E56D92A281E2500661396 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		B97E56DB2A28204500661396 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		B97E56DD2A2824BF00661396 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B98B1FB22A1B810C0045D3F9 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsStackView.swift; sourceTree = "<group>"; };
@@ -66,7 +75,6 @@
 		B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B9B5CAD4292EBA7200C7EC58 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		B9B5CAD9292EBA7300C7EC58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B9B5CADC292EBA7300C7EC58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9B5CADE292EBA7300C7EC58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9BF4C8E2943EEEF005D7D39 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B9BF4C902943F5BC005D7D39 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 		B904B087293592A5008BE140 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B97E56D32A281DD000661396 /* Login */,
 				B904B089293592CD008BE140 /* Controller */,
 				B904B09429359788008BE140 /* DashboardContentView.swift */,
 				B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */,
@@ -146,7 +155,6 @@
 				B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */,
 				B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */,
 				B9B5CAD9292EBA7300C7EC58 /* Assets.xcassets */,
-				B9B5CADB292EBA7300C7EC58 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -159,6 +167,25 @@
 				B904B08E29359325008BE140 /* Nunito-Light.ttf */,
 			);
 			path = Nunito;
+			sourceTree = "<group>";
+		};
+		B97E56D32A281DD000661396 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B97E56D52A281E0700661396 /* LaunchView.swift */,
+				B97E56D72A281E1600661396 /* LoginView.swift */,
+				B97E56D92A281E2500661396 /* SignUpView.swift */,
+				B97E56D42A281DD800661396 /* Controller */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B97E56D42A281DD800661396 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B97E56DB2A28204500661396 /* LaunchViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B98B1FB12A1B80EA0045D3F9 /* ViewModel */ = {
@@ -195,6 +222,7 @@
 				B98B1FB12A1B80EA0045D3F9 /* ViewModel */,
 				B904B08A293592D5008BE140 /* Supporting Files */,
 				B9B5CADE292EBA7300C7EC58 /* Info.plist */,
+				B97E56DD2A2824BF00661396 /* LaunchScreen.storyboard */,
 			);
 			path = JobTracker;
 			sourceTree = "<group>";
@@ -261,7 +289,7 @@
 				B904B09029359335008BE140 /* Nunito-SemiBold.ttf in Resources */,
 				B904B09129359337008BE140 /* Nunito-Light.ttf in Resources */,
 				B904B08F29359332008BE140 /* Nunito-Regular.ttf in Resources */,
-				B9B5CADD292EBA7300C7EC58 /* LaunchScreen.storyboard in Resources */,
+				B97E56DE2A2824BF00661396 /* LaunchScreen.storyboard in Resources */,
 				B9B5CADA292EBA7300C7EC58 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,8 +327,10 @@
 				B98C1E61296CBD830059E95D /* HeaderCollectionReusableView.swift in Sources */,
 				B95A3E3B2937ECB000518CA3 /* DataManager.swift in Sources */,
 				B95A3E382937EBFC00518CA3 /* Job+CoreDataClass.swift in Sources */,
+				B97E56D62A281E0700661396 /* LaunchView.swift in Sources */,
 				B97979BC2938D21B00F46578 /* TextFieldStackView.swift in Sources */,
 				B9D3B6CB2937641B004CB5A4 /* AddJobContentView.swift in Sources */,
+				B97E56D82A281E1600661396 /* LoginView.swift in Sources */,
 				B904B0992936204C008BE140 /* JobData.swift in Sources */,
 				B9C31FEA294028DE00F2AF21 /* EditJobViewController.swift in Sources */,
 				B976797D2942070C00F78490 /* NotesFieldView.swift in Sources */,
@@ -311,6 +341,7 @@
 				B9C03F192936CB5500ED2AD7 /* DashboardCollectionViewCell.swift in Sources */,
 				B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */,
 				B97C8534297AC8CA0049C636 /* DateFieldView.swift in Sources */,
+				B97E56DC2A28204500661396 /* LaunchViewController.swift in Sources */,
 				B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */,
 				B99A78EB293AEAAB001A5996 /* DetailsStackView.swift in Sources */,
 				B9C03F1329367D0400ED2AD7 /* AddJobViewController.swift in Sources */,
@@ -320,6 +351,7 @@
 				B95A3E392937EBFC00518CA3 /* Job+CoreDataProperties.swift in Sources */,
 				B9D3B6CD29376592004CB5A4 /* SelectJobStatusView.swift in Sources */,
 				B9C54107293AE11700D5C5E6 /* SingleDetailView.swift in Sources */,
+				B97E56DA2A281E2500661396 /* SignUpView.swift in Sources */,
 				B95A3E352937EAAB00518CA3 /* JobList.xcdatamodeld in Sources */,
 				B9C03F172936832E00ED2AD7 /* StatusBoxesStackView.swift in Sources */,
 				B9BF4C912943F5BC005D7D39 /* SettingsView.swift in Sources */,
@@ -327,17 +359,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		B9B5CADB292EBA7300C7EC58 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B9B5CADC292EBA7300C7EC58 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B9B5CADF292EBA7300C7EC58 /* Debug */ = {
@@ -465,14 +486,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JobTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -492,14 +513,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JobTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

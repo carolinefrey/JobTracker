@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SetUsernameDelegate: AnyObject {
-    func didUpdateSettings(name: String)
+protocol UpdateSettingsDelegate: AnyObject {
+    func updateUsername(name: String)
 }
 
 class SettingsViewController: UIViewController {
 
-    weak var delegate: SetUsernameDelegate?
+    weak var delegate: UpdateSettingsDelegate?
     
     // MARK: - UserDefaults
     
@@ -29,17 +29,25 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         view = contentView
-        contentView.textFieldView.delegate = self
-        contentView.saveSettingsButton.addTarget(self, action: #selector(saveSettings), for: .touchUpInside)
+        
+        configure()
     }
     
     // MARK: - Functions
+    
+    func configure() {
+        contentView.nameTextFieldView.delegate = self
+        contentView.saveSettingsButton.addTarget(self, action: #selector(saveSettings), for: .touchUpInside)
+    }
 
     @objc func saveSettings() {
-        let name = contentView.textFieldView.text ?? ""
-        defaults.set("\(name)", forKey: "name")
+        //check if name has been updated, only update if different than what is already saved
+        let name = contentView.nameTextFieldView.text ?? ""
+        if name != defaults.string(forKey: "name") {
+            defaults.set("\(name)", forKey: "name")
+            self.delegate?.updateUsername(name: name)
+        }
         dismiss(animated: true)
-        self.delegate?.didUpdateSettings(name: name)
     }
 }
 

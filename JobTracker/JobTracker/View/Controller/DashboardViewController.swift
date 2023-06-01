@@ -219,13 +219,17 @@ extension DashboardViewController: UICollectionViewDelegate {
 
 // MARK: - SetUsernameDelegate
 
-extension DashboardViewController: SetUsernameDelegate {
-    func didUpdateSettings(name: String) {
+extension DashboardViewController: UpdateSettingsDelegate {
+    func updateUsername(name: String) {
         if name != "" {
             contentView.headerView.greeting.text = "Hey, \(name)!"
         } else {
             contentView.headerView.greeting.text = "JobApp Tracker"
         }
+    }
+    
+    func updatePIN(pin: Int) {
+        //implement
     }
 }
 

@@ -39,7 +39,7 @@ class DashboardContentView: UIView {
         return collection
     }()
     
-    //MARK: - Initializers
+    // MARK: - Initializers
 
     override init(frame: CGRect) {
         super.init(frame: frame)

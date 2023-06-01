@@ -22,7 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         let viewModel = DashboardViewModel()
         let navigationController = UINavigationController(rootViewController: DashboardViewController(viewModel: viewModel))
-        window.rootViewController = navigationController
+        
+        // MARK: - uncomment when done implementing login
+//        window.rootViewController = navigationController
+        
+        // MARK: - testing launch screen
+        window.rootViewController = LaunchViewController()
+        
         self.window = window
     }
 
