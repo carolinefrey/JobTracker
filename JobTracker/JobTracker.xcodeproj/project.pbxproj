@@ -22,8 +22,6 @@
 		B97979BC2938D21B00F46578 /* TextFieldStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979BB2938D21B00F46578 /* TextFieldStackView.swift */; };
 		B97C8534297AC8CA0049C636 /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97C8533297AC8CA0049C636 /* DateFieldView.swift */; };
 		B97E56D62A281E0700661396 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E56D52A281E0700661396 /* LaunchView.swift */; };
-		B97E56D82A281E1600661396 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E56D72A281E1600661396 /* LoginView.swift */; };
-		B97E56DA2A281E2500661396 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E56D92A281E2500661396 /* SignUpView.swift */; };
 		B97E56DC2A28204500661396 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E56DB2A28204500661396 /* LaunchViewController.swift */; };
 		B97E56DE2A2824BF00661396 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B97E56DD2A2824BF00661396 /* LaunchScreen.storyboard */; };
 		B98B1FB32A1B810C0045D3F9 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98B1FB22A1B810C0045D3F9 /* DashboardViewModel.swift */; };
@@ -63,8 +61,6 @@
 		B97979BB2938D21B00F46578 /* TextFieldStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackView.swift; sourceTree = "<group>"; };
 		B97C8533297AC8CA0049C636 /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		B97E56D52A281E0700661396 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
-		B97E56D72A281E1600661396 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		B97E56D92A281E2500661396 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		B97E56DB2A28204500661396 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		B97E56DD2A2824BF00661396 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B98B1FB22A1B810C0045D3F9 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -173,8 +169,6 @@
 			isa = PBXGroup;
 			children = (
 				B97E56D52A281E0700661396 /* LaunchView.swift */,
-				B97E56D72A281E1600661396 /* LoginView.swift */,
-				B97E56D92A281E2500661396 /* SignUpView.swift */,
 				B97E56D42A281DD800661396 /* Controller */,
 			);
 			path = Login;
@@ -330,7 +324,6 @@
 				B97E56D62A281E0700661396 /* LaunchView.swift in Sources */,
 				B97979BC2938D21B00F46578 /* TextFieldStackView.swift in Sources */,
 				B9D3B6CB2937641B004CB5A4 /* AddJobContentView.swift in Sources */,
-				B97E56D82A281E1600661396 /* LoginView.swift in Sources */,
 				B904B0992936204C008BE140 /* JobData.swift in Sources */,
 				B9C31FEA294028DE00F2AF21 /* EditJobViewController.swift in Sources */,
 				B976797D2942070C00F78490 /* NotesFieldView.swift in Sources */,
@@ -351,7 +344,6 @@
 				B95A3E392937EBFC00518CA3 /* Job+CoreDataProperties.swift in Sources */,
 				B9D3B6CD29376592004CB5A4 /* SelectJobStatusView.swift in Sources */,
 				B9C54107293AE11700D5C5E6 /* SingleDetailView.swift in Sources */,
-				B97E56DA2A281E2500661396 /* SignUpView.swift in Sources */,
 				B95A3E352937EAAB00518CA3 /* JobList.xcdatamodeld in Sources */,
 				B9C03F172936832E00ED2AD7 /* StatusBoxesStackView.swift in Sources */,
 				B9BF4C912943F5BC005D7D39 /* SettingsView.swift in Sources */,

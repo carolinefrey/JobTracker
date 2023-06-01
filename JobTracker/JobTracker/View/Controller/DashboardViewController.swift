@@ -227,10 +227,6 @@ extension DashboardViewController: UpdateSettingsDelegate {
             contentView.headerView.greeting.text = "JobApp Tracker"
         }
     }
-    
-    func updatePIN(pin: Int) {
-        //implement
-    }
 }
 
 // MARK: - HeaderCollectionReusableViewDelegate

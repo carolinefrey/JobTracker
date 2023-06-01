@@ -58,6 +58,29 @@ class SettingsView: UIView {
         return field
     }()
     
+    private let pinTitleView: UILabel = {
+        let title = UILabel()
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.font = UIFont(name: "Nunito-Regular", size: 18)
+        title.textColor = UIColor(named: "Color4")
+        title.textAlignment = .left
+        title.text = "4-digit pin:"
+        return title
+    }()
+    
+    let pinTextFieldView: UITextField = {
+        let field = UITextField()
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.backgroundColor = .white
+        field.keyboardType = .numberPad
+        field.layer.cornerRadius = 10
+        field.font = UIFont(name: "Nunito-Regular", size: 18)
+        field.textColor = UIColor(named: "Color4")
+        field.setLeftPadding(10)
+        field.setRightPadding(10)
+        return field
+    }()
+    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -65,6 +88,8 @@ class SettingsView: UIView {
         
         backgroundColor = UIColor(named: "Background")
         nameTextFieldView.text = defaults.string(forKey: "name")
+        pinTextFieldView.text = "\(defaults.integer(forKey: "pin"))"
+        pinTextFieldView.delegate = self
 
         setUpViews()
     }
@@ -80,6 +105,8 @@ class SettingsView: UIView {
         addSubview(saveSettingsButton)
         addSubview(nameTitleView)
         addSubview(nameTextFieldView)
+        addSubview(pinTitleView)
+        addSubview(pinTextFieldView)
         
         NSLayoutConstraint.activate([
             screenTitle.topAnchor.constraint(equalTo: topAnchor, constant: 20),
@@ -96,7 +123,25 @@ class SettingsView: UIView {
             nameTextFieldView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             nameTextFieldView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             nameTextFieldView.heightAnchor.constraint(equalToConstant: 45),
+            
+            pinTitleView.topAnchor.constraint(equalTo: nameTextFieldView.bottomAnchor, constant: 20),
+            pinTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            
+            pinTextFieldView.topAnchor.constraint(equalTo: pinTitleView.bottomAnchor, constant: 5),
+            pinTextFieldView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            pinTextFieldView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            pinTextFieldView.heightAnchor.constraint(equalToConstant: 45),
         ])
+    }
+}
+
+extension SettingsView: UITextFieldDelegate {
+    //limit pin field to 4 characters
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 4
     }
 }
 

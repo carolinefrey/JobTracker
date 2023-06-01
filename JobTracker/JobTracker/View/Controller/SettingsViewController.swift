@@ -47,6 +47,12 @@ class SettingsViewController: UIViewController {
             defaults.set("\(name)", forKey: "name")
             self.delegate?.updateUsername(name: name)
         }
+        //check if pin has been updated
+        let pin = Int(contentView.pinTextFieldView.text ?? "-1")
+        if pin != defaults.integer(forKey: "pin") {
+            defaults.set(pin, forKey: "pin")
+        }
+        
         dismiss(animated: true)
     }
 }
