@@ -185,14 +185,13 @@ extension DashboardViewController: UICollectionViewDataSource {
 extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! DashboardCollectionViewCell
-        animateCellSelection(cell: cell)
+        animateCellSelection(cell: cell, select: true)
 
         if data.filtersApplied != [] {
             let detailVC = JobDetailsViewController(job: data.filteredJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
         } else if collectionViewEditMode {
-            cell.showCheckmark()
             selectedJobApps.append(data.savedJobs[indexPath.row])
         } else {
             let detailVC = JobDetailsViewController(job: data.savedJobs[indexPath.row])
@@ -203,16 +202,17 @@ extension DashboardViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? DashboardCollectionViewCell {
-            animateCellSelection(cell: cell)
-            cell.removeCheckmark()
+            animateCellSelection(cell: cell, select: false)
         }
         selectedJobApps.removeAll { $0 == data.savedJobs[indexPath.row] }
     }
     
-    func animateCellSelection(cell: DashboardCollectionViewCell) {
-        UIView.animate(withDuration: 0.06, animations: {
-            cell.alpha = 0.7
-        }) { (completed) in
+    func animateCellSelection(cell: DashboardCollectionViewCell, select: Bool) {
+        if select {
+            UIView.animate(withDuration: 0.06, animations: {
+                cell.alpha = 0.5
+            })
+        } else {
             UIView.animate(withDuration: 0.06, animations: {
                 cell.alpha = 1
             })

@@ -82,21 +82,20 @@ struct DashboardViewModel {
                            location: data.filteredJobs[indexPath.row].location ?? "N/A",
                            status: data.filteredJobs[indexPath.row].status ?? "open",
                            favorite: data.filteredJobs[indexPath.row].favorite,
-                           dateLastUpdated: data.filteredJobs[indexPath.row].dateLastUpdated ?? Date.now)
+                           dateLastUpdated: data.filteredJobs[indexPath.row].dateLastUpdated)
         } else if data.favoritedJobs != [] && data.filterByFavorites {
             cell.configure(company: data.favoritedJobs[indexPath.row].company ?? "N/A",
                            location: data.favoritedJobs[indexPath.row].location ?? "N/A",
                            status: data.favoritedJobs[indexPath.row].status ?? "open",
                            favorite: data.favoritedJobs[indexPath.row].favorite,
-                           dateLastUpdated: data.favoritedJobs[indexPath.row].dateLastUpdated ?? Date.now)
+                           dateLastUpdated: data.favoritedJobs[indexPath.row].dateLastUpdated)
         } else {
             cell.configure(company: data.savedJobs[indexPath.row].company ?? "N/A",
                            location: data.savedJobs[indexPath.row].location ?? "N/A",
                            status: data.savedJobs[indexPath.row].status ?? "open",
                            favorite: data.savedJobs[indexPath.row].favorite,
-                           dateLastUpdated: data.savedJobs[indexPath.row].dateLastUpdated ?? Date.now)
+                           dateLastUpdated: data.savedJobs[indexPath.row].dateLastUpdated)
         }
-        cell.removeCheckmark()
         return cell
     }
     
