@@ -67,6 +67,9 @@ class DashboardViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
         data.savedJobs = viewModel.fetchJobs()
         sortJobs()
         

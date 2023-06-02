@@ -45,7 +45,8 @@ class LaunchView: UIView {
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 18)
         field.textColor = UIColor(named: "Color4")
-        field.placeholder = "4-digit PIN"
+        field.attributedPlaceholder = NSAttributedString(string: "4-digit PIN", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        field.textAlignment = .center
         field.setLeftPadding(10)
         field.setRightPadding(10)
         return field
