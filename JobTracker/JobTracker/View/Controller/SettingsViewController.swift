@@ -48,12 +48,25 @@ class SettingsViewController: UIViewController {
             self.delegate?.updateUsername(name: name)
         }
         //check if pin has been updated
-        let pin = Int(contentView.pinTextFieldView.text ?? "-1")
-        if pin != defaults.integer(forKey: "pin") {
-            defaults.set(pin, forKey: "pin")
+        if contentView.pinTextFieldView.text?.count ?? 0 < 4 {
+            showInvalidPINAlert(title: "Invalid PIN", message: "Your PIN must contain 4 digits.")
+        } else {
+            let pin = Int(contentView.pinTextFieldView.text ?? "-1")
+            if pin != defaults.integer(forKey: "pin") {
+                defaults.set(pin, forKey: "pin")
+            }
+            
+            dismiss(animated: true)
         }
-        
-        dismiss(animated: true)
+    }
+    
+    
+    private func showInvalidPINAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        let okayButton = UIAlertAction(title: "Try again", style: .default)
+        alert.addAction(okayButton)
+        self.present(alert, animated: true)
     }
 }
 

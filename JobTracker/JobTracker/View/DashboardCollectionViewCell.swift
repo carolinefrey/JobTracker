@@ -182,9 +182,3 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         return dateString
     }
 }
-
-extension Date {
-    var displayFormat: String {
-        self.formatted(.dateTime.month(.defaultDigits).day(.twoDigits))
-    }
-}

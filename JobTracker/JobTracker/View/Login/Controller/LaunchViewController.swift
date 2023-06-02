@@ -53,8 +53,8 @@ extension LaunchViewController: LoginDelegate {
     }
     
     func createPINButtonTapped() {
-        var pinString = contentView.pinEntryField.text
-        var pinInt = Int(pinString ?? "-1")
+        let pinString = contentView.pinEntryField.text
+        let pinInt = Int(pinString ?? "-1")
         if pinString?.count == 4 {
             defaults.set(pinInt, forKey: "pin")
             navigationController?.pushViewController(DashboardViewController(viewModel: DashboardViewModel()), animated: true)
@@ -64,7 +64,7 @@ extension LaunchViewController: LoginDelegate {
     }
     
     private func showInvalidPINAlert(title: String, message: String) {
-        var alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         let okayButton = UIAlertAction(title: "Try again", style: .default)
         alert.addAction(okayButton)
