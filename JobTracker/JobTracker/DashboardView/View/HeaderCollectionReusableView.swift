@@ -28,15 +28,29 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     var menu = UIMenu()
     
     lazy var filterByFavoritesButton: UIButton = {
-        let button = UIButton()
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setImage(UIImage(systemName: "heart"), for: .normal)
+//        button.tintColor = .black
+//        button.setTitle("view favorites", for: .normal)
+//        button.setTitleColor(.black, for: .normal)
+//        button.backgroundColor = UIColor(named: "FavoriteButtonColor")
+//        button.layer.cornerRadius = 8
+//        button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
+//        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        
+        
+        var config = UIButton.Configuration.filled()
+        config.title = "view favorites"
+        config.buttonSize = .small
+        config.image = UIImage(systemName: "heart")
+        config.imagePlacement = .leading
+        config.imagePadding = 5
+        config.baseBackgroundColor = UIColor(named: "FavoriteButtonColor")
+        config.baseForegroundColor = .black
+        
+        let button = UIButton(configuration: config)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.tintColor = .black
-        button.setTitle("view favorites", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor(named: "FavoriteButtonColor")
-        button.layer.cornerRadius = 8
-        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         button.addTarget(self, action: #selector(filterbyFavorites), for: .touchUpInside)
         return button
     }()

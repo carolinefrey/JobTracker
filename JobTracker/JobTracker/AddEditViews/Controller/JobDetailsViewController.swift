@@ -90,7 +90,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         detailsStackView.notesDetailView.detailLabel.text = job.notes
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd, yyyy"
-        detailsStackView.dateLastUpdatedView.detailLabel.text = formatter.string(from: job.dateLastUpdated ?? Date.now)
+        detailsStackView.dateLastUpdatedView.detailLabel.text = formatter.string(from: job.dateLastUpdated)
         detailsStackView.dateAppliedDetailView.detailLabel.text = formatter.string(from: job.dateApplied ?? Date.now)
     }
     

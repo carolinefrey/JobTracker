@@ -20,10 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
-        let viewModel = DashboardViewModel()
         let navigationController = UINavigationController(rootViewController: LaunchViewController())
 
-        // MARK: - replace line 24 with this to remove login flow
+        // MARK: - replace line 23 with these to remove login flow
+//        let viewModel = DashboardViewModel()
 //        let navigationController = UINavigationController(rootViewController: DashboardViewController(viewModel: viewModel))
         
         window.rootViewController = navigationController

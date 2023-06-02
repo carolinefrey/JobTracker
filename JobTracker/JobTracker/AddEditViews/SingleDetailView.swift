@@ -113,7 +113,7 @@ class SingleDetailView: UIView {
             detailLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM dd, yyyy"
-            detailLabel.text = formatter.string(from: job.dateLastUpdated ?? Date.now)
+            detailLabel.text = formatter.string(from: job.dateLastUpdated)
         case .dateApplied:
             detailLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             let formatter = DateFormatter()

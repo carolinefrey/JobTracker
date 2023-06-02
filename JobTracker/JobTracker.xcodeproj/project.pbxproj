@@ -45,13 +45,23 @@
 		B9D3B6CD29376592004CB5A4 /* SelectJobStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B9D05F6F2A2A984A005CE12A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9B5CAC5292EBA7200C7EC58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9B5CACC292EBA7200C7EC58;
+			remoteInfo = JobTracker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		B904B08C29359309008BE140 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		B904B08D29359317008BE140 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		B904B08E29359325008BE140 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		B904B09429359788008BE140 /* DashboardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContentView.swift; sourceTree = "<group>"; };
 		B904B0982936204C008BE140 /* JobData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobData.swift; sourceTree = "<group>"; };
-		B904B09A29362421008BE140 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = ../../../../JobTracker/JobTracker/JobTracker/View/HeaderView.swift; sourceTree = "<group>"; };
+		B904B09A29362421008BE140 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		B95A3E342937EAAB00518CA3 /* JobList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JobList.xcdatamodel; sourceTree = "<group>"; };
 		B95A3E362937EBFC00518CA3 /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B95A3E372937EBFC00518CA3 /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -82,12 +92,20 @@
 		B9C31FEB2940291900F2AF21 /* EditJobContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJobContentView.swift; sourceTree = "<group>"; };
 		B9C54104293ADEB400D5C5E6 /* JobDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsViewController.swift; sourceTree = "<group>"; };
 		B9C54106293AE11700D5C5E6 /* SingleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDetailView.swift; sourceTree = "<group>"; };
+		B9D05F6B2A2A984A005CE12A /* JobTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D3B6CA2937641B004CB5A4 /* AddJobContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobContentView.swift; sourceTree = "<group>"; };
 		B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectJobStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B9B5CACA292EBA7200C7EC58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9D05F682A2A984A005CE12A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -107,18 +125,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B904B087293592A5008BE140 /* View */ = {
+		B904B087293592A5008BE140 /* AddEditViews */ = {
 			isa = PBXGroup;
 			children = (
-				B97E56D32A281DD000661396 /* Login */,
-				B904B089293592CD008BE140 /* Controller */,
-				B904B09429359788008BE140 /* DashboardContentView.swift */,
-				B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */,
-				B904B09A29362421008BE140 /* HeaderView.swift */,
-				B9C03F142936808B00ED2AD7 /* StatusBoxView.swift */,
-				B9C03F162936832E00ED2AD7 /* StatusBoxesStackView.swift */,
-				B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */,
 				B9D3B6CA2937641B004CB5A4 /* AddJobContentView.swift */,
+				B9C31FEB2940291900F2AF21 /* EditJobContentView.swift */,
 				B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */,
 				B97979B92938CF4300F46578 /* TextFieldView.swift */,
 				B976797C2942070C00F78490 /* NotesFieldView.swift */,
@@ -126,20 +137,17 @@
 				B97979BB2938D21B00F46578 /* TextFieldStackView.swift */,
 				B9C54106293AE11700D5C5E6 /* SingleDetailView.swift */,
 				B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */,
-				B9C31FEB2940291900F2AF21 /* EditJobContentView.swift */,
-				B9BF4C902943F5BC005D7D39 /* SettingsView.swift */,
+				B904B089293592CD008BE140 /* Controller */,
 			);
-			path = View;
+			path = AddEditViews;
 			sourceTree = "<group>";
 		};
 		B904B089293592CD008BE140 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B9B5CAD4292EBA7200C7EC58 /* DashboardViewController.swift */,
 				B9C03F1229367D0400ED2AD7 /* AddJobViewController.swift */,
 				B9C54104293ADEB400D5C5E6 /* JobDetailsViewController.swift */,
 				B9C31FE9294028DE00F2AF21 /* EditJobViewController.swift */,
-				B9BF4C8E2943EEEF005D7D39 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,13 +173,13 @@
 			path = Nunito;
 			sourceTree = "<group>";
 		};
-		B97E56D32A281DD000661396 /* Login */ = {
+		B97E56D32A281DD000661396 /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
 				B97E56D52A281E0700661396 /* LaunchView.swift */,
 				B97E56D42A281DD800661396 /* Controller */,
 			);
-			path = Login;
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		B97E56D42A281DD800661396 /* Controller */ = {
@@ -204,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				B9B5CACD292EBA7200C7EC58 /* JobTracker.app */,
+				B9D05F6B2A2A984A005CE12A /* JobTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,13 +221,63 @@
 			isa = PBXGroup;
 			children = (
 				B904B0862935929A008BE140 /* Model */,
-				B904B087293592A5008BE140 /* View */,
-				B98B1FB12A1B80EA0045D3F9 /* ViewModel */,
+				B97E56D32A281DD000661396 /* LoginView */,
+				B9D05F742A2A9B8E005CE12A /* DashboardView */,
+				B904B087293592A5008BE140 /* AddEditViews */,
+				B9D05F7A2A2A9C89005CE12A /* SettingsView */,
 				B904B08A293592D5008BE140 /* Supporting Files */,
 				B9B5CADE292EBA7300C7EC58 /* Info.plist */,
 				B97E56DD2A2824BF00661396 /* LaunchScreen.storyboard */,
 			);
 			path = JobTracker;
+			sourceTree = "<group>";
+		};
+		B9D05F742A2A9B8E005CE12A /* DashboardView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D05F762A2A9BC6005CE12A /* View */,
+				B98B1FB12A1B80EA0045D3F9 /* ViewModel */,
+			);
+			path = DashboardView;
+			sourceTree = "<group>";
+		};
+		B9D05F752A2A9BAF005CE12A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9B5CAD4292EBA7200C7EC58 /* DashboardViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B9D05F762A2A9BC6005CE12A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B904B09429359788008BE140 /* DashboardContentView.swift */,
+				B904B09A29362421008BE140 /* HeaderView.swift */,
+				B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */,
+				B9C03F142936808B00ED2AD7 /* StatusBoxView.swift */,
+				B9C03F162936832E00ED2AD7 /* StatusBoxesStackView.swift */,
+				B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */,
+				B9D05F752A2A9BAF005CE12A /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9D05F7A2A2A9C89005CE12A /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				B9BF4C902943F5BC005D7D39 /* SettingsView.swift */,
+				B9D05F7C2A2A9C9E005CE12A /* Controller */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		B9D05F7C2A2A9C9E005CE12A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9BF4C8E2943EEEF005D7D39 /* SettingsViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +301,24 @@
 			productReference = B9B5CACD292EBA7200C7EC58 /* JobTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B9D05F6A2A2A984A005CE12A /* JobTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9D05F732A2A984A005CE12A /* Build configuration list for PBXNativeTarget "JobTrackerTests" */;
+			buildPhases = (
+				B9D05F672A2A984A005CE12A /* Sources */,
+				B9D05F682A2A984A005CE12A /* Frameworks */,
+				B9D05F692A2A984A005CE12A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9D05F702A2A984A005CE12A /* PBXTargetDependency */,
+			);
+			name = JobTrackerTests;
+			productName = JobTrackerTests;
+			productReference = B9D05F6B2A2A984A005CE12A /* JobTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -249,11 +326,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					B9B5CACC292EBA7200C7EC58 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					B9D05F6A2A2A984A005CE12A = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = B9B5CACC292EBA7200C7EC58;
 					};
 				};
 			};
@@ -271,6 +352,7 @@
 			projectRoot = "";
 			targets = (
 				B9B5CACC292EBA7200C7EC58 /* JobTracker */,
+				B9D05F6A2A2A984A005CE12A /* JobTrackerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -285,6 +367,13 @@
 				B904B08F29359332008BE140 /* Nunito-Regular.ttf in Resources */,
 				B97E56DE2A2824BF00661396 /* LaunchScreen.storyboard in Resources */,
 				B9B5CADA292EBA7300C7EC58 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9D05F692A2A984A005CE12A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +439,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B9D05F672A2A984A005CE12A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9D05F702A2A984A005CE12A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9B5CACC292EBA7200C7EC58 /* JobTracker */;
+			targetProxy = B9D05F6F2A2A984A005CE12A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B9B5CADF292EBA7300C7EC58 /* Debug */ = {
@@ -521,6 +625,50 @@
 			};
 			name = Release;
 		};
+		B9D05F712A2A984A005CE12A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 794RQQKASN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JobTracker";
+			};
+			name = Debug;
+		};
+		B9D05F722A2A984A005CE12A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 794RQQKASN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.frey.caroline.JobTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JobTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JobTracker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -538,6 +686,15 @@
 			buildConfigurations = (
 				B9B5CAE2292EBA7300C7EC58 /* Debug */,
 				B9B5CAE3292EBA7300C7EC58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9D05F732A2A984A005CE12A /* Build configuration list for PBXNativeTarget "JobTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9D05F712A2A984A005CE12A /* Debug */,
+				B9D05F722A2A984A005CE12A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

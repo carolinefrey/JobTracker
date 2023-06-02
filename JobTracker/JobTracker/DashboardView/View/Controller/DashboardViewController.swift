@@ -238,31 +238,39 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
     func tapFavoritesFilterButton(button: UIButton) {
         if data.filterByFavorites { //remove filter
             data.filterByFavorites = false
-            
-            button.setImage(UIImage(systemName: "heart"), for: .normal)
-            button.tintColor = .black
-            button.setTitle("view favorites", for: .normal)
-            button.setTitleColor(.black, for: .normal)
-            button.backgroundColor = UIColor(named: "FavoriteButtonColor")
-            
+            configureFavoritesButton(filterState: data.filterByFavorites)
             data.favoritedJobs.removeAll()
             tapStatusBox(button)
             contentView.collectionView.reloadData()
         } else { //filter by favorites
             data.filterByFavorites = true
-            
-            button.setImage(UIImage(systemName: "circle.grid.2x2.fill"), for: .normal)
-            button.tintColor = .black
-            button.setTitle("view all", for: .normal)
-            button.setTitleColor(.black, for: .normal)
-            button.backgroundColor = .lightGray
-                        
+            configureFavoritesButton(filterState: data.filterByFavorites)
             data.favoritedJobs = data.savedJobs.filter { job in
                 return job.favorite == true
             }
             data.filtersApplied.removeAll()
             tapStatusBox(button)
             contentView.collectionView.reloadData()
+        }
+        
+        func configureFavoritesButton(filterState: Bool) {
+            if filterState {
+                button.configuration?.title = "view all"
+                button.configuration?.buttonSize = .small
+                button.configuration?.image = UIImage(systemName: "circle.grid.2x2.fill")
+                button.configuration?.imagePlacement = .leading
+                button.configuration?.imagePadding = 5
+                button.configuration?.baseBackgroundColor = .lightGray
+                button.configuration?.baseForegroundColor = .black
+            } else {
+                button.configuration?.title = "view favorites"
+                button.configuration?.buttonSize = .small
+                button.configuration?.image = UIImage(systemName: "heart")
+                button.configuration?.imagePlacement = .leading
+                button.configuration?.imagePadding = 5
+                button.configuration?.baseBackgroundColor = UIColor(named: "FavoriteButtonColor")
+                button.configuration?.baseForegroundColor = .black
+            }
         }
     }
     
