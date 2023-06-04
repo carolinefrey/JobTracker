@@ -47,6 +47,7 @@ class LaunchView: UIView {
         field.textColor = UIColor(named: "Color4")
         field.attributedPlaceholder = NSAttributedString(string: "4-digit PIN", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         field.textAlignment = .center
+        field.isSecureTextEntry = true
         field.setLeftPadding(10)
         field.setRightPadding(10)
         return field
