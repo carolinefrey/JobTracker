@@ -188,8 +188,12 @@ extension DashboardViewController: UICollectionViewDelegate {
             let detailVC = JobDetailsViewController(dashboardVC: self, job: data.filteredJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
+        } else if data.filterByFavorites {
+            let detailVC = JobDetailsViewController(dashboardVC: self, job: data.favoritedJobs[indexPath.row])
+            detailVC.deleteJobDelegate = self //to pass through to EditJobVC
+            navigationController?.pushViewController(detailVC, animated: true)
         } else if collectionViewEditMode {
-            selectedJobApps.append(data.savedJobs[indexPath.row])
+               selectedJobApps.append(data.savedJobs[indexPath.row])
         } else {
             let detailVC = JobDetailsViewController(dashboardVC: self, job: data.savedJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
