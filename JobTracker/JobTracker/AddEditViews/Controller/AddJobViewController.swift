@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol JobAddedDelegate: AnyObject {
+    func jobAdded(status: JobStatus)
+}
+
 class AddJobViewController: UIViewController, UITextViewDelegate {
         
     // MARK: - UI Properties
     
     private var contentView = AddJobContentView()
+    
+    var jobAddedDelegate: JobAddedDelegate?
     
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -99,6 +105,7 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
                            link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none",
                            notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
                            dateApplied: contentView.textFieldStackView.dateAppliedField.dateAppliedField.date)
+        jobAddedDelegate?.jobAdded(status: contentView.selectStatusView.status)
         navigationController?.popViewController(animated: true)
     }
     

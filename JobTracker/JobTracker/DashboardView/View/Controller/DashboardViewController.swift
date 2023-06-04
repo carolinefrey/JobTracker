@@ -183,8 +183,15 @@ extension DashboardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! DashboardCollectionViewCell
         animateCellSelection(cell: cell, select: true)
-
-        if data.filtersApplied != [] {
+        if collectionViewEditMode {
+            if data.filtersApplied != [] {
+                selectedJobApps.append(data.filteredJobs[indexPath.row])
+            } else if data.filterByFavorites {
+                selectedJobApps.append(data.favoritedJobs[indexPath.row])
+            } else {
+                selectedJobApps.append(data.savedJobs[indexPath.row])
+            }
+        } else if data.filtersApplied != [] {
             let detailVC = JobDetailsViewController(dashboardVC: self, job: data.filteredJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
@@ -192,8 +199,6 @@ extension DashboardViewController: UICollectionViewDelegate {
             let detailVC = JobDetailsViewController(dashboardVC: self, job: data.favoritedJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
             navigationController?.pushViewController(detailVC, animated: true)
-        } else if collectionViewEditMode {
-               selectedJobApps.append(data.savedJobs[indexPath.row])
         } else {
             let detailVC = JobDetailsViewController(dashboardVC: self, job: data.savedJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
@@ -277,6 +282,7 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
     
     func tapAddNewJobButton() {
         let addNewJobVC = AddJobViewController()
+        addNewJobVC.jobAddedDelegate = self
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
 
@@ -316,6 +322,20 @@ extension DashboardViewController: DeleteJobDelegate {
     }
 }
 
+// MARK: - JobAddedDelegate
+
+extension DashboardViewController: JobAddedDelegate {
+    func jobAdded(status: JobStatus) {
+        data.savedJobs = viewModel.fetchJobs()
+        if data.filtersApplied.contains(status) {
+            data.filteredJobs = data.savedJobs.filter { job in
+                return data.filtersApplied.contains(JobStatus(rawValue: job.status!)!)
+            }
+        }
+        contentView.collectionView.reloadData()
+    }
+}
+
 // MARK: - StatusBoxViewDelegate
 
 extension DashboardViewController: StatusBoxViewDelegate {
@@ -328,9 +348,6 @@ extension DashboardViewController: StatusBoxViewDelegate {
             } else {
                 contentView.configureFilteredStatusButtonAppearance(status: .open)
                 data.filtersApplied.append(.open)
-                if data.filterByFavorites {  //turn off favorites filter if a status box is selected (they're mutually exclusive)
-                    data.filterByFavorites = false
-                }
             }
         case contentView.statusBoxes.appliedStatusBox.box:
             if data.filtersApplied.contains(.applied) {
@@ -371,6 +388,7 @@ extension DashboardViewController: StatusBoxViewDelegate {
             contentView.configureDefaultStatusButtonAppearance(status: .interview)
             contentView.configureDefaultStatusButtonAppearance(status: .applied)
         }
+        
         data.filteredJobs = data.savedJobs.filter { job in
             return data.filtersApplied.contains(JobStatus(rawValue: job.status!)!)
         }
