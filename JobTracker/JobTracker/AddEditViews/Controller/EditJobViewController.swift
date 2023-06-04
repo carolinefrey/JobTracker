@@ -132,7 +132,6 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     @objc func deleteJob() {
         DataManager.deleteJob(item: job)
         deleteJobDelegate?.didDeleteJob(job: job)
-        let dashboardVM = DashboardViewModel()
         navigationController?.popToViewController(dashboardVC, animated: true)
     }
     

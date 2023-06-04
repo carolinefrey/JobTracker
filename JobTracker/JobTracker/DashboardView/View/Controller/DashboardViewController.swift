@@ -12,11 +12,8 @@ class DashboardViewController: UIViewController {
     // MARK: - Class Properties
     
     let defaults = UserDefaults.standard
-    
     private var contentView: DashboardContentView!
-    
     private let viewModel: DashboardViewModel
-    
     private var data = JobData()
     
     // MARK: - UI Properties
@@ -55,7 +52,7 @@ class DashboardViewController: UIViewController {
         
         contentView = DashboardContentView()
         view = contentView
-            
+
         configureHeaderView()
         configureStatusBoxDelegates()
         configureCollectionView()
