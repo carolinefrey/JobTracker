@@ -70,7 +70,7 @@ class DataManager {
     
     // MARK: - Update
     
-    static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?, dateApplied: Date?, displayOrder: NSNumber = 0) {
+    static func updateJob(job: Job, company: String, role: String?, location: String?, status: String?, link: String?, notes: String?, dateLastUpdated: Date, dateApplied: Date?, displayOrder: NSNumber = 0) {
         job.company = company
         job.role = role
         job.location = location
@@ -79,7 +79,7 @@ class DataManager {
         job.notes = notes
         job.dateApplied = dateApplied
         job.displayOrder = displayOrder
-        job.dateLastUpdated = Date.now
+        job.dateLastUpdated = dateLastUpdated
 
         do {
             try managedObjectContext.save()

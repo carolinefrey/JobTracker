@@ -110,6 +110,7 @@ struct DashboardViewModel {
                                   status: data.savedJobs[i].status,
                                   link: data.savedJobs[i].link,
                                   notes: data.savedJobs[i].notes,
+                                  dateLastUpdated: data.savedJobs[i].dateLastUpdated,
                                   dateApplied: data.savedJobs[i].dateApplied,
                                   displayOrder: data.savedJobs[i].displayOrder ?? 0)
         }
