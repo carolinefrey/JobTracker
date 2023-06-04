@@ -15,6 +15,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
 
     // MARK: - UI Properties
     
+    var dashboardVC: UIViewController
     var job: Job
     
     var deleteJobDelegate: DeleteJobDelegate? //pass from DashboardVC --> EditJobVC through this VC
@@ -39,7 +40,8 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     
     // MARK: - Initializers
     
-    init(job: Job) {
+    init(dashboardVC: UIViewController, job: Job) {
+        self.dashboardVC = dashboardVC
         self.job = job
         
         detailsStackView = DetailsStackView(job: job)
@@ -95,7 +97,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     }
     
     @objc func editJob() {
-        let editJobVC = EditJobViewController(job: job)
+        let editJobVC = EditJobViewController(dashboardVC: dashboardVC, job: job)
         editJobVC.updateJobDelegate = self
         editJobVC.deleteJobDelegate = self.deleteJobDelegate
         navigationController?.pushViewController(editJobVC, animated: true)

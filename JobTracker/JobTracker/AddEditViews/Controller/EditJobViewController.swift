@@ -17,6 +17,7 @@ protocol DeleteJobDelegate: AnyObject {
 
 class EditJobViewController: UIViewController, UITextViewDelegate {
     
+    var dashboardVC: UIViewController
     var updateJobDelegate: UpdateJobDelegate?
     var deleteJobDelegate: DeleteJobDelegate?
     
@@ -45,7 +46,8 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Initializer
     
-    init(job: Job) {
+    init(dashboardVC: UIViewController, job: Job) {
+        self.dashboardVC = dashboardVC
         self.job = job
         contentView = EditJobContentView(job: job)
         super.init(nibName: nil, bundle: nil)
@@ -129,7 +131,8 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     @objc func deleteJob() {
         DataManager.deleteJob(item: job)
         deleteJobDelegate?.didDeleteJob(job: job)
-        navigationController?.popToRootViewController(animated: true)
+        let dashboardVM = DashboardViewModel()
+        navigationController?.popToViewController(dashboardVC, animated: true)
     }
     
     @objc func textFieldChanged(sender: UITextField) {
