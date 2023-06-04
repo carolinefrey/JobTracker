@@ -41,7 +41,7 @@ class SettingsView: UIView {
         title.font = UIFont(name: "Nunito-Regular", size: 18)
         title.textColor = UIColor(named: "Color4")
         title.textAlignment = .left
-        title.text = "Enter your name:"
+        title.text = "Enter your name (optional):"
         return title
     }()
     
@@ -103,10 +103,10 @@ class SettingsView: UIView {
     private func setUpViews() {
         addSubview(screenTitle)
         addSubview(saveSettingsButton)
-        addSubview(nameTitleView)
-        addSubview(nameTextFieldView)
         addSubview(pinTitleView)
         addSubview(pinTextFieldView)
+        addSubview(nameTitleView)
+        addSubview(nameTextFieldView)
         
         NSLayoutConstraint.activate([
             screenTitle.topAnchor.constraint(equalTo: topAnchor, constant: 20),
@@ -116,21 +116,21 @@ class SettingsView: UIView {
             saveSettingsButton.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             saveSettingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            nameTitleView.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 20),
-            nameTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            
-            nameTextFieldView.topAnchor.constraint(equalTo: nameTitleView.bottomAnchor, constant: 5),
-            nameTextFieldView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            nameTextFieldView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            nameTextFieldView.heightAnchor.constraint(equalToConstant: 45),
-            
-            pinTitleView.topAnchor.constraint(equalTo: nameTextFieldView.bottomAnchor, constant: 20),
+            pinTitleView.topAnchor.constraint(equalTo: screenTitle.bottomAnchor, constant: 20),
             pinTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             
             pinTextFieldView.topAnchor.constraint(equalTo: pinTitleView.bottomAnchor, constant: 5),
             pinTextFieldView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             pinTextFieldView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             pinTextFieldView.heightAnchor.constraint(equalToConstant: 45),
+            
+            nameTitleView.topAnchor.constraint(equalTo: pinTextFieldView.bottomAnchor, constant: 20),
+            nameTitleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            
+            nameTextFieldView.topAnchor.constraint(equalTo: nameTitleView.bottomAnchor, constant: 5),
+            nameTextFieldView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            nameTextFieldView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            nameTextFieldView.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
 }
