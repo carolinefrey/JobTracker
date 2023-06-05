@@ -12,7 +12,7 @@ enum MessageLabelCase {
     case noJobs
     case noFilteredJobs
     case noFavorites
-    case doNotShow
+    case none
 }
 
 struct DashboardViewModel {
@@ -27,7 +27,7 @@ struct DashboardViewModel {
         return finalJobs
     }
     
-    func sortJobs(jobsToSort: [Job]) -> [Job] {
+    func sortJobs(_ jobsToSort: [Job]) -> [Job] {
         var sortedJobs = jobsToSort
         sortedJobs.sort { job1, job2 in
             return job1.displayOrder?.intValue ?? 0 <= job2.displayOrder?.intValue ?? 0
@@ -35,7 +35,7 @@ struct DashboardViewModel {
         return sortedJobs
     }
 
-    func handleNumItemsInSection(jobData: JobData) -> Int {
+    func handleNumItemsInSection(_ jobData: JobData) -> Int {
         if jobData.filtersApplied != [] {
             return jobData.filteredJobs.count
         } else if jobData.filterByFavorites {
@@ -45,27 +45,27 @@ struct DashboardViewModel {
         }
     }
     
-    func handleToggleEmptyMessage(jobData: JobData) -> UILabel {
+    func handleToggleEmptyMessage(_ jobData: JobData) -> UILabel {
         var messageLabel = UILabel()
         if jobData.filtersApplied != [] {
-            messageLabel = jobData.filteredJobs.count == 0 ? showEmptyMessage(show: .noFilteredJobs) : showEmptyMessage(show: .doNotShow)
+            messageLabel = jobData.filteredJobs.count == 0 ? displayMessage(.noFilteredJobs) : displayMessage(.none)
         } else if jobData.filterByFavorites {
-            messageLabel = jobData.favoritedJobs.count == 0 ? showEmptyMessage(show: .noFavorites) : showEmptyMessage(show: .doNotShow)
+            messageLabel = jobData.favoritedJobs.count == 0 ? displayMessage(.noFavorites) : displayMessage(.none)
         } else {
-            messageLabel = jobData.savedJobs.count == 0 ? showEmptyMessage(show: .noJobs) : showEmptyMessage(show: .doNotShow)
+            messageLabel = jobData.savedJobs.count == 0 ? displayMessage(.noJobs) : displayMessage(.none)
         }
         return messageLabel
     }
 
     //UI related - technically, should not be in VM
-    func showEmptyMessage(show: MessageLabelCase) -> UILabel {
+    func displayMessage(_ message: MessageLabelCase) -> UILabel {
         let messageLabel = UILabel()
-        if show == .noJobs || show == .noFilteredJobs {
+        if message == .noJobs || message == .noFilteredJobs {
             messageLabel.text = "Add a job by clicking the plus button!"
             messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             messageLabel.textAlignment = .center
             messageLabel.textColor = UIColor(named: "Color4")
-        } else if show == .noFavorites {
+        } else if message == .noFavorites {
             messageLabel.text = "Favorite a job application by selecting it and tapping the heart in the top right corner!"
             messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             messageLabel.textAlignment = .center
@@ -76,43 +76,43 @@ struct DashboardViewModel {
         return messageLabel
     }
 
-    func handleCellForItemAt(data: JobData, cell: DashboardCollectionViewCell, indexPath: IndexPath) -> DashboardCollectionViewCell {
-        if data.filtersApplied != [] {
-            cell.configure(company: data.filteredJobs[indexPath.row].company ?? "N/A",
-                           location: data.filteredJobs[indexPath.row].location ?? "N/A",
-                           status: data.filteredJobs[indexPath.row].status ?? "open",
-                           favorite: data.filteredJobs[indexPath.row].favorite,
-                           dateLastUpdated: data.filteredJobs[indexPath.row].dateLastUpdated)
-        } else if data.favoritedJobs != [] && data.filterByFavorites {
-            cell.configure(company: data.favoritedJobs[indexPath.row].company ?? "N/A",
-                           location: data.favoritedJobs[indexPath.row].location ?? "N/A",
-                           status: data.favoritedJobs[indexPath.row].status ?? "open",
-                           favorite: data.favoritedJobs[indexPath.row].favorite,
-                           dateLastUpdated: data.favoritedJobs[indexPath.row].dateLastUpdated)
+    func handleCellForItemAt(_ jobData: JobData, cell: DashboardCollectionViewCell, indexPath: IndexPath) -> DashboardCollectionViewCell {
+        if jobData.filtersApplied != [] {
+            cell.configure(company: jobData.filteredJobs[indexPath.row].company ?? "N/A",
+                           location: jobData.filteredJobs[indexPath.row].location ?? "N/A",
+                           status: jobData.filteredJobs[indexPath.row].status ?? "open",
+                           favorite: jobData.filteredJobs[indexPath.row].favorite,
+                           dateLastUpdated: jobData.filteredJobs[indexPath.row].dateLastUpdated)
+        } else if jobData.favoritedJobs != [] && jobData.filterByFavorites {
+            cell.configure(company: jobData.favoritedJobs[indexPath.row].company ?? "N/A",
+                           location: jobData.favoritedJobs[indexPath.row].location ?? "N/A",
+                           status: jobData.favoritedJobs[indexPath.row].status ?? "open",
+                           favorite: jobData.favoritedJobs[indexPath.row].favorite,
+                           dateLastUpdated: jobData.favoritedJobs[indexPath.row].dateLastUpdated)
         } else {
-            cell.configure(company: data.savedJobs[indexPath.row].company ?? "N/A",
-                           location: data.savedJobs[indexPath.row].location ?? "N/A",
-                           status: data.savedJobs[indexPath.row].status ?? "open",
-                           favorite: data.savedJobs[indexPath.row].favorite,
-                           dateLastUpdated: data.savedJobs[indexPath.row].dateLastUpdated)
+            cell.configure(company: jobData.savedJobs[indexPath.row].company ?? "N/A",
+                           location: jobData.savedJobs[indexPath.row].location ?? "N/A",
+                           status: jobData.savedJobs[indexPath.row].status ?? "open",
+                           favorite: jobData.savedJobs[indexPath.row].favorite,
+                           dateLastUpdated: jobData.savedJobs[indexPath.row].dateLastUpdated)
         }
         return cell
     }
     
-    func handleMoveItem(data: JobData) {
-        for i in 0..<data.savedJobs.count {
-            data.savedJobs[i].displayOrder = i as NSNumber
+    func handleMoveItem(_ jobData: JobData) {
+        for i in 0..<jobData.savedJobs.count {
+            jobData.savedJobs[i].displayOrder = i as NSNumber
             
-            DataManager.updateJob(job: data.savedJobs[i].self,
-                                  company: data.savedJobs[i].company ?? "",
-                                  role: data.savedJobs[i].role,
-                                  location: data.savedJobs[i].location,
-                                  status: data.savedJobs[i].status,
-                                  link: data.savedJobs[i].link,
-                                  notes: data.savedJobs[i].notes,
-                                  dateLastUpdated: data.savedJobs[i].dateLastUpdated,
-                                  dateApplied: data.savedJobs[i].dateApplied,
-                                  displayOrder: data.savedJobs[i].displayOrder ?? 0)
+            DataManager.updateJob(job: jobData.savedJobs[i].self,
+                                  company: jobData.savedJobs[i].company ?? "",
+                                  role: jobData.savedJobs[i].role,
+                                  location: jobData.savedJobs[i].location,
+                                  status: jobData.savedJobs[i].status,
+                                  link: jobData.savedJobs[i].link,
+                                  notes: jobData.savedJobs[i].notes,
+                                  dateLastUpdated: jobData.savedJobs[i].dateLastUpdated,
+                                  dateApplied: jobData.savedJobs[i].dateApplied,
+                                  displayOrder: jobData.savedJobs[i].displayOrder ?? 0)
         }
     }
 }

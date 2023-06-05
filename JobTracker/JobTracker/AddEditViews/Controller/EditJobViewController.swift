@@ -8,11 +8,11 @@
 import UIKit
 
 protocol UpdateJobDelegate: AnyObject {
-    func didUpdateJob(job: Job)
+    func didUpdateJob(_ job: Job)
 }
 
 protocol DeleteJobDelegate: AnyObject {
-    func didDeleteJob(job: Job)
+    func didDeleteJob(_ job: Job)
 }
 
 class EditJobViewController: UIViewController, UITextViewDelegate {
@@ -125,17 +125,17 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
                               notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
                               dateLastUpdated: Date.now,
                               dateApplied: contentView.textFieldStackView.dateAppliedField.dateAppliedField.date)
-        updateJobDelegate?.didUpdateJob(job: job)
+        updateJobDelegate?.didUpdateJob(job)
         navigationController?.popViewController(animated: true)
     }
 
     @objc func deleteJob() {
         DataManager.deleteJob(item: job)
-        deleteJobDelegate?.didDeleteJob(job: job)
+        deleteJobDelegate?.didDeleteJob(job)
         navigationController?.popToViewController(dashboardVC, animated: true)
     }
     
-    @objc func textFieldChanged(sender: UITextField) {
+    @objc func textFieldChanged(_ sender: UITextField) {
         if contentView.textFieldStackView.companyField.textFieldView.text != "" {
             updateJobButton.isEnabled = true
             updateJobButton.image = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: UIImage.SymbolConfiguration(textStyle: .title3))

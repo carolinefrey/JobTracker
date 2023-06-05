@@ -8,7 +8,7 @@
 import UIKit
 
 protocol JobAddedDelegate: AnyObject {
-    func jobAdded(status: JobStatus)
+    func jobAdded(withStatus status: JobStatus)
 }
 
 class AddJobViewController: UIViewController, UITextViewDelegate {
@@ -105,11 +105,11 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
                            link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none",
                            notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
                            dateApplied: contentView.textFieldStackView.dateAppliedField.dateAppliedField.date)
-        jobAddedDelegate?.jobAdded(status: contentView.selectStatusView.status)
+        jobAddedDelegate?.jobAdded(withStatus: contentView.selectStatusView.status)
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func textFieldChanged(sender: UITextField) {
+    @objc func textFieldChanged(_ sender: UITextField) {
         if contentView.textFieldStackView.companyField.textFieldView.text != "" {
             saveJobButton.isEnabled = true
             let config = UIImage.SymbolConfiguration(textStyle: .title3)

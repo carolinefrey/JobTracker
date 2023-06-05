@@ -81,7 +81,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         }
     }
     
-    func didUpdateJob(job: Job) {
+    func didUpdateJob(_ job: Job) {
         detailsStackView.statusDetailView.detailLabel.text = job.status?.capitalized
         detailsStackView.statusDetailView.detail = .status
         detailsStackView.statusDetailView.setStatusBoxColor(status: JobStatus(rawValue: job.status!) ?? .open)

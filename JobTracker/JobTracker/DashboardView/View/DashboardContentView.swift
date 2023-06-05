@@ -55,7 +55,7 @@ class DashboardContentView: UIView {
     
     // MARK: - Functions
     
-    func configureFilteredStatusButtonAppearance(status: JobStatus) {
+    func configureFilteredStatusButtonAppearance(forStatus status: JobStatus) {
         switch status {
         case .open:
             statusBoxes.openStatusBox.box.backgroundColor = UIColor(named: "OpenStatus")
@@ -76,7 +76,7 @@ class DashboardContentView: UIView {
         }
     }
     
-    func configureDefaultStatusButtonAppearance(status: JobStatus) {
+    func configureDefaultStatusButtonAppearance(forStatus status: JobStatus) {
         switch status {
         case .open:
             statusBoxes.openStatusBox.box.backgroundColor = UIColor(named: "StatusBoxBackground")
