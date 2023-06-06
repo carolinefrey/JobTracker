@@ -24,7 +24,7 @@ class LaunchView: UIView {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = UIImage(systemName: "briefcase.circle", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
-        view.tintColor = UIColor(named: "LaunchScreenTextColor")
+        view.tintColor = UIColor.launchScreenTextColor
         return view
     }()
     
@@ -32,7 +32,7 @@ class LaunchView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Nunito-Regular", size: 26)
-        label.textColor = UIColor(named: "LaunchScreenTextColor")
+        label.textColor = UIColor.launchScreenTextColor
         label.text = "JobApp Tracker"
         return label
     }()
@@ -44,7 +44,7 @@ class LaunchView: UIView {
         field.keyboardType = .numberPad
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 18)
-        field.textColor = UIColor(named: "Color4")
+        field.textColor = UIColor.colorFour
         field.attributedPlaceholder = NSAttributedString(string: "4-digit PIN", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         field.textAlignment = .center
         field.isSecureTextEntry = true
@@ -56,7 +56,7 @@ class LaunchView: UIView {
     lazy var loginButtonView: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor(named: "LaunchScreenTextColor"), for: .normal)
+        button.setTitleColor(UIColor.launchScreenTextColor, for: .normal)
         button.layer.cornerRadius = 10
         return button
     }()
@@ -74,7 +74,7 @@ class LaunchView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(named: "Background")
+        backgroundColor = UIColor.background
         layoutViews()
     }
     

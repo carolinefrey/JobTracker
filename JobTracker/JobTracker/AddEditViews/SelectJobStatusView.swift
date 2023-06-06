@@ -18,7 +18,7 @@ class SelectJobStatusView: UIView {
         let statusLabel = UILabel()
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.font = UIFont(name: "Nunito-Light", size: 12)
-        statusLabel.textColor = UIColor(named: "Color4")
+        statusLabel.textColor = UIColor.colorFour
         statusLabel.textAlignment = .left
         statusLabel.text = "status"
         return statusLabel
@@ -29,11 +29,11 @@ class SelectJobStatusView: UIView {
         open.translatesAutoresizingMaskIntoConstraints = false
         open.tag = 0
         open.layer.cornerRadius = 10
-        open.backgroundColor = UIColor(named: "OpenStatus")
+        open.backgroundColor = UIColor.openStatus
         open.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
         open.setTitle("open", for: .normal)
         open.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
-        open.setTitleColor(UIColor(named: "Color4"), for: .normal)
+        open.setTitleColor(UIColor.colorFour, for: .normal)
         return open
     }()
     
@@ -42,11 +42,11 @@ class SelectJobStatusView: UIView {
         applied.translatesAutoresizingMaskIntoConstraints = false
         applied.tag = 1
         applied.layer.cornerRadius = 10
-        applied.backgroundColor = UIColor(named: "AppliedStatus")
+        applied.backgroundColor = UIColor.appliedStatus
         applied.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
         applied.setTitle("applied", for: .normal)
         applied.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
-        applied.setTitleColor(UIColor(named: "Color4"), for: .normal)
+        applied.setTitleColor(UIColor.colorFour, for: .normal)
         return applied
     }()
     
@@ -55,11 +55,11 @@ class SelectJobStatusView: UIView {
         interview.translatesAutoresizingMaskIntoConstraints = false
         interview.tag = 2
         interview.layer.cornerRadius = 10
-        interview.backgroundColor = UIColor(named: "InterviewStatus")
+        interview.backgroundColor = UIColor.interviewStatus
         interview.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
         interview.setTitle("interview", for: .normal)
         interview.titleLabel?.font = UIFont(name: "Nunito-Light", size: 11)
-        interview.setTitleColor(UIColor(named: "Color4"), for: .normal)
+        interview.setTitleColor(UIColor.colorFour, for: .normal)
         return interview
     }()
     
@@ -72,7 +72,7 @@ class SelectJobStatusView: UIView {
         closed.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
         closed.setTitle("closed", for: .normal)
         closed.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
-        closed.setTitleColor(UIColor(named: "Color4"), for: .normal)
+        closed.setTitleColor(UIColor.colorFour, for: .normal)
         return closed
     }()
     

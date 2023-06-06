@@ -28,7 +28,7 @@ class DashboardViewController: UIViewController {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "gear", withConfiguration: config)
         let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(presentSettingsView))
-        button.tintColor = UIColor(named: "Color4")
+        button.tintColor = UIColor.colorFour
         return button
     }()
     
@@ -274,7 +274,7 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
                 button.configuration?.image = UIImage(systemName: "heart")
                 button.configuration?.imagePlacement = .leading
                 button.configuration?.imagePadding = 5
-                button.configuration?.baseBackgroundColor = UIColor(named: "FavoriteButtonColor")
+                button.configuration?.baseBackgroundColor = UIColor.favoriteButton
                 button.configuration?.baseForegroundColor = .black
             }
         }
@@ -343,18 +343,18 @@ extension DashboardViewController: StatusBoxViewDelegate {
         switch sender {
         case contentView.statusBoxes.openStatusBox.box:
             if jobData.filtersApplied.contains(.open) {
-                contentView.configureDefaultStatusButtonAppearance(forStatus: .open)
+                contentView.configureStatusButtonAppearance(state: .normal, forStatus: .open)
                 jobData.filtersApplied.removeAll { $0 == .open }
             } else {
-                contentView.configureFilteredStatusButtonAppearance(forStatus: .open)
+                contentView.configureStatusButtonAppearance(state: .selected, forStatus: .open)
                 jobData.filtersApplied.append(.open)
             }
         case contentView.statusBoxes.appliedStatusBox.box:
             if jobData.filtersApplied.contains(.applied) {
-                contentView.configureDefaultStatusButtonAppearance(forStatus: .applied)
+                contentView.configureStatusButtonAppearance(state: .normal, forStatus: .applied)
                 jobData.filtersApplied.removeAll { $0 == .applied }
             } else {
-                contentView.configureFilteredStatusButtonAppearance(forStatus: .applied)
+                contentView.configureStatusButtonAppearance(state: .selected, forStatus: .applied)
                 jobData.filtersApplied.append(.applied)
                 if jobData.filterByFavorites {
                     jobData.filterByFavorites = false
@@ -362,10 +362,10 @@ extension DashboardViewController: StatusBoxViewDelegate {
             }
         case contentView.statusBoxes.interviewStatusBox.box:
             if jobData.filtersApplied.contains(.interview) {
-                contentView.configureDefaultStatusButtonAppearance(forStatus: .interview)
+                contentView.configureStatusButtonAppearance(state: .normal, forStatus: .interview)
                 jobData.filtersApplied.removeAll { $0 == .interview }
             } else {
-                contentView.configureFilteredStatusButtonAppearance(forStatus: .interview)
+                contentView.configureStatusButtonAppearance(state: .selected, forStatus: .interview)
                 jobData.filtersApplied.append(.interview)
                 if jobData.filterByFavorites {
                     jobData.filterByFavorites = false
@@ -373,20 +373,20 @@ extension DashboardViewController: StatusBoxViewDelegate {
             }
         case contentView.statusBoxes.closedStatusBox.box:
             if jobData.filtersApplied.contains(.closed) {
-                contentView.configureDefaultStatusButtonAppearance(forStatus: .closed)
+                contentView.configureStatusButtonAppearance(state: .normal, forStatus: .closed)
                 jobData.filtersApplied.removeAll { $0 == .closed }
             } else {
-                contentView.configureFilteredStatusButtonAppearance(forStatus: .closed)
+                contentView.configureStatusButtonAppearance(state: .selected, forStatus: .closed)
                 jobData.filtersApplied.append(.closed)
                 if jobData.filterByFavorites {
                     jobData.filterByFavorites = false
                 }
             }
         default: //falls to this case when "view favorites" is tapped. removes all status filters.
-            contentView.configureDefaultStatusButtonAppearance(forStatus: .open)
-            contentView.configureDefaultStatusButtonAppearance(forStatus: .closed)
-            contentView.configureDefaultStatusButtonAppearance(forStatus: .interview)
-            contentView.configureDefaultStatusButtonAppearance(forStatus: .applied)
+            contentView.configureStatusButtonAppearance(state: .normal, forStatus: .open)
+            contentView.configureStatusButtonAppearance(state: .normal, forStatus: .closed)
+            contentView.configureStatusButtonAppearance(state: .normal, forStatus: .interview)
+            contentView.configureStatusButtonAppearance(state: .normal, forStatus: .applied)
         }
         
         jobData.filteredJobs = jobData.savedJobs.filter { job in

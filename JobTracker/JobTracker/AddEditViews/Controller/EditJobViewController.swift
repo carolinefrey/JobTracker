@@ -39,7 +39,7 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "square.and.arrow.down", withConfiguration: config)
         let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(updateJob))
-        button.tintColor = UIColor(named: "Color4")
+        button.tintColor = UIColor.colorFour
         button.isEnabled = false //disable until user enters company name
         return button
     }()
@@ -61,7 +61,7 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "Background")
+        view.backgroundColor = UIColor.background
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)

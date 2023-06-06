@@ -24,7 +24,7 @@ class StatusBoxView: UIView {
         box.translatesAutoresizingMaskIntoConstraints = false
         box.clipsToBounds = true
         box.layer.cornerRadius = 20
-        box.backgroundColor = UIColor(named: "StatusBoxBackground")
+        box.backgroundColor = UIColor.statusBoxBackground
         box.addTarget(self, action: #selector(filterJobs(sender:)), for: .touchUpInside)
         return box
     }()
@@ -57,14 +57,14 @@ class StatusBoxView: UIView {
         
         switch status {
         case .open:
-            statusLabel.textColor = UIColor(named: "OpenStatusLabel")
-            countLabel.textColor = UIColor(named: "OpenStatusLabel")
+            statusLabel.textColor = UIColor.openStatusLabel
+            countLabel.textColor = UIColor.openStatusLabel
         case .applied:
-            statusLabel.textColor = UIColor(named: "AppliedStatusLabel")
-            countLabel.textColor = UIColor(named: "AppliedStatusLabel")
+            statusLabel.textColor = UIColor.appliedStatusLabel
+            countLabel.textColor = UIColor.appliedStatusLabel
         case .interview:
-            statusLabel.textColor = UIColor(named: "InterviewStatusLabel")
-            countLabel.textColor = UIColor(named: "InterviewStatusLabel")
+            statusLabel.textColor = UIColor.interviewStatusLabel
+            countLabel.textColor = UIColor.interviewStatusLabel
         case .closed:
             statusLabel.textColor = .darkGray
             countLabel.textColor = .darkGray

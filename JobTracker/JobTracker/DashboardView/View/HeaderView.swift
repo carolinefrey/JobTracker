@@ -22,7 +22,7 @@ class HeaderView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Nunito-SemiBold", size: 26)
-        label.textColor = UIColor(named: "Color4")
+        label.textColor = UIColor.colorFour
         label.textAlignment = .left
         return label
     }()
@@ -31,7 +31,7 @@ class HeaderView: UIView {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-Light", size: 14)
-        title.textColor = UIColor(named: "Color4")
+        title.textColor = UIColor.colorFour
         title.textAlignment = .left
         return title
     }()

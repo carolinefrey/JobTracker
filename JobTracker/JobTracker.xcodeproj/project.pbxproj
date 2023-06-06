@@ -17,6 +17,7 @@
 		B95A3E382937EBFC00518CA3 /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3E362937EBFC00518CA3 /* Job+CoreDataClass.swift */; };
 		B95A3E392937EBFC00518CA3 /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3E372937EBFC00518CA3 /* Job+CoreDataProperties.swift */; };
 		B95A3E3B2937ECB000518CA3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3E3A2937ECB000518CA3 /* DataManager.swift */; };
+		B96767172A2EAE4A00B2201B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96767162A2EAE4A00B2201B /* Colors.swift */; };
 		B976797D2942070C00F78490 /* NotesFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B976797C2942070C00F78490 /* NotesFieldView.swift */; };
 		B97979BA2938CF4300F46578 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979B92938CF4300F46578 /* TextFieldView.swift */; };
 		B97979BC2938D21B00F46578 /* TextFieldStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97979BB2938D21B00F46578 /* TextFieldStackView.swift */; };
@@ -66,6 +67,7 @@
 		B95A3E362937EBFC00518CA3 /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B95A3E372937EBFC00518CA3 /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B95A3E3A2937ECB000518CA3 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		B96767162A2EAE4A00B2201B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B976797C2942070C00F78490 /* NotesFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesFieldView.swift; sourceTree = "<group>"; };
 		B97979B92938CF4300F46578 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		B97979BB2938D21B00F46578 /* TextFieldStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		B904B08A293592D5008BE140 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B96767162A2EAE4A00B2201B /* Colors.swift */,
 				B904B08B293592FC008BE140 /* Nunito */,
 				B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */,
 				B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */,
@@ -430,6 +433,7 @@
 				B9C31FEC2940291900F2AF21 /* EditJobContentView.swift in Sources */,
 				B9C03F152936808B00ED2AD7 /* StatusBoxView.swift in Sources */,
 				B904B09B29362421008BE140 /* HeaderView.swift in Sources */,
+				B96767172A2EAE4A00B2201B /* Colors.swift in Sources */,
 				B95A3E392937EBFC00518CA3 /* Job+CoreDataProperties.swift in Sources */,
 				B9D3B6CD29376592004CB5A4 /* SelectJobStatusView.swift in Sources */,
 				B9C54107293AE11700D5C5E6 /* SingleDetailView.swift in Sources */,

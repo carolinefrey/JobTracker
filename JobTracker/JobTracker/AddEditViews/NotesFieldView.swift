@@ -26,7 +26,7 @@ class NotesFieldView: UIView {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-Light", size: 12)
-        title.textColor = UIColor(named: "Color4")
+        title.textColor = UIColor.colorFour
         title.textAlignment = .left
         title.text = "notes"
         return title
@@ -39,7 +39,7 @@ class NotesFieldView: UIView {
         field.returnKeyType = .default
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 14)
-        field.textColor = UIColor(named: "Color4")
+        field.textColor = UIColor.colorFour
         return field
     }()
     

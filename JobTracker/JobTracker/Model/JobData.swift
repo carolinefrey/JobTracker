@@ -14,6 +14,22 @@ public enum JobStatus: String, Codable {
     case closed = "closed"
 }
 
+public enum JobDetail: String {
+    case status, company, role, location, link, notes, dateLastUpdated, dateApplied
+}
+
+public enum StatusButtonState {
+    case normal, selected
+}
+
+
+public enum CollectionViewMessageLabelCase {
+    case noJobs
+    case noFilteredJobs
+    case noFavorites
+    case none
+}
+
 struct JobData {
     var savedJobs = [Job]()
     var favoritedJobs = [Job]()

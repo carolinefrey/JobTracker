@@ -19,7 +19,7 @@ class SettingsView: UIView {
         let screenTitle = UILabel()
         screenTitle.translatesAutoresizingMaskIntoConstraints = false
         screenTitle.font = UIFont(name: "Nunito-SemiBold", size: 36)
-        screenTitle.textColor = UIColor(named: "Color4")
+        screenTitle.textColor = UIColor.colorFour
         screenTitle.text = "Settings"
         screenTitle.textAlignment = .left
         return screenTitle
@@ -31,7 +31,7 @@ class SettingsView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(icon, for: .normal)
-        button.tintColor = UIColor(named: "Color4")
+        button.tintColor = UIColor.colorFour
         return button
     }()
 
@@ -39,7 +39,7 @@ class SettingsView: UIView {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-Regular", size: 18)
-        title.textColor = UIColor(named: "Color4")
+        title.textColor = UIColor.colorFour
         title.textAlignment = .left
         title.text = "Enter your name (optional):"
         return title
@@ -52,7 +52,7 @@ class SettingsView: UIView {
         field.returnKeyType = .done
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 18)
-        field.textColor = UIColor(named: "Color4")
+        field.textColor = UIColor.colorFour
         field.setLeftPadding(10)
         field.setRightPadding(10)
         return field
@@ -62,7 +62,7 @@ class SettingsView: UIView {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-Regular", size: 18)
-        title.textColor = UIColor(named: "Color4")
+        title.textColor = UIColor.colorFour
         title.textAlignment = .left
         title.text = "4-digit pin:"
         return title
@@ -75,7 +75,7 @@ class SettingsView: UIView {
         field.keyboardType = .numberPad
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 18)
-        field.textColor = UIColor(named: "Color4")
+        field.textColor = UIColor.colorFour
         field.setLeftPadding(10)
         field.setRightPadding(10)
         return field
@@ -86,7 +86,7 @@ class SettingsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        backgroundColor = UIColor(named: "Background")
+        backgroundColor = UIColor.background
         nameTextFieldView.text = defaults.string(forKey: "name")
         pinTextFieldView.text = "\(defaults.integer(forKey: "pin"))"
         pinTextFieldView.delegate = self

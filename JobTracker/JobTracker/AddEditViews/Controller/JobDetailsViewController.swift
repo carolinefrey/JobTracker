@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum Detail: String {
-    case status, company, role, location, link, notes, dateLastUpdated, dateApplied
-}
-
 class JobDetailsViewController: UIViewController, UpdateJobDelegate {
 
     // MARK: - UI Properties
@@ -26,7 +22,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "slider.horizontal.3", withConfiguration: config)
         let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(editJob))
-        button.tintColor = UIColor(named: "Color4")
+        button.tintColor = UIColor.colorFour
         return button
     }()
     
@@ -57,7 +53,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "Background")
+        view.backgroundColor = UIColor.background
         navigationItem.rightBarButtonItems = [editJobButton, favoriteJobButton]
         
         if job.favorite {

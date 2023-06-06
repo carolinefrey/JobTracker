@@ -34,7 +34,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         config.image = UIImage(systemName: "heart")
         config.imagePlacement = .leading
         config.imagePadding = 5
-        config.baseBackgroundColor = UIColor(named: "FavoriteButtonColor")
+        config.baseBackgroundColor = UIColor.favoriteButton
         config.baseForegroundColor = .black
         
         let button = UIButton(configuration: config)

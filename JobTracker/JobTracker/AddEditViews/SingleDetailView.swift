@@ -12,7 +12,7 @@ class SingleDetailView: UIView {
     // MARK: - UI Properties
     
     var job: Job
-    var detail: Detail
+    var detail: JobDetail
     var showStatusBox = false
     
     private var detailTitleLabel: UILabel = {
@@ -20,7 +20,7 @@ class SingleDetailView: UIView {
         detailLabel.translatesAutoresizingMaskIntoConstraints = false
         detailLabel.textAlignment = .left
         detailLabel.font = UIFont(name: "Nunito-SemiBold", size: 14)
-        detailLabel.textColor = UIColor(named: "Color4")
+        detailLabel.textColor = UIColor.colorFour
         return detailLabel
     }()
     
@@ -28,7 +28,7 @@ class SingleDetailView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.textColor = UIColor(named: "Color4")
+        label.textColor = UIColor.colorFour
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.sizeToFit()
@@ -46,7 +46,7 @@ class SingleDetailView: UIView {
     
     // MARK: - Initializers
     
-    init(job: Job, detail: Detail) {
+    init(job: Job, detail: JobDetail) {
         self.job = job
         self.detail = detail
         
@@ -160,11 +160,11 @@ class SingleDetailView: UIView {
     func setStatusBoxColor(status: JobStatus) {
         switch status {
         case .open:
-            statusBox.backgroundColor = UIColor(named: "OpenStatus")
+            statusBox.backgroundColor = UIColor.openStatus
         case .applied:
-            statusBox.backgroundColor = UIColor(named: "AppliedStatus")
+            statusBox.backgroundColor = UIColor.appliedStatus
         case .interview:
-            statusBox.backgroundColor = UIColor(named: "InterviewStatus")
+            statusBox.backgroundColor = UIColor.interviewStatus
         case .closed:
             statusBox.backgroundColor = .darkGray
         }

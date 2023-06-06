@@ -15,7 +15,7 @@ class AddJobContentView: UIView {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-SemiBold", size: 26)
-        title.textColor = UIColor(named: "Color4")
+        title.textColor = UIColor.colorFour
         title.text = "Add a new job"
         return title
     }()
@@ -32,7 +32,7 @@ class AddJobContentView: UIView {
         
         super.init(frame: .zero)
         
-        backgroundColor = UIColor(named: "Background")
+        backgroundColor = UIColor.background
         
         setUpViews()
     }

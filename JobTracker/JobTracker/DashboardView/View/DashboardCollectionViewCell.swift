@@ -16,7 +16,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     let backgroundCell: UIView = {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
-        cell.backgroundColor = UIColor(named: "StatusBoxBackground")
+        cell.backgroundColor = UIColor.statusBoxBackground
         cell.clipsToBounds = true
         cell.layer.cornerRadius = 20
         return cell
@@ -34,7 +34,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         let dateLabel = UILabel()
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = UIFont(name: "Nunito-Light", size: 14)
-        dateLabel.textColor = UIColor(named: "Color4")
+        dateLabel.textColor = UIColor.colorFour
         return dateLabel
     }()
     
@@ -42,7 +42,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         let companyLabel = UILabel()
         companyLabel.translatesAutoresizingMaskIntoConstraints = false
         companyLabel.font = UIFont(name: "Nunito-SemiBold", size: 24)
-        companyLabel.textColor = UIColor(named: "Color4")
+        companyLabel.textColor = UIColor.colorFour
         companyLabel.textAlignment = .left
         companyLabel.lineBreakMode = .byTruncatingTail
         companyLabel.numberOfLines = 1
@@ -55,7 +55,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         locationLabel.font = UIFont(name: "Nunito-Light", size: 14)
         locationLabel.lineBreakMode = .byTruncatingTail
         locationLabel.numberOfLines = 1
-        locationLabel.textColor = UIColor(named: "Color4")
+        locationLabel.textColor = UIColor.colorFour
         return locationLabel
     }()
     
@@ -127,20 +127,20 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         
         switch jobStatus {
         case .open:
-            backgroundCell.backgroundColor = UIColor(named: "OpenStatus")
-            dateLabelBackground.backgroundColor = UIColor(named: "OpenStatus")?.withAlphaComponent(0.6)
+            backgroundCell.backgroundColor = UIColor.openStatus
+            dateLabelBackground.backgroundColor = UIColor.openStatus?.withAlphaComponent(0.6)
         case .applied:
-            backgroundCell.backgroundColor = UIColor(named: "AppliedStatus")
-            dateLabelBackground.backgroundColor = UIColor(named: "AppliedStatus")?.withAlphaComponent(0.6)
+            backgroundCell.backgroundColor = UIColor.appliedStatus
+            dateLabelBackground.backgroundColor = UIColor.appliedStatus?.withAlphaComponent(0.6)
         case .interview:
-            backgroundCell.backgroundColor = UIColor(named: "InterviewStatus")
-            dateLabelBackground.backgroundColor = UIColor(named: "InterviewStatus")?.withAlphaComponent(0.6)
+            backgroundCell.backgroundColor = UIColor.interviewStatus
+            dateLabelBackground.backgroundColor = UIColor.interviewStatus?.withAlphaComponent(0.6)
         case .closed:
             backgroundCell.backgroundColor = .lightGray
             dateLabelBackground.backgroundColor = .darkGray.withAlphaComponent(0.4)
         default:
-            backgroundCell.backgroundColor = UIColor(named: "OpenStatus")
-            dateLabelBackground.backgroundColor = UIColor(named: "OpenStatus")?.withAlphaComponent(0.6)
+            backgroundCell.backgroundColor = UIColor.openStatus
+            dateLabelBackground.backgroundColor = UIColor.openStatus?.withAlphaComponent(0.6)
         }
         favoriteIndicator.image = favorite ? UIImage(systemName: "heart") : UIImage(systemName: "")
     }

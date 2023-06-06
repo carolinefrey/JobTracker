@@ -19,7 +19,7 @@ class TextFieldView: UIView {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-Light", size: 12)
-        title.textColor = UIColor(named: "Color4")
+        title.textColor = UIColor.colorFour
         title.textAlignment = .left
         return title
     }()
@@ -31,7 +31,7 @@ class TextFieldView: UIView {
         field.returnKeyType = .done
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 14)
-        field.textColor = UIColor(named: "Color4")
+        field.textColor = UIColor.colorFour
         field.setLeftPadding(10)
         field.setRightPadding(10)
         return field
