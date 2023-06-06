@@ -15,7 +15,7 @@ class DateFieldView: UIView {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-Light", size: 12)
-        title.textColor = UIColor.colorFour
+        title.textColor = UIColor.black
         title.textAlignment = .left
         title.text = "date applied"
         return title

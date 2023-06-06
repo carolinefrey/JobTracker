@@ -18,7 +18,7 @@ class SelectJobStatusView: UIView {
         let statusLabel = UILabel()
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.font = UIFont(name: "Nunito-Light", size: 12)
-        statusLabel.textColor = UIColor.colorFour
+        statusLabel.textColor = UIColor.black
         statusLabel.textAlignment = .left
         statusLabel.text = "status"
         return statusLabel
@@ -33,7 +33,7 @@ class SelectJobStatusView: UIView {
         open.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
         open.setTitle("open", for: .normal)
         open.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
-        open.setTitleColor(UIColor.colorFour, for: .normal)
+        open.setTitleColor(UIColor.black, for: .normal)
         return open
     }()
     
@@ -46,7 +46,7 @@ class SelectJobStatusView: UIView {
         applied.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
         applied.setTitle("applied", for: .normal)
         applied.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
-        applied.setTitleColor(UIColor.colorFour, for: .normal)
+        applied.setTitleColor(UIColor.black, for: .normal)
         return applied
     }()
     
@@ -59,7 +59,7 @@ class SelectJobStatusView: UIView {
         interview.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
         interview.setTitle("interview", for: .normal)
         interview.titleLabel?.font = UIFont(name: "Nunito-Light", size: 11)
-        interview.setTitleColor(UIColor.colorFour, for: .normal)
+        interview.setTitleColor(UIColor.black, for: .normal)
         return interview
     }()
     
@@ -72,7 +72,7 @@ class SelectJobStatusView: UIView {
         closed.addTarget(self, action: #selector(statusBoxSelected), for: .touchUpInside)
         closed.setTitle("closed", for: .normal)
         closed.titleLabel?.font = UIFont(name: "Nunito-Light", size: 12)
-        closed.setTitleColor(UIColor.colorFour, for: .normal)
+        closed.setTitleColor(UIColor.black, for: .normal)
         return closed
     }()
     

@@ -34,7 +34,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         let dateLabel = UILabel()
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = UIFont(name: "Nunito-Light", size: 14)
-        dateLabel.textColor = UIColor.colorFour
+        dateLabel.textColor = UIColor.black
         return dateLabel
     }()
     
@@ -42,7 +42,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         let companyLabel = UILabel()
         companyLabel.translatesAutoresizingMaskIntoConstraints = false
         companyLabel.font = UIFont(name: "Nunito-SemiBold", size: 24)
-        companyLabel.textColor = UIColor.colorFour
+        companyLabel.textColor = UIColor.black
         companyLabel.textAlignment = .left
         companyLabel.lineBreakMode = .byTruncatingTail
         companyLabel.numberOfLines = 1
@@ -55,7 +55,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         locationLabel.font = UIFont(name: "Nunito-Light", size: 14)
         locationLabel.lineBreakMode = .byTruncatingTail
         locationLabel.numberOfLines = 1
-        locationLabel.textColor = UIColor.colorFour
+        locationLabel.textColor = UIColor.black
         return locationLabel
     }()
     

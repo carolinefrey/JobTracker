@@ -57,12 +57,12 @@ struct DashboardViewModel {
             messageLabel.text = "Add a job by clicking the plus button!"
             messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             messageLabel.textAlignment = .center
-            messageLabel.textColor = UIColor.colorFour
+            messageLabel.textColor = UIColor.black
         } else if message == .noFavorites {
             messageLabel.text = "Favorite a job application by selecting it and tapping the heart in the top right corner!"
             messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             messageLabel.textAlignment = .center
-            messageLabel.textColor = UIColor.colorFour
+            messageLabel.textColor = UIColor.black
             messageLabel.lineBreakMode = .byWordWrapping
             messageLabel.numberOfLines = 0
         }

@@ -17,7 +17,7 @@ class EditJobContentView: UIView {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont(name: "Nunito-SemiBold", size: 26)
-        title.textColor = UIColor.colorFour
+        title.textColor = UIColor.black
         title.text = "Edit job"
         return title
     }()

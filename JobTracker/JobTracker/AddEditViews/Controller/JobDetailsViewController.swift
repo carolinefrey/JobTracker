@@ -22,7 +22,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "slider.horizontal.3", withConfiguration: config)
         let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(editJob))
-        button.tintColor = UIColor.colorFour
+        button.tintColor = UIColor.black
         return button
     }()
     

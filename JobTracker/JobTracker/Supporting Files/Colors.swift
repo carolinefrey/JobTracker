@@ -11,11 +11,6 @@ import UIKit
 extension UIColor {
     static let background = UIColor(named: "Background")
     
-    static let colorOne = UIColor(named: "Color1")
-    static let colorTwo = UIColor(named: "Color2")
-    static let colorThree = UIColor(named: "Color3")
-    static let colorFour = UIColor(named: "Color4")
-    
     static let launchScreenTextColor = UIColor(named: "LaunchScreenTextColor")
     
     static let favoriteButton = UIColor(named: "FavoriteButtonColor")

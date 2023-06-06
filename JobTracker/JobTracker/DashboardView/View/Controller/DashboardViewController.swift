@@ -28,7 +28,7 @@ class DashboardViewController: UIViewController {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "gear", withConfiguration: config)
         let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(presentSettingsView))
-        button.tintColor = UIColor.colorFour
+        button.tintColor = UIColor.black
         return button
     }()
     

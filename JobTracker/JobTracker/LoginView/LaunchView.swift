@@ -44,7 +44,7 @@ class LaunchView: UIView {
         field.keyboardType = .numberPad
         field.layer.cornerRadius = 10
         field.font = UIFont(name: "Nunito-Regular", size: 18)
-        field.textColor = UIColor.colorFour
+        field.textColor = UIColor.black
         field.attributedPlaceholder = NSAttributedString(string: "4-digit PIN", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         field.textAlignment = .center
         field.isSecureTextEntry = true

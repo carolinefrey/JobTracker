@@ -31,7 +31,7 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
         let config = UIImage.SymbolConfiguration(textStyle: .title3)
         let icon = UIImage(systemName: "square.and.arrow.down", withConfiguration: config)
         let button = UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(saveJob))
-        button.tintColor = UIColor.colorFour
+        button.tintColor = UIColor.black
         button.isEnabled = false //disable until user enters company name
         return button
     }()

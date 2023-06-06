@@ -20,7 +20,7 @@ class SingleDetailView: UIView {
         detailLabel.translatesAutoresizingMaskIntoConstraints = false
         detailLabel.textAlignment = .left
         detailLabel.font = UIFont(name: "Nunito-SemiBold", size: 14)
-        detailLabel.textColor = UIColor.colorFour
+        detailLabel.textColor = UIColor.black
         return detailLabel
     }()
     
@@ -28,7 +28,7 @@ class SingleDetailView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.textColor = UIColor.colorFour
+        label.textColor = UIColor.black
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.sizeToFit()
