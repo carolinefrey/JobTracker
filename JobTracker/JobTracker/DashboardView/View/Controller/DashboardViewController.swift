@@ -104,7 +104,7 @@ class DashboardViewController: UIViewController {
         statusCounts = [.open: 0, .applied: 0, .interview: 0, .closed: 0]
         
         for job in jobData.savedJobs {
-            statusCounts[JobStatus(rawValue: job.status ?? "open") ?? .open, default: 0] += 1
+            statusCounts[JobStatus(rawValue: job.status!)!, default: 0] += 1
         }
         
         contentView.statusBoxes.openStatusBox.countLabel.text = "\(statusCounts[.open] ?? 0)"
@@ -340,49 +340,42 @@ extension DashboardViewController: JobAddedDelegate {
 
 extension DashboardViewController: StatusBoxViewDelegate {
     func tapStatusBox(_ sender: UIButton) {
-        switch sender {
-        case contentView.statusBoxes.openStatusBox.box:
-            if jobData.filtersApplied.contains(.open) {
-                contentView.configureStatusButtonAppearance(state: .normal, forStatus: .open)
-                jobData.filtersApplied.removeAll { $0 == .open }
+        
+        enum SenderButtonType {
+            case statusBox, viewFavorites
+        }
+        
+        var senderType: SenderButtonType {
+            if sender == contentView.statusBoxes.openStatusBox.box || sender == contentView.statusBoxes.appliedStatusBox.box || sender == contentView.statusBoxes.interviewStatusBox.box || sender == contentView.statusBoxes.closedStatusBox.box {
+                return .statusBox
             } else {
-                contentView.configureStatusButtonAppearance(state: .selected, forStatus: .open)
-                jobData.filtersApplied.append(.open)
+                return .viewFavorites
             }
-        case contentView.statusBoxes.appliedStatusBox.box:
-            if jobData.filtersApplied.contains(.applied) {
-                contentView.configureStatusButtonAppearance(state: .normal, forStatus: .applied)
-                jobData.filtersApplied.removeAll { $0 == .applied }
+        }
+        
+        var status: JobStatus {
+            switch sender {
+            case contentView.statusBoxes.openStatusBox.box:
+                return .open
+            case contentView.statusBoxes.appliedStatusBox.box:
+                return .applied
+            case contentView.statusBoxes.interviewStatusBox.box:
+                return .interview
+            default:
+                return .closed
+            }
+        }
+        
+        switch senderType {
+        case .statusBox:
+            if jobData.filtersApplied.contains(status) {
+                contentView.configureStatusButtonAppearance(state: .normal, forStatus: status)
+                jobData.filtersApplied.removeAll { $0 == status }
             } else {
-                contentView.configureStatusButtonAppearance(state: .selected, forStatus: .applied)
-                jobData.filtersApplied.append(.applied)
-                if jobData.filterByFavorites {
-                    jobData.filterByFavorites = false
-                }
+                contentView.configureStatusButtonAppearance(state: .selected, forStatus: status)
+                jobData.filtersApplied.append(status)
             }
-        case contentView.statusBoxes.interviewStatusBox.box:
-            if jobData.filtersApplied.contains(.interview) {
-                contentView.configureStatusButtonAppearance(state: .normal, forStatus: .interview)
-                jobData.filtersApplied.removeAll { $0 == .interview }
-            } else {
-                contentView.configureStatusButtonAppearance(state: .selected, forStatus: .interview)
-                jobData.filtersApplied.append(.interview)
-                if jobData.filterByFavorites {
-                    jobData.filterByFavorites = false
-                }
-            }
-        case contentView.statusBoxes.closedStatusBox.box:
-            if jobData.filtersApplied.contains(.closed) {
-                contentView.configureStatusButtonAppearance(state: .normal, forStatus: .closed)
-                jobData.filtersApplied.removeAll { $0 == .closed }
-            } else {
-                contentView.configureStatusButtonAppearance(state: .selected, forStatus: .closed)
-                jobData.filtersApplied.append(.closed)
-                if jobData.filterByFavorites {
-                    jobData.filterByFavorites = false
-                }
-            }
-        default: //falls to this case when "view favorites" is tapped. removes all status filters.
+        default:
             contentView.configureStatusButtonAppearance(state: .normal, forStatus: .open)
             contentView.configureStatusButtonAppearance(state: .normal, forStatus: .closed)
             contentView.configureStatusButtonAppearance(state: .normal, forStatus: .interview)
