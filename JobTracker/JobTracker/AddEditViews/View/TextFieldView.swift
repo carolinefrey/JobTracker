@@ -9,6 +9,8 @@ import UIKit
 
 class TextFieldView: UIView {
     
+    let viewModel = AddEditViewModel()
+    
     // MARK: - UI Properties
 
     var textFieldTitle: String
@@ -74,18 +76,5 @@ class TextFieldView: UIView {
             textFieldView.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFieldView.heightAnchor.constraint(equalToConstant: 45),
         ])
-    }
-}
-
-extension UITextField {
-    func setLeftPadding(_ amount: CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
-    }
-    func setRightPadding(_ amount: CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.rightView = paddingView
-        self.rightViewMode = .always
     }
 }

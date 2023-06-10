@@ -93,7 +93,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
     }
     
     @objc func editJob() {
-        let editJobVC = EditJobViewController(dashboardVC: dashboardVC, job: job)
+        let editJobVC = EditJobViewController(viewModel: AddEditViewModel(), dashboardVC: dashboardVC, job: job)
         editJobVC.updateJobDelegate = self
         editJobVC.deleteJobDelegate = self.deleteJobDelegate
         navigationController?.pushViewController(editJobVC, animated: true)

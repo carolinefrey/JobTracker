@@ -12,7 +12,9 @@ protocol JobAddedDelegate: AnyObject {
 }
 
 class AddJobViewController: UIViewController, UITextViewDelegate {
-        
+    
+    private let viewModel: AddEditViewModel
+
     // MARK: - UI Properties
     
     private var contentView = AddJobContentView()
@@ -35,6 +37,17 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
         button.isEnabled = false //disable until user enters company name
         return button
     }()
+    
+    // MARK: - Initializer
+    
+    init(viewModel: AddEditViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Lifecycle
     
@@ -98,13 +111,14 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
     // MARK: - Selector Functions
 
     @objc func saveJob() {
-        DataManager.addJob(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none",
-                           role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none",
-                           location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none",
-                           status: contentView.selectStatusView.status,
-                           link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none",
-                           notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
-                           dateApplied: contentView.textFieldStackView.dateAppliedField.dateAppliedField.date)
+        let jobComponents = JobComponents(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none",
+                                          role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none",
+                                          location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none",
+                                          status: contentView.selectStatusView.status,
+                                          link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none",
+                                          notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
+                                          dateApplied: contentView.textFieldStackView.dateAppliedField.dateAppliedField.date)
+        viewModel.handleAddNewJob(jobComponents)
         jobAddedDelegate?.jobAdded(withStatus: contentView.selectStatusView.status)
         navigationController?.popViewController(animated: true)
     }

@@ -20,12 +20,10 @@ struct DashboardViewModel {
         return finalJobs
     }
     
-    func sortJobs(_ jobsToSort: [Job]) -> [Job] {
-        var sortedJobs = jobsToSort
-        sortedJobs.sort { job1, job2 in
+    func sortJobs(_ jobsToSort: inout [Job]) {
+        jobsToSort.sort { job1, job2 in
             return job1.displayOrder?.intValue ?? 0 <= job2.displayOrder?.intValue ?? 0
         }
-        return sortedJobs
     }
 
     func handleNumItemsInSection(_ jobData: JobData) -> Int {
@@ -107,5 +105,21 @@ struct DashboardViewModel {
                                   dateApplied: jobData.savedJobs[i].dateApplied,
                                   displayOrder: jobData.savedJobs[i].displayOrder ?? 0)
         }
+    }
+    
+    func formatDate(date: Date) -> String {
+        var dateString = ""
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "E MM/dd"
+        
+        if let date = dateFormatterGet.date(from: "\(date)") {
+            dateString = dateFormatterPrint.string(from: date)
+        } else {
+            print("Error decoding string")
+        }
+        return dateString
     }
 }

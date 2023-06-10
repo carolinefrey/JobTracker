@@ -17,6 +17,7 @@ protocol DeleteJobDelegate: AnyObject {
 
 class EditJobViewController: UIViewController, UITextViewDelegate {
     
+    private let viewModel: AddEditViewModel
     var dashboardVC: UIViewController
     var updateJobDelegate: UpdateJobDelegate?
     var deleteJobDelegate: DeleteJobDelegate?
@@ -46,7 +47,8 @@ class EditJobViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Initializer
     
-    init(dashboardVC: UIViewController, job: Job) {
+    init(viewModel: AddEditViewModel, dashboardVC: UIViewController, job: Job) {
+        self.viewModel = viewModel
         self.dashboardVC = dashboardVC
         self.job = job
         contentView = EditJobContentView(job: job)

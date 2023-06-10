@@ -19,7 +19,7 @@ class DashboardViewController: UIViewController {
     // MARK: - UI Properties
     
     var name: String = ""
-    var collectionViewEditMode = false
+    var collectionViewEditMode = false      
     var selectedJobApps: [Job] = []
 
     private var statusCounts: [JobStatus: Int] = [.open: 0, .applied: 0, .interview: 0, .closed: 0]
@@ -114,8 +114,8 @@ class DashboardViewController: UIViewController {
     }
     
     private func sortJobs() {
-        jobData.savedJobs = viewModel.sortJobs(jobData.savedJobs)
-        jobData.filteredJobs = viewModel.sortJobs(jobData.filteredJobs)
+        viewModel.sortJobs(&jobData.savedJobs)
+        viewModel.sortJobs(&jobData.filteredJobs)
     }
     
     // MARK: - Selector Functions
@@ -281,7 +281,7 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
     }
     
     func tapAddNewJobButton() {
-        let addNewJobVC = AddJobViewController()
+        let addNewJobVC = AddJobViewController(viewModel: AddEditViewModel())
         addNewJobVC.jobAddedDelegate = self
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
@@ -340,7 +340,6 @@ extension DashboardViewController: JobAddedDelegate {
 
 extension DashboardViewController: StatusBoxViewDelegate {
     func tapStatusBox(_ sender: UIButton) {
-        
         enum SenderButtonType {
             case statusBox, viewFavorites
         }

@@ -9,6 +9,8 @@ import UIKit
 
 class SingleDetailView: UIView {
     
+    let viewModel = AddEditViewModel()
+
     // MARK: - UI Properties
     
     var job: Job
@@ -50,17 +52,8 @@ class SingleDetailView: UIView {
         self.job = job
         self.detail = detail
         
-        if detail == .dateApplied {
-            detailTitleLabel.text = "date applied"
-        } else if detail == .dateLastUpdated {
-            detailTitleLabel.text = "date last updated"
-        } else {
-            detailTitleLabel.text = detail.rawValue
-        }
-        
-//        detailTitleLabel.text = detail == .dateApplied ? "date applied" : detail.rawValue
-//        detailTitleLabel.text = detail == .dateLastUpdated ? "date last updated" : detail.rawValue
-        
+        detailTitleLabel.text = viewModel.configureDetailLabelText(forDetail: detail)
+
         if detail == .status {
             showStatusBox = true
         }
@@ -158,22 +151,11 @@ class SingleDetailView: UIView {
     }
     
     func setStatusBoxColor(status: JobStatus) {
-        switch status {
-        case .open:
-            statusBox.backgroundColor = UIColor.openStatus
-        case .applied:
-            statusBox.backgroundColor = UIColor.appliedStatus
-        case .interview:
-            statusBox.backgroundColor = UIColor.interviewStatus
-        case .closed:
-            statusBox.backgroundColor = .darkGray
-        }
+        statusBox.backgroundColor = viewModel.setStatusBoxColor(forStatus: status)
     }
     
     @objc func configureURL(_ sender: UITapGestureRecognizer) {
-        let webURL = URL(string: job.link ?? "")!
-        let application = UIApplication.shared
-        application.open(webURL)
+        viewModel.configureURL(job.link ?? "")
     }
 }
 

@@ -9,6 +9,8 @@ import UIKit
 
 class DashboardCollectionViewCell: UICollectionViewCell {
     
+    var viewModel = DashboardViewModel()
+    
     //MARK: - UI Properties
     
     static let dashboardCollectionViewCellIdentifier = "DashboardCollectionViewCell"
@@ -120,7 +122,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         companyLabel.text = company
         jobLocationLabel.text = location != "" ? "📍 \(location)" : ""
 
-        let dateFormatted = formatDate(date: dateLastUpdated)
+        let dateFormatted = viewModel.formatDate(date: dateLastUpdated)
         dateLastUpdatedLabel.text = "\(dateFormatted)"
         
         let jobStatus = JobStatus(rawValue: status)
@@ -143,21 +145,5 @@ class DashboardCollectionViewCell: UICollectionViewCell {
             dateLabelBackground.backgroundColor = UIColor.openStatus?.withAlphaComponent(0.6)
         }
         favoriteIndicator.image = favorite ? UIImage(systemName: "heart") : UIImage(systemName: "")
-    }
-    
-    func formatDate(date: Date) -> String {
-        var dateString = ""
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZ"
-        
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "E MM/dd"
-        
-        if let date = dateFormatterGet.date(from: "\(date)") {
-            dateString = dateFormatterPrint.string(from: date)
-        } else {
-            print("Error decoding string")
-        }
-        return dateString
     }
 }

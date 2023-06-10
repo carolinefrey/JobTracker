@@ -37,3 +37,13 @@ struct JobData {
     var filteredJobs = [Job]()
     var filtersApplied = [JobStatus]()
 }
+
+struct JobComponents {
+    var company: String
+    var role: String
+    var location: String
+    var status: JobStatus
+    var link: String
+    var notes: String
+    var dateApplied: Date
+}

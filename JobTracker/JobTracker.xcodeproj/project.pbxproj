@@ -13,6 +13,7 @@
 		B904B09529359788008BE140 /* DashboardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904B09429359788008BE140 /* DashboardContentView.swift */; };
 		B904B0992936204C008BE140 /* JobData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904B0982936204C008BE140 /* JobData.swift */; };
 		B904B09B29362421008BE140 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904B09A29362421008BE140 /* HeaderView.swift */; };
+		B93F35DA2A2F4E3D0024C547 /* AddEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F35D92A2F4E3D0024C547 /* AddEditViewModel.swift */; };
 		B95A3E352937EAAB00518CA3 /* JobList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B95A3E332937EAAB00518CA3 /* JobList.xcdatamodeld */; };
 		B95A3E382937EBFC00518CA3 /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3E362937EBFC00518CA3 /* Job+CoreDataClass.swift */; };
 		B95A3E392937EBFC00518CA3 /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95A3E372937EBFC00518CA3 /* Job+CoreDataProperties.swift */; };
@@ -63,6 +64,7 @@
 		B904B09429359788008BE140 /* DashboardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContentView.swift; sourceTree = "<group>"; };
 		B904B0982936204C008BE140 /* JobData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobData.swift; sourceTree = "<group>"; };
 		B904B09A29362421008BE140 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		B93F35D92A2F4E3D0024C547 /* AddEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewModel.swift; sourceTree = "<group>"; };
 		B95A3E342937EAAB00518CA3 /* JobList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JobList.xcdatamodel; sourceTree = "<group>"; };
 		B95A3E362937EBFC00518CA3 /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B95A3E372937EBFC00518CA3 /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -130,16 +132,8 @@
 		B904B087293592A5008BE140 /* AddEditViews */ = {
 			isa = PBXGroup;
 			children = (
-				B9D3B6CA2937641B004CB5A4 /* AddJobContentView.swift */,
-				B9C31FEB2940291900F2AF21 /* EditJobContentView.swift */,
-				B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */,
-				B97979B92938CF4300F46578 /* TextFieldView.swift */,
-				B976797C2942070C00F78490 /* NotesFieldView.swift */,
-				B97C8533297AC8CA0049C636 /* DateFieldView.swift */,
-				B97979BB2938D21B00F46578 /* TextFieldStackView.swift */,
-				B9C54106293AE11700D5C5E6 /* SingleDetailView.swift */,
-				B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */,
-				B904B089293592CD008BE140 /* Controller */,
+				B93F35D72A2F4E150024C547 /* View */,
+				B93F35D82A2F4E200024C547 /* ViewModel */,
 			);
 			path = AddEditViews;
 			sourceTree = "<group>";
@@ -174,6 +168,31 @@
 				B904B08E29359325008BE140 /* Nunito-Light.ttf */,
 			);
 			path = Nunito;
+			sourceTree = "<group>";
+		};
+		B93F35D72A2F4E150024C547 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9D3B6CA2937641B004CB5A4 /* AddJobContentView.swift */,
+				B9C31FEB2940291900F2AF21 /* EditJobContentView.swift */,
+				B9D3B6CC29376592004CB5A4 /* SelectJobStatusView.swift */,
+				B97979B92938CF4300F46578 /* TextFieldView.swift */,
+				B976797C2942070C00F78490 /* NotesFieldView.swift */,
+				B97C8533297AC8CA0049C636 /* DateFieldView.swift */,
+				B97979BB2938D21B00F46578 /* TextFieldStackView.swift */,
+				B9C54106293AE11700D5C5E6 /* SingleDetailView.swift */,
+				B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */,
+				B904B089293592CD008BE140 /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B93F35D82A2F4E200024C547 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B93F35D92A2F4E3D0024C547 /* AddEditViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B97E56D32A281DD000661396 /* LoginView */ = {
@@ -432,6 +451,7 @@
 				B9C03F1329367D0400ED2AD7 /* AddJobViewController.swift in Sources */,
 				B9C31FEC2940291900F2AF21 /* EditJobContentView.swift in Sources */,
 				B9C03F152936808B00ED2AD7 /* StatusBoxView.swift in Sources */,
+				B93F35DA2A2F4E3D0024C547 /* AddEditViewModel.swift in Sources */,
 				B904B09B29362421008BE140 /* HeaderView.swift in Sources */,
 				B96767172A2EAE4A00B2201B /* Colors.swift in Sources */,
 				B95A3E392937EBFC00518CA3 /* Job+CoreDataProperties.swift in Sources */,
