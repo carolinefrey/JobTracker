@@ -29,6 +29,7 @@
 		B98B1FB32A1B810C0045D3F9 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98B1FB22A1B810C0045D3F9 /* DashboardViewModel.swift */; };
 		B98C1E61296CBD830059E95D /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */; };
 		B99A78EB293AEAAB001A5996 /* DetailsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */; };
+		B9B26F5A2A3B2E5D0008FBA5 /* JobSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B26F592A3B2E5D0008FBA5 /* JobSearchViewController.swift */; };
 		B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */; };
 		B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */; };
 		B9B5CAD5292EBA7200C7EC58 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B5CAD4292EBA7200C7EC58 /* DashboardViewController.swift */; };
@@ -80,6 +81,7 @@
 		B98B1FB22A1B810C0045D3F9 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		B98C1E60296CBD830059E95D /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		B99A78EA293AEAAB001A5996 /* DetailsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsStackView.swift; sourceTree = "<group>"; };
+		B9B26F592A3B2E5D0008FBA5 /* JobSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchViewController.swift; sourceTree = "<group>"; };
 		B9B5CACD292EBA7200C7EC58 /* JobTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B5CAD0292EBA7200C7EC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9B5CAD2292EBA7200C7EC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,13 +197,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		B97E56D32A281DD000661396 /* LoginView */ = {
+		B97E56D32A281DD000661396 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
 				B97E56D52A281E0700661396 /* LaunchView.swift */,
 				B97E56D42A281DD800661396 /* Controller */,
 			);
-			path = LoginView;
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		B97E56D42A281DD800661396 /* Controller */ = {
@@ -218,6 +220,22 @@
 				B98B1FB22A1B810C0045D3F9 /* DashboardViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B9B26F572A3B2E380008FBA5 /* JobSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				B9B26F582A3B2E4C0008FBA5 /* Controller */,
+			);
+			path = JobSearchView;
+			sourceTree = "<group>";
+		};
+		B9B26F582A3B2E4C0008FBA5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9B26F592A3B2E5D0008FBA5 /* JobSearchViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B9B5CAC4292EBA7200C7EC58 = {
@@ -243,10 +261,11 @@
 			isa = PBXGroup;
 			children = (
 				B904B0862935929A008BE140 /* Model */,
-				B97E56D32A281DD000661396 /* LoginView */,
+				B97E56D32A281DD000661396 /* Launch */,
 				B9D05F742A2A9B8E005CE12A /* DashboardView */,
 				B904B087293592A5008BE140 /* AddEditViews */,
 				B9D05F7A2A2A9C89005CE12A /* SettingsView */,
+				B9B26F572A3B2E380008FBA5 /* JobSearchView */,
 				B904B08A293592D5008BE140 /* Supporting Files */,
 				B9B5CADE292EBA7300C7EC58 /* Info.plist */,
 				B97E56DD2A2824BF00661396 /* LaunchScreen.storyboard */,
@@ -437,6 +456,7 @@
 				B9D3B6CB2937641B004CB5A4 /* AddJobContentView.swift in Sources */,
 				B904B0992936204C008BE140 /* JobData.swift in Sources */,
 				B9C31FEA294028DE00F2AF21 /* EditJobViewController.swift in Sources */,
+				B9B26F5A2A3B2E5D0008FBA5 /* JobSearchViewController.swift in Sources */,
 				B976797D2942070C00F78490 /* NotesFieldView.swift in Sources */,
 				B9BF4C8F2943EEEF005D7D39 /* SettingsViewController.swift in Sources */,
 				B9C54105293ADEB400D5C5E6 /* JobDetailsViewController.swift in Sources */,

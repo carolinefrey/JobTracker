@@ -46,10 +46,32 @@ extension LaunchViewController: LoginDelegate {
         let pin = defaults.integer(forKey: "pin")
         let pinString = "\(pin)"
         if contentView.pinEntryField.text == pinString {
-            navigationController?.pushViewController(DashboardViewController(viewModel: DashboardViewModel()), animated: true)
+            loginSuccessful()
         } else {
             showInvalidPINAlert(title: "Incorrect PIN", message: "The PIN you entered is incorrect.")
         }
+    }
+    
+    private func loginSuccessful() {
+        let dashboardVC = DashboardViewController(viewModel: DashboardViewModel())
+        dashboardVC.title = "Dashboard"
+        
+        let jobSearchVC = JobSearchViewController()
+        jobSearchVC.title = "Job Search"
+        
+        let tabBarVC = UITabBarController()
+        tabBarVC.setViewControllers([dashboardVC, jobSearchVC], animated: false)
+        
+        guard let items = tabBarVC.tabBar.items else {
+            return
+        }
+        
+        items[0].image = UIImage(systemName: "house")
+        items[1].image = UIImage(systemName: "magnifyingglass")
+        
+        tabBarVC.modalPresentationStyle = .fullScreen
+        present(tabBarVC, animated: true)
+
     }
     
     func createPINButtonTapped() {
