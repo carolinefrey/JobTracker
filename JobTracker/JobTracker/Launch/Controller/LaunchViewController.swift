@@ -54,13 +54,13 @@ extension LaunchViewController: LoginDelegate {
     
     private func loginSuccessful() {
         let dashboardVC = DashboardViewController(viewModel: DashboardViewModel())
-        dashboardVC.title = "Dashboard"
+        let dashboardNavController = UINavigationController(rootViewController: dashboardVC)
         
         let jobSearchVC = JobSearchViewController()
-        jobSearchVC.title = "Job Search"
+        let jobSearchNavController = UINavigationController(rootViewController: jobSearchVC)
         
         let tabBarVC = UITabBarController()
-        tabBarVC.setViewControllers([dashboardVC, jobSearchVC], animated: false)
+        tabBarVC.setViewControllers([dashboardNavController, jobSearchNavController], animated: false)
         
         guard let items = tabBarVC.tabBar.items else {
             return
