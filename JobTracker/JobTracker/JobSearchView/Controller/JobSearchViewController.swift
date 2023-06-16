@@ -11,15 +11,13 @@ class JobSearchViewController: UIViewController {
     
     // MARK: - UI Properties
     
-//    private var contentView = SettingsView()
+    private var contentView = JobSearchView()
 
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
-        
-//        view = contentView
+        view = contentView
         
         configure()
     }

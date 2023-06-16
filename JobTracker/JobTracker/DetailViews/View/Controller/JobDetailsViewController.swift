@@ -96,6 +96,7 @@ class JobDetailsViewController: UIViewController, UpdateJobDelegate {
         let editJobVC = EditJobViewController(viewModel: AddEditViewModel(), dashboardVC: dashboardVC, job: job)
         editJobVC.updateJobDelegate = self
         editJobVC.deleteJobDelegate = self.deleteJobDelegate
+        editJobVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(editJobVC, animated: true)
     }
     

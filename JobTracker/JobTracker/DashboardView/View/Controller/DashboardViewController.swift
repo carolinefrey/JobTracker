@@ -194,14 +194,17 @@ extension DashboardViewController: UICollectionViewDelegate {
         } else if jobData.filtersApplied != [] {
             let detailVC = JobDetailsViewController(dashboardVC: self, job: jobData.filteredJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
+            detailVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
         } else if jobData.filterByFavorites {
             let detailVC = JobDetailsViewController(dashboardVC: self, job: jobData.favoritedJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
+            detailVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
         } else {
             let detailVC = JobDetailsViewController(dashboardVC: self, job: jobData.savedJobs[indexPath.row])
             detailVC.deleteJobDelegate = self //to pass through to EditJobVC
+            detailVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
@@ -283,6 +286,7 @@ extension DashboardViewController: HeaderCollectionReusableViewDelegate {
     func tapAddNewJobButton() {
         let addNewJobVC = AddJobViewController(viewModel: AddEditViewModel())
         addNewJobVC.jobAddedDelegate = self
+        addNewJobVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addNewJobVC, animated: true)
     }
 
