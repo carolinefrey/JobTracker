@@ -20,24 +20,32 @@ class JobSearchView: UIView {
         return title
     }()
     
-    let textFieldView: UITextField = {
-        let field = UITextField()
-        field.translatesAutoresizingMaskIntoConstraints = false
-        field.backgroundColor = .white
-        field.returnKeyType = .done
-        field.layer.cornerRadius = 10
-        field.font = UIFont(name: "Nunito-Regular", size: 14)
-        field.textColor = UIColor.black
-        field.setLeftPadding(10)
-        field.setRightPadding(10)
-        return field
+    let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.placeholder = "Search"
+        searchBar.sizeToFit()
+        searchBar.isTranslucent = true
+        searchBar.autocapitalizationType = .none
+        return searchBar
+    }()
+    
+    let resultsTableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.backgroundColor = .background
+        table.clipsToBounds = true
+        table.layer.cornerRadius = 10
+        table.rowHeight = 90
+        return table
     }()
     
     // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        backgroundColor = UIColor.background
+        backgroundColor = .background
         setUpViews()
     }
     
@@ -49,17 +57,19 @@ class JobSearchView: UIView {
 
     private func setUpViews() {
         addSubview(title)
-        addSubview(textFieldView)
+        addSubview(searchBar)
+        addSubview(resultsTableView)
+        resultsTableView.tableHeaderView = searchBar
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             title.heightAnchor.constraint(equalToConstant: 30),
             
-            textFieldView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20),
-            textFieldView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            textFieldView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            textFieldView.heightAnchor.constraint(equalToConstant: 45),
+            resultsTableView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
+            resultsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            resultsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            resultsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }
