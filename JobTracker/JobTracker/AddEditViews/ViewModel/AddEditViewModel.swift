@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct AddEditViewModel {
-    func handleAddNewJob(_ newJob: JobComponents) {
+    func handleAddNewJob(_ newJob: SingleJob) {
         DataManager.addJob(company: newJob.company, role: newJob.role, location: newJob.location, status: newJob.status, link: newJob.link, notes: newJob.notes, dateApplied: newJob.dateApplied)
     }
     

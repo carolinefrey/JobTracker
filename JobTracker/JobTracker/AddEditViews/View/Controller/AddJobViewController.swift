@@ -111,7 +111,7 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
     // MARK: - Selector Functions
 
     @objc func saveJob() {
-        let jobComponents = JobComponents(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none",
+        let jobComponents = SingleJob(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none",
                                           role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none",
                                           location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none",
                                           status: contentView.selectStatusView.status,

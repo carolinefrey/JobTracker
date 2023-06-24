@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct JobSearchResult: Codable {
-    var data: [Data]
+struct JobSearchResults: Codable {
+    var data: [Result]
 }
 
-struct Data: Codable {
+struct Result: Codable {
     var title: String
     var url: String
     var company: String
-    var location: String
+//    var location: String
 }
 
-func searchJobs(searchTerm: String, completion: @escaping (JobSearchResult?, Error?) -> Void) {
+func searchJobs(searchTerm: String, completion: @escaping ([SingleJob]?, Error?) -> Void) {
     guard let searchURL = URL(string: "https://jobsearch4.p.rapidapi.com/api/v1/Jobs/Search?SearchQuery=\(searchTerm)") else {
         print("Invalid URL")
         return
@@ -39,25 +39,16 @@ func searchJobs(searchTerm: String, completion: @escaping (JobSearchResult?, Err
             return
         }
         do {
-            let jobData = try JSONDecoder().decode(JobSearchResult.self, from: data)
-            completion(jobData, nil)
+            let jobData = try JSONDecoder().decode(JobSearchResults.self, from: data)
+
+            // Convert JobSearchResults to an array of SingleJob objects
+            let response = jobData.data.map { result in
+                SingleJob(searchResult: result)
+            }
+            completion(response, nil)
         } catch {
             completion(nil, error)
             print("Error: \(error.localizedDescription)")
         }
     }.resume()
 }
-
-// TODO: - Use this to search jobs
-//searchJobs(searchTerm: "ios engineer") { jobResults, error in
-//    if let error = error {
-//        print("Error: \(error.localizedDescription)")
-//    }
-//    DispatchQueue.main.async {
-//        if let jobResults = jobResults {
-//            //update UI
-//        } else {
-//            print("Jobs not found")
-//        }
-//    }
-//}

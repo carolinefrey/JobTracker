@@ -22,7 +22,6 @@ class JobSearchView: UIView {
     
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.searchBarStyle = UISearchBar.Style.default
         searchBar.placeholder = "Search"
         searchBar.sizeToFit()
@@ -59,7 +58,9 @@ class JobSearchView: UIView {
         addSubview(title)
         addSubview(searchBar)
         addSubview(resultsTableView)
+        
         resultsTableView.tableHeaderView = searchBar
+        searchBar.frame = CGRect(x: 0.0, y: 0.0, width: 200.0, height: 50.0)
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -69,7 +70,7 @@ class JobSearchView: UIView {
             resultsTableView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
             resultsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             resultsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            resultsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            resultsTableView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.70),
         ])
     }
 }
