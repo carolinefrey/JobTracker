@@ -73,15 +73,6 @@ struct JobSearchResults: Codable {
     var results: [Result]
 }
 
-//JobSearch
-//struct Result: Codable {
-//    var title: String
-//    var url: String
-//    var company: String
-//    var location: String?
-//}
-
-//FindWork
 struct Result: Codable {
     var role: String
     var url: String
@@ -90,12 +81,8 @@ struct Result: Codable {
 }
 
 func searchJobs(searchTerm: String, location: String, completion: @escaping ([SingleJob]?, Error?) -> Void) {
-//    guard let searchURL = URL(string: "https://jobsearch4.p.rapidapi.com/api/v1/Jobs/Search?SearchQuery=\(searchTerm)") else {
-//        print("Invalid URL")
-//        return
-//    }
-    
-    var searchLocation = location == "" ? "London" : location
+    // default to New York, otherwise set location (replacing spaces with %20)
+    let searchLocation = location == "" ? "New%20York" : location.replacingOccurrences(of: " ", with: "%20")
     
     guard let searchURL = URL(string: "https://findwork.dev/api/jobs/?location=\(searchLocation)&search=\(searchTerm)&sort_by=relevance") else {
         print("Invalid URL")
@@ -105,10 +92,6 @@ func searchJobs(searchTerm: String, location: String, completion: @escaping ([Si
     var urlRequest = URLRequest(url: searchURL)
     urlRequest.httpMethod = "GET"
     
-//    let headers = [
-//        "X-RapidAPI-Key": APIConstants.key,
-//        "X-RapidAPI-Host": "jobsearch4.p.rapidapi.com"
-//    ]
     let headers = [
         "Authorization": "Token \(APIConstants.key)"
     ]

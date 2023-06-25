@@ -31,6 +31,7 @@ class JobSearchViewController: UIViewController {
         contentView.resultsTableView.delegate = self
         contentView.resultsTableView.dataSource = self
         contentView.searchBar.delegate = self
+        contentView.locationField.delegate = self
     }
 }
 
@@ -64,20 +65,45 @@ extension JobSearchViewController: UISearchBarDelegate {
         
         let searchTerm = searchBar.text ?? ""
         
-        let location = contentView.locationField.text ?? "London"
+        let location = contentView.locationField.text ?? ""
         
-        searchJobs(searchTerm: searchTerm, location: location) { jobResults, error in
+        searchJobs(searchTerm: searchTerm, location: location) { [weak self] jobResults, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
             DispatchQueue.main.async {
                 if let jobResults = jobResults {
-                    self.searchResults = jobResults
-                    self.contentView.resultsTableView.reloadData()
+                    self?.searchResults = jobResults
+                    self?.contentView.resultsTableView.reloadData()
                 } else {
                     print("Jobs not found")
                 }
             }
         }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension JobSearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        
+        let location = contentView.locationField.text ?? ""
+        
+        searchJobs(searchTerm: "", location: location) { [weak self] jobResults, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+            DispatchQueue.main.async {
+                if let jobResults = jobResults {
+                    self?.searchResults = jobResults
+                    self?.contentView.resultsTableView.reloadData()
+                } else {
+                    print("Jobs not found")
+                }
+            }
+        }
+        return false
     }
 }

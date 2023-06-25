@@ -17,25 +17,31 @@ class SearchResultTableViewCell: UITableViewCell {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
         cell.backgroundColor = .background
-        cell.clipsToBounds = true
-        cell.layer.cornerRadius = 10
         return cell
     }()
     
     let jobTitleLabel: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Job Title"
-        title.font = .boldSystemFont(ofSize: 16)
+        title.font = UIFont(name: "Nunito-SemiBold", size: 16)
         title.adjustsFontSizeToFitWidth = true
+        title.lineBreakMode = .byTruncatingTail
+        title.numberOfLines = 1
         return title
+    }()
+    
+    let companyLabel: UILabel = {
+        let company = UILabel()
+        company.translatesAutoresizingMaskIntoConstraints = false
+        company.font = UIFont(name: "Nunito-SemiBold", size: 12)
+        company.textColor = UIColor.black
+        return company
     }()
     
     let locationLabel: UILabel = {
         let location = UILabel()
         location.translatesAutoresizingMaskIntoConstraints = false
-        location.text = "Job location"
-        location.font = .systemFont(ofSize: 14)
+        location.font = UIFont(name: "Nunito-Regular", size: 12)
         return location
     }()
   
@@ -54,6 +60,7 @@ class SearchResultTableViewCell: UITableViewCell {
     
     func setFetchedResults(result: SingleJob) {
         jobTitleLabel.text = result.role
+        companyLabel.text = result.company
         locationLabel.text = result.location
     }
     
@@ -62,6 +69,7 @@ class SearchResultTableViewCell: UITableViewCell {
     private func configureViews() {
         addSubview(backgroundCell)
         addSubview(jobTitleLabel)
+        addSubview(companyLabel)
         addSubview(locationLabel)
         
         NSLayoutConstraint.activate([
@@ -72,10 +80,13 @@ class SearchResultTableViewCell: UITableViewCell {
         
             jobTitleLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 10),
             jobTitleLabel.topAnchor.constraint(equalTo: backgroundCell.topAnchor, constant: 5),
-            jobTitleLabel.heightAnchor.constraint(equalToConstant: 40),
+            jobTitleLabel.heightAnchor.constraint(equalToConstant: 25),
             
+            companyLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 10),
+            companyLabel.topAnchor.constraint(equalTo: jobTitleLabel.bottomAnchor),
+
             locationLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 10),
-            locationLabel.topAnchor.constraint(equalTo: jobTitleLabel.bottomAnchor),
+            locationLabel.topAnchor.constraint(equalTo: companyLabel.bottomAnchor),
         ])
     }
 }
