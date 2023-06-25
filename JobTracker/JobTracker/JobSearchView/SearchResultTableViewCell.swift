@@ -26,7 +26,8 @@ class SearchResultTableViewCell: UITableViewCell {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "Job Title"
-        title.font = .boldSystemFont(ofSize: 18)
+        title.font = .boldSystemFont(ofSize: 16)
+        title.adjustsFontSizeToFitWidth = true
         return title
     }()
     
@@ -71,15 +72,10 @@ class SearchResultTableViewCell: UITableViewCell {
         
             jobTitleLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 10),
             jobTitleLabel.topAnchor.constraint(equalTo: backgroundCell.topAnchor, constant: 5),
-            jobTitleLabel.heightAnchor.constraint(equalToConstant: 50),
+            jobTitleLabel.heightAnchor.constraint(equalToConstant: 40),
             
-            locationLabel.leadingAnchor.constraint(equalTo: jobTitleLabel.trailingAnchor, constant: 5),
-            locationLabel.centerYAnchor.constraint(equalTo: jobTitleLabel.centerYAnchor),
-            
-//            jobDescriptionLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 10),
-//            jobDescriptionLabel.topAnchor.constraint(equalTo: jobTitleLabel.bottomAnchor),
-//            jobDescriptionLabel.trailingAnchor.constraint(equalTo: backgroundCell.trailingAnchor, constant: -10),
-//            jobDescriptionLabel.bottomAnchor.constraint(equalTo: backgroundCell.bottomAnchor),
+            locationLabel.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 10),
+            locationLabel.topAnchor.constraint(equalTo: jobTitleLabel.bottomAnchor),
         ])
     }
 }

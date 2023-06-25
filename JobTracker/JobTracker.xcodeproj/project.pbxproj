@@ -14,7 +14,6 @@
 		B904B0992936204C008BE140 /* JobData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904B0982936204C008BE140 /* JobData.swift */; };
 		B904B09B29362421008BE140 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904B09A29362421008BE140 /* HeaderView.swift */; };
 		B93F35DA2A2F4E3D0024C547 /* AddEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F35D92A2F4E3D0024C547 /* AddEditViewModel.swift */; };
-		B953FD812A3C7E6000DEDB1A /* JobSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B953FD802A3C7E6000DEDB1A /* JobSearchAPI.swift */; };
 		B953FD832A3C7F5700DEDB1A /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B953FD822A3C7F5700DEDB1A /* APIConstants.swift */; };
 		B953FD852A3C817A00DEDB1A /* JobSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B953FD842A3C817A00DEDB1A /* JobSearchView.swift */; };
 		B95A3E352937EAAB00518CA3 /* JobList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B95A3E332937EAAB00518CA3 /* JobList.xcdatamodeld */; };
@@ -70,7 +69,6 @@
 		B904B0982936204C008BE140 /* JobData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobData.swift; sourceTree = "<group>"; };
 		B904B09A29362421008BE140 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		B93F35D92A2F4E3D0024C547 /* AddEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewModel.swift; sourceTree = "<group>"; };
-		B953FD802A3C7E6000DEDB1A /* JobSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchAPI.swift; sourceTree = "<group>"; };
 		B953FD822A3C7F5700DEDB1A /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		B953FD842A3C817A00DEDB1A /* JobSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchView.swift; sourceTree = "<group>"; };
 		B95A3E342937EAAB00518CA3 /* JobList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JobList.xcdatamodel; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			children = (
 				B904B0982936204C008BE140 /* JobData.swift */,
 				B95A3E3A2937ECB000518CA3 /* DataManager.swift */,
-				B953FD802A3C7E6000DEDB1A /* JobSearchAPI.swift */,
 				B95A3E332937EAAB00518CA3 /* JobList.xcdatamodeld */,
 				B953FD822A3C7F5700DEDB1A /* APIConstants.swift */,
 			);
@@ -497,7 +494,6 @@
 				B976797D2942070C00F78490 /* NotesFieldView.swift in Sources */,
 				B9BF4C8F2943EEEF005D7D39 /* SettingsViewController.swift in Sources */,
 				B9C54105293ADEB400D5C5E6 /* JobDetailsViewController.swift in Sources */,
-				B953FD812A3C7E6000DEDB1A /* JobSearchAPI.swift in Sources */,
 				B904B09529359788008BE140 /* DashboardContentView.swift in Sources */,
 				B953FD852A3C817A00DEDB1A /* JobSearchView.swift in Sources */,
 				B97979BA2938CF4300F46578 /* TextFieldView.swift in Sources */,

@@ -30,9 +30,7 @@ class JobSearchViewController: UIViewController {
         contentView.resultsTableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.searchResultTableViewCellIdentifier)
         contentView.resultsTableView.delegate = self
         contentView.resultsTableView.dataSource = self
-        
         contentView.searchBar.delegate = self
-
     }
 }
 
@@ -66,7 +64,9 @@ extension JobSearchViewController: UISearchBarDelegate {
         
         let searchTerm = searchBar.text ?? ""
         
-        searchJobs(searchTerm: searchTerm) { jobResults, error in
+        let location = contentView.locationField.text ?? "London"
+        
+        searchJobs(searchTerm: searchTerm, location: location) { jobResults, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }

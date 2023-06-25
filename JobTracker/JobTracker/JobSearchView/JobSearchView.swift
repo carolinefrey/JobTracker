@@ -20,9 +20,23 @@ class JobSearchView: UIView {
         return title
     }()
     
+    let locationField: UITextField = {
+        let field = UITextField()
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.backgroundColor = .white
+        field.returnKeyType = .done
+        field.layer.cornerRadius = 10
+        field.font = UIFont(name: "Nunito-Regular", size: 14)
+        field.textColor = UIColor.black
+        field.placeholder = "Location (default: London)"
+        field.setLeftPadding(10)
+        field.setRightPadding(10)
+        return field
+    }()
+    
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.searchBarStyle = UISearchBar.Style.default
+        searchBar.searchBarStyle = UISearchBar.Style.minimal
         searchBar.placeholder = "Search"
         searchBar.sizeToFit()
         searchBar.isTranslucent = true
@@ -36,7 +50,7 @@ class JobSearchView: UIView {
         table.backgroundColor = .background
         table.clipsToBounds = true
         table.layer.cornerRadius = 10
-        table.rowHeight = 90
+        table.rowHeight = 70
         return table
     }()
     
@@ -56,6 +70,7 @@ class JobSearchView: UIView {
 
     private func setUpViews() {
         addSubview(title)
+        addSubview(locationField)
         addSubview(searchBar)
         addSubview(resultsTableView)
         
@@ -67,7 +82,12 @@ class JobSearchView: UIView {
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             title.heightAnchor.constraint(equalToConstant: 30),
             
-            resultsTableView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
+            locationField.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
+            locationField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            locationField.heightAnchor.constraint(equalToConstant: 35),
+            locationField.widthAnchor.constraint(equalTo: resultsTableView.widthAnchor),
+            
+            resultsTableView.topAnchor.constraint(equalTo: locationField.bottomAnchor, constant: 10),
             resultsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             resultsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             resultsTableView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.70),

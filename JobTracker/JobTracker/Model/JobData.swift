@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct SingleJob {
     var company: String
     var role: String
@@ -28,10 +27,9 @@ struct SingleJob {
     }
     
     init(searchResult: Result) {
-        self.company = searchResult.company
-        self.role = searchResult.title
-//        self.location = searchResult.location - location is showing as null in Postman, make optional here?
-        self.location = "N/A"
+        self.company = searchResult.companyName
+        self.role = searchResult.role
+        self.location = searchResult.location
         self.status = .open
         self.link = searchResult.url
         self.notes = ""
@@ -62,10 +60,78 @@ public enum StatusButtonState {
     case normal, selected
 }
 
-
 public enum CollectionViewMessageLabelCase {
     case noJobs
     case noFilteredJobs
     case noFavorites
     case none
+}
+
+// MARK: - Job Search API
+
+struct JobSearchResults: Codable {
+    var results: [Result]
+}
+
+//JobSearch
+//struct Result: Codable {
+//    var title: String
+//    var url: String
+//    var company: String
+//    var location: String?
+//}
+
+//FindWork
+struct Result: Codable {
+    var role: String
+    var url: String
+    var companyName: String
+    var location: String
+}
+
+func searchJobs(searchTerm: String, location: String, completion: @escaping ([SingleJob]?, Error?) -> Void) {
+//    guard let searchURL = URL(string: "https://jobsearch4.p.rapidapi.com/api/v1/Jobs/Search?SearchQuery=\(searchTerm)") else {
+//        print("Invalid URL")
+//        return
+//    }
+    
+    var searchLocation = location == "" ? "London" : location
+    
+    guard let searchURL = URL(string: "https://findwork.dev/api/jobs/?location=\(searchLocation)&search=\(searchTerm)&sort_by=relevance") else {
+        print("Invalid URL")
+        return
+    }
+    
+    var urlRequest = URLRequest(url: searchURL)
+    urlRequest.httpMethod = "GET"
+    
+//    let headers = [
+//        "X-RapidAPI-Key": APIConstants.key,
+//        "X-RapidAPI-Host": "jobsearch4.p.rapidapi.com"
+//    ]
+    let headers = [
+        "Authorization": "Token \(APIConstants.key)"
+    ]
+    
+    urlRequest.allHTTPHeaderFields = headers
+    
+    URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        guard let data = data, error == nil else {
+            return
+        }
+        do {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let jobData = try decoder.decode(JobSearchResults.self, from: data)
+
+            // Convert JobSearchResults to an array of SingleJob objects
+            let response = jobData.results.map { result in
+                SingleJob(searchResult: result)
+            }
+            completion(response, nil)
+        } catch {
+            completion(nil, error)
+            print("Error: \(error.localizedDescription)")
+        }
+    }.resume()
 }
