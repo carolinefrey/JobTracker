@@ -15,8 +15,10 @@ struct SingleJob {
     var link: String
     var notes: String
     var dateApplied: Date
+    var isFavorite: Bool
+    var description: String
     
-    init(company: String, role: String, location: String, status: JobStatus, link: String, notes: String, dateApplied: Date) {
+    init(company: String, role: String, location: String, status: JobStatus, link: String, notes: String, dateApplied: Date, isFavorite: Bool, description: String) {
         self.company = company
         self.role = role
         self.location = location
@@ -24,6 +26,8 @@ struct SingleJob {
         self.link = link
         self.notes = notes
         self.dateApplied = dateApplied
+        self.isFavorite = isFavorite
+        self.description = description
     }
     
     init(searchResult: Result) {
@@ -34,6 +38,8 @@ struct SingleJob {
         self.link = searchResult.url
         self.notes = ""
         self.dateApplied = Date()
+        self.isFavorite = false
+        self.description = searchResult.text
     }
 }
 
@@ -78,6 +84,7 @@ struct Result: Codable {
     var url: String
     var companyName: String
     var location: String
+    var text: String
 }
 
 func searchJobs(searchTerm: String, location: String, completion: @escaping ([SingleJob]?, Error?) -> Void) {

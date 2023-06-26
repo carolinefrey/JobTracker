@@ -18,6 +18,21 @@ class DataManager {
     
     // MARK: - Create
     
+//    static func convertToJobType(_ job: SingleJob) -> Job {
+//        let job = Job(context: managedObjectContext)
+//        job.company = job.company
+//        job.role = job.role
+//        job.location = job.location
+//        job.status = job.status
+//        job.link = job.link
+//        job.notes = job.notes
+//        job.dateApplied = job.dateApplied
+//        job.displayOrder = 0
+//        job.favorite = false
+//        job.dateLastUpdated = Date.now
+//        return job
+//    }
+    
     static func addJob(company: String, role: String?, location: String?, status: JobStatus, link: String?, notes: String?, dateApplied: Date?) {
         let job = Job(context: managedObjectContext)
         job.company = company

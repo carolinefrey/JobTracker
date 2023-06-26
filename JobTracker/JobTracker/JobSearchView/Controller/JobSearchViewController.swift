@@ -54,7 +54,10 @@ extension JobSearchViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension JobSearchViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = SearchResultDetailViewController(job: searchResults[indexPath.row])
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 // MARK: - UISearchBarDelegate

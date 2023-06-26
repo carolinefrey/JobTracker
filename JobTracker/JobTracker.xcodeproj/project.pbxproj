@@ -44,6 +44,8 @@
 		B9C03F192936CB5500ED2AD7 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */; };
 		B9C31FEA294028DE00F2AF21 /* EditJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C31FE9294028DE00F2AF21 /* EditJobViewController.swift */; };
 		B9C31FEC2940291900F2AF21 /* EditJobContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C31FEB2940291900F2AF21 /* EditJobContentView.swift */; };
+		B9C356602A4996C30068AFD8 /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C3565F2A4996C30068AFD8 /* SearchResultDetailViewController.swift */; };
+		B9C356622A499A8C0068AFD8 /* SearchResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C356612A499A8C0068AFD8 /* SearchResultDetailView.swift */; };
 		B9C54105293ADEB400D5C5E6 /* JobDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C54104293ADEB400D5C5E6 /* JobDetailsViewController.swift */; };
 		B9C54107293AE11700D5C5E6 /* SingleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C54106293AE11700D5C5E6 /* SingleDetailView.swift */; };
 		B9CD50342A45B13600D826FC /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD50332A45B13600D826FC /* SearchResultTableViewCell.swift */; };
@@ -101,6 +103,8 @@
 		B9C03F182936CB5500ED2AD7 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9C31FE9294028DE00F2AF21 /* EditJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJobViewController.swift; sourceTree = "<group>"; };
 		B9C31FEB2940291900F2AF21 /* EditJobContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJobContentView.swift; sourceTree = "<group>"; };
+		B9C3565F2A4996C30068AFD8 /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
+		B9C356612A499A8C0068AFD8 /* SearchResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailView.swift; sourceTree = "<group>"; };
 		B9C54104293ADEB400D5C5E6 /* JobDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsViewController.swift; sourceTree = "<group>"; };
 		B9C54106293AE11700D5C5E6 /* SingleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDetailView.swift; sourceTree = "<group>"; };
 		B9CD50332A45B13600D826FC /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -255,9 +259,8 @@
 		B9B26F572A3B2E380008FBA5 /* JobSearchView */ = {
 			isa = PBXGroup;
 			children = (
+				B9C3565B2A49965E0068AFD8 /* View */,
 				B9B26F582A3B2E4C0008FBA5 /* Controller */,
-				B953FD842A3C817A00DEDB1A /* JobSearchView.swift */,
-				B9CD50332A45B13600D826FC /* SearchResultTableViewCell.swift */,
 			);
 			path = JobSearchView;
 			sourceTree = "<group>";
@@ -299,11 +302,46 @@
 				B904B087293592A5008BE140 /* AddEditViews */,
 				B9D05F7A2A2A9C89005CE12A /* SettingsView */,
 				B9B26F572A3B2E380008FBA5 /* JobSearchView */,
+				B9C3565C2A4996700068AFD8 /* SearchResultDetailView */,
 				B904B08A293592D5008BE140 /* Supporting Files */,
 				B9B5CADE292EBA7300C7EC58 /* Info.plist */,
 				B97E56DD2A2824BF00661396 /* LaunchScreen.storyboard */,
 			);
 			path = JobTracker;
+			sourceTree = "<group>";
+		};
+		B9C3565B2A49965E0068AFD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B953FD842A3C817A00DEDB1A /* JobSearchView.swift */,
+				B9CD50332A45B13600D826FC /* SearchResultTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9C3565C2A4996700068AFD8 /* SearchResultDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				B9C3565D2A49967B0068AFD8 /* View */,
+				B9C3565E2A49967F0068AFD8 /* Controller */,
+			);
+			path = SearchResultDetailView;
+			sourceTree = "<group>";
+		};
+		B9C3565D2A49967B0068AFD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9C356612A499A8C0068AFD8 /* SearchResultDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B9C3565E2A49967F0068AFD8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9C3565F2A4996C30068AFD8 /* SearchResultDetailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B9D05F742A2A9B8E005CE12A /* DashboardView */ = {
@@ -480,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B5CAD5292EBA7200C7EC58 /* DashboardViewController.swift in Sources */,
+				B9C356602A4996C30068AFD8 /* SearchResultDetailViewController.swift in Sources */,
 				B98B1FB32A1B810C0045D3F9 /* DashboardViewModel.swift in Sources */,
 				B98C1E61296CBD830059E95D /* HeaderCollectionReusableView.swift in Sources */,
 				B95A3E3B2937ECB000518CA3 /* DataManager.swift in Sources */,
@@ -500,6 +539,7 @@
 				B9C03F192936CB5500ED2AD7 /* DashboardCollectionViewCell.swift in Sources */,
 				B9B5CAD1292EBA7200C7EC58 /* AppDelegate.swift in Sources */,
 				B97C8534297AC8CA0049C636 /* DateFieldView.swift in Sources */,
+				B9C356622A499A8C0068AFD8 /* SearchResultDetailView.swift in Sources */,
 				B97E56DC2A28204500661396 /* LaunchViewController.swift in Sources */,
 				B9B5CAD3292EBA7200C7EC58 /* SceneDelegate.swift in Sources */,
 				B99A78EB293AEAAB001A5996 /* DetailsStackView.swift in Sources */,

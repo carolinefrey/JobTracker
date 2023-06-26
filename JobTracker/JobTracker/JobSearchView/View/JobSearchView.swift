@@ -37,7 +37,7 @@ class JobSearchView: UIView {
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBar.Style.minimal
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = "Keyword"
         searchBar.sizeToFit()
         searchBar.isTranslucent = true
         searchBar.autocapitalizationType = .none
@@ -92,6 +92,7 @@ class JobSearchView: UIView {
             resultsTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             resultsTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             resultsTableView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.70),
+            resultsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }

@@ -112,12 +112,14 @@ class AddJobViewController: UIViewController, UITextViewDelegate {
 
     @objc func saveJob() {
         let jobComponents = SingleJob(company: contentView.textFieldStackView.companyField.textFieldView.text ?? "none",
-                                          role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none",
-                                          location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none",
-                                          status: contentView.selectStatusView.status,
-                                          link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none",
-                                          notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
-                                          dateApplied: contentView.textFieldStackView.dateAppliedField.dateAppliedField.date)
+                                      role: contentView.textFieldStackView.roleField.textFieldView.text ?? "none",
+                                      location: contentView.textFieldStackView.locationField.textFieldView.text ?? "none",
+                                      status: contentView.selectStatusView.status,
+                                      link: contentView.textFieldStackView.linkField.textFieldView.text ?? "none",
+                                      notes: contentView.textFieldStackView.notesField.notesFieldView.text ?? "none",
+                                      dateApplied: contentView.textFieldStackView.dateAppliedField.dateAppliedField.date,
+                                      isFavorite: false,
+                                      description: "")
         viewModel.handleAddNewJob(jobComponents)
         jobAddedDelegate?.jobAdded(withStatus: contentView.selectStatusView.status)
         navigationController?.popViewController(animated: true)
