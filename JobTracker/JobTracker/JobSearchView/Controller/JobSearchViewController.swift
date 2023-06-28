@@ -39,6 +39,10 @@ class JobSearchViewController: UIViewController {
 
 extension JobSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.backgroundView = contentView.noResultsLabel
+        if searchResults.count > 0 {
+            contentView.noResultsLabel.text = ""
+        }
         return searchResults.count
     }
     
@@ -67,7 +71,6 @@ extension JobSearchViewController: UISearchBarDelegate {
         view.endEditing(true)
         
         let searchTerm = searchBar.text ?? ""
-        
         let location = contentView.locationField.text ?? ""
         
         searchJobs(searchTerm: searchTerm, location: location) { [weak self] jobResults, error in
@@ -75,11 +78,11 @@ extension JobSearchViewController: UISearchBarDelegate {
                 print("Error: \(error.localizedDescription)")
             }
             DispatchQueue.main.async {
-                if let jobResults = jobResults {
+                if let jobResults = jobResults, jobResults.count > 0 {
                     self?.searchResults = jobResults
                     self?.contentView.resultsTableView.reloadData()
                 } else {
-                    print("Jobs not found")
+                    self?.contentView.noResultsLabel.text = "No jobs available."
                 }
             }
         }
@@ -92,6 +95,7 @@ extension JobSearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         
+        let searchTerm = contentView.searchBar.text ?? ""
         let location = contentView.locationField.text ?? ""
         
         searchJobs(searchTerm: "", location: location) { [weak self] jobResults, error in
@@ -99,11 +103,11 @@ extension JobSearchViewController: UITextFieldDelegate {
                 print("Error: \(error.localizedDescription)")
             }
             DispatchQueue.main.async {
-                if let jobResults = jobResults {
+                if let jobResults = jobResults, jobResults.count > 0 {
                     self?.searchResults = jobResults
                     self?.contentView.resultsTableView.reloadData()
                 } else {
-                    print("Jobs not found")
+                    self?.contentView.noResultsLabel.text = "No jobs available."
                 }
             }
         }

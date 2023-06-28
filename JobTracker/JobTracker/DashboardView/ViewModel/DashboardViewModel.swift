@@ -49,18 +49,18 @@ struct DashboardViewModel {
     }
 
     //UI related - technically, should not be in VM
-    func displayMessage(_ message: CollectionViewMessageLabelCase) -> UILabel {
+    private func displayMessage(_ message: DashboardCollectionViewMessageLabelCase) -> UILabel {
         let messageLabel = UILabel()
         if message == .noJobs || message == .noFilteredJobs {
             messageLabel.text = "Add a job by clicking the plus button!"
             messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             messageLabel.textAlignment = .center
-            messageLabel.textColor = UIColor.black
+            messageLabel.textColor = .black
         } else if message == .noFavorites {
             messageLabel.text = "Favorite a job application by selecting it and tapping the heart in the top right corner!"
             messageLabel.font = UIFont(name: "Nunito-Regular", size: 16)
             messageLabel.textAlignment = .center
-            messageLabel.textColor = UIColor.black
+            messageLabel.textColor = .black
             messageLabel.lineBreakMode = .byWordWrapping
             messageLabel.numberOfLines = 0
         }

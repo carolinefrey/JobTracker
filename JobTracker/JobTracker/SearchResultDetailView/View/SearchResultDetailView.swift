@@ -16,7 +16,7 @@ class SearchResultDetailView: UIView {
     let jobTitleLabel: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.font = UIFont(name: "Nunito-SemiBold", size: 16)
+        title.font = UIFont(name: "Nunito-SemiBold", size: 24)
         title.adjustsFontSizeToFitWidth = true
         title.lineBreakMode = .byTruncatingTail
         title.numberOfLines = 1
@@ -26,7 +26,7 @@ class SearchResultDetailView: UIView {
     let companyLabel: UILabel = {
         let company = UILabel()
         company.translatesAutoresizingMaskIntoConstraints = false
-        company.font = UIFont(name: "Nunito-SemiBold", size: 12)
+        company.font = UIFont(name: "Nunito-SemiBold", size: 18)
         company.textColor = UIColor.black
         return company
     }()
@@ -34,14 +34,14 @@ class SearchResultDetailView: UIView {
     let locationLabel: UILabel = {
         let location = UILabel()
         location.translatesAutoresizingMaskIntoConstraints = false
-        location.font = UIFont(name: "Nunito-Regular", size: 12)
+        location.font = UIFont(name: "Nunito-Regular", size: 14)
         return location
     }()
     
     let descriptionLabel: UILabel = {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
-        description.font = UIFont(name: "Nunito-Regular", size: 12)
+        description.font = UIFont(name: "Nunito-Regular", size: 14)
         description.lineBreakMode = .byWordWrapping
         description.numberOfLines = 0
         return description

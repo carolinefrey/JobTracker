@@ -53,6 +53,15 @@ class JobSearchView: UIView {
         table.rowHeight = 70
         return table
     }()
+    
+    let noResultsLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Nunito-Regular", size: 16)
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
 
     // MARK: - Initializers
     
@@ -73,7 +82,6 @@ class JobSearchView: UIView {
         addSubview(locationField)
         addSubview(searchBar)
         addSubview(resultsTableView)
-//        addSubview(spinner)
         
         resultsTableView.tableHeaderView = searchBar
         searchBar.frame = CGRect(x: 0.0, y: 0.0, width: 200.0, height: 50.0)

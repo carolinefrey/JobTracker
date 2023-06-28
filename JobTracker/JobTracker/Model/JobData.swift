@@ -66,7 +66,7 @@ public enum StatusButtonState {
     case normal, selected
 }
 
-public enum CollectionViewMessageLabelCase {
+public enum DashboardCollectionViewMessageLabelCase {
     case noJobs
     case noFilteredJobs
     case noFavorites
