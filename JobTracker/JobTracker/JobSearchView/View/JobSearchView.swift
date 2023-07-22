@@ -56,7 +56,6 @@ class JobSearchView: UIView {
     
     let noResultsLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Nunito-Regular", size: 16)
         label.textAlignment = .center
         label.textColor = .black

@@ -83,6 +83,8 @@ extension JobSearchViewController: UISearchBarDelegate {
                     self?.contentView.resultsTableView.reloadData()
                 } else {
                     self?.contentView.noResultsLabel.text = "No jobs available."
+                    self?.contentView.resultsTableView.reloadData()
+                    print("No jobs found")
                 }
             }
         }
@@ -96,6 +98,7 @@ extension JobSearchViewController: UITextFieldDelegate {
         self.view.endEditing(true)
         
         let searchTerm = contentView.searchBar.text ?? ""
+        print("searchTerm = \(searchTerm)")
         let location = contentView.locationField.text ?? ""
         
         searchJobs(searchTerm: "", location: location) { [weak self] jobResults, error in
@@ -108,6 +111,8 @@ extension JobSearchViewController: UITextFieldDelegate {
                     self?.contentView.resultsTableView.reloadData()
                 } else {
                     self?.contentView.noResultsLabel.text = "No jobs available."
+                    self?.contentView.resultsTableView.reloadData()
+                    print("No jobs found")
                 }
             }
         }
